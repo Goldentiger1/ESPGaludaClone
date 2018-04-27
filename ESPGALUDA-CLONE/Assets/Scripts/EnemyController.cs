@@ -6,7 +6,8 @@ public class EnemyController : MonoBehaviour {
 
     public float speed;
     public GameObject enemy;
-    public Transform oldPosition;  
+    Transform oldPosition;
+    Transform newPosition;
 
     public List<GameObject> waypoints = new List<GameObject>();
 
