@@ -12,12 +12,13 @@ public class EnemyController : MonoBehaviour {
     public List<GameObject> waypoints = new List<GameObject>();
 
     void Start() {
-       oldPosition = GetComponent<GameObject>().transform;
+       oldPosition = GetComponent<Transform>();
         newPosition = waypoints[0].transform;
     }
 
     void Update() {
-        
+        float movement = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(oldPosition.position, newPosition.position, movement);
     }
 
     /* Waypoints listan läpikäynti
