@@ -16,7 +16,19 @@ public class EnemyController : MonoBehaviour {
         newPosition = waypoints[0].transform;
     }
 
-    void GoThroughListInOrder(List<GameObject> a) {
-        foreach()
+    void Update() {
+        
     }
+
+    /* Waypoints listan läpikäynti
+     * Pitää tehdä vielä loppuun
+     
+    void GoThroughListInOrder(List<GameObject> a) {
+        foreach(GameObject i in a) {
+            if(i == null) {
+
+            }
+        }
+    }
+    */
 }
