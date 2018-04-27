@@ -12,6 +12,11 @@ public class EnemyController : MonoBehaviour {
     public List<GameObject> waypoints = new List<GameObject>();
 
     void Start() {
-        
+       oldPosition = GetComponent<GameObject>().transform;
+        newPosition = waypoints[0].transform;
+    }
+
+    void GoThroughListInOrder(List<GameObject> a) {
+        foreach()
     }
 }
