@@ -29,15 +29,3 @@ public class EnemyController : MonoBehaviour {
         }
     }
 }
-
-/* Waypoints listan läpikäynti
-* Pitää tehdä vielä loppuun
-     
-void GoThroughListInOrder(List<GameObject> a) {
-foreach(GameObject i in a) {
-if(i == null) {
-
-}
-}
-}
-*/
