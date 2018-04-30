@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody Rb;
     public float Speed;
+    public float XMax;
+    public float XMin;
+    public float ZMax;
+    public float ZMin;
+
+    public float Tilt;
     public float turnSpeed;
 
 
@@ -16,21 +22,22 @@ public class PlayerMovement : MonoBehaviour
     {
         Rb = GetComponent<Rigidbody>();
     }
-    
+
     void Update()
     {
         //Vector3  (movement = new Vector3 (0,0,10f * Speed) * Time.deltaTime);
-        
+
         // Perform it on all time. Player Moving.
-        Vector3 Movement = new Vector3(0, 0, 0.6f * Speed) * Time.deltaTime;
+        Vector3 Movement = new Vector3(0, 0, 10 * Speed) * Time.deltaTime;
         Rb.MovePosition(transform.position + Movement);
 
         Move();
         X360Move();
-
+        Movingbounds();
+       
     }
 
-   public void Move()
+    public void Move()
     {
         if (Input.GetKey("d"))
         {
@@ -58,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("s"))
         {
-           transform.Translate(Vector3.back * 0.1f);
+            transform.Translate(Vector3.back * 0.1f);
         }
 
         if (Input.GetKeyUp("s"))
@@ -96,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonDown("X360_RBumper"))
         {
-            print("Right Bumper");
+            //print("Right Bumper");
         }
         if (Input.GetButtonDown("X360_A"))
         {
@@ -144,12 +151,28 @@ public class PlayerMovement : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(new Vector3(0, rStickX, 0) * turnSpeed * Time.deltaTime);
 
-        transform.Rotate (new Vector3(0, rStickX, 0) * turnSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, rStickX, 0), turnSpeed * Time.deltaTime);
 
     }
 
-}
 
+    public void Movingbounds()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // Sallittu liikkuminen X ja Z Akselilla.
+        GetComponent<Rigidbody>().velocity = movement * Speed; // Rigidbody hoitaa liikkeen.
+
+        GetComponent<Rigidbody>().position = new Vector3 // Liikkumisen rajoituset! ↧↧↧
+        (
+            Mathf.Clamp(GetComponent<Rigidbody>().position.x, XMin, XMax), // X Akselin rajat.
+            0.0f,
+            Mathf.Clamp(GetComponent<Rigidbody>().position.z, ZMin, ZMax) // Z Akselin rajat.
+        );
+    }
+    
+}
 
 
 
