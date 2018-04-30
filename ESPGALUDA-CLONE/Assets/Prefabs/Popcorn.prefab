@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321e9259d81f78f4387754a2a411005e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  enemy: {fileID: 0}
+  speed: 3
+  enemy: {fileID: 1314013710770050}
   waypoints: []
 --- !u!114 &114708031487105966
 MonoBehaviour:
