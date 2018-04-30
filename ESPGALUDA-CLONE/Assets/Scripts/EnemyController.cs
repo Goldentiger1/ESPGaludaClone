@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
+    float timer;
+    public float endChase;
     public float speed;
     public GameObject enemy;
     Transform oldPosition;
@@ -17,15 +19,39 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Update() {
+        timer += Time.deltaTime;
+        print(timer);
         float movement = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(oldPosition.position, newPosition.position, movement);
 
-        for (int i = 0; i < waypoints.Count; i++) {
-            if (oldPosition.position == newPosition.position) {
-                Destroy(waypoints[i]);
-                waypoints.RemoveAt(i);
-                newPosition = waypoints[i].transform;
+        if(oldPosition.position == newPosition.position) {
+            waypoints.RemoveAt(0);
+            if(waypoints == null) {
+                
             }
         }
-    }
-}
+        //if(timer > ) {
+            
+        }
+
+
+
+
+    
+
+        //for (int i = 0; i < waypoints.Count; i++) {
+            //if (oldPosition.position == newPosition.position) {
+                //Destroy(waypoints[i]);
+               // waypoints.RemoveAt(0/*i*/);
+           // newPosition = enemy.transform;
+                //newPosition = waypoints[i].transform;
+               // if(timer >= 10) {
+              //  waypoints.RemoveAt(0);
+                
+            }
+
+            //}
+            
+        //}
+    //}
+//}
