@@ -27,4 +27,10 @@ public class PopcornEnemy : MonoBehaviour {
         timer += Time.deltaTime;
     }
 
+    void endChaseScript() {
+        if(timer >= endChase) {
+
+        }
+    }
+
 }
