@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
+    public float speed;
+
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
 
     }
 }
