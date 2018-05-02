@@ -19,12 +19,14 @@ public class PlayerMovement : MonoBehaviour
     public float Tilt;
     public float turnSpeed;
 
+    
 
 
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        
     }
 
     void Update()
