@@ -27,8 +27,13 @@ public class PopcornEnemy : MonoBehaviour {
         timer += Time.deltaTime;
     }
 
+    /* Skripti joka katsoo Popcorn vihollisen viimeisimmän menosuunnan ja tallentaa sen muuttujaan
+     * Tietyn ajan kuluttua lopettaa pelaajan jahtaamisen ja asettaa Popcornin menosuunnan suoraan eteenpäin
+     * siitä pisteestä, missä se oli viimeiseksi pelaajan jahtaamisen jälkeen.
+     */
     void endChaseScript() {
-        if(timer >= endChase) {
+
+        if(timer >= endChase) {          
 
         }
     }
