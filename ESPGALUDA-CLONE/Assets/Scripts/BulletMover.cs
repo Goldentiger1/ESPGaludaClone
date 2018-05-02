@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class BulletMover : MonoBehaviour {
 
-    public Rigidbody Rb;
-    public float Speed;
-	
+    public Transform playfieldCenter;
 
-    void Start ()
-    {
-        Rb = GetComponent<Rigidbody>();
+    public float speed;
+
+    public Vector3 localPos;
+
+    void Start() {
+        playfieldCenter = GameObject.Find("CameraObject").transform;
+        localPos = transform.position - playfieldCenter.position;
     }
-	// Update is called once per frame
-	void Update ()
-    {
-        Rb.velocity = transform.forward * Speed;
+
+    void Update() {
+ 
+        localPos = localPos + transform.forward * Time.deltaTime * speed;
+
+        transform.position = playfieldCenter.position + localPos;
     }
 }

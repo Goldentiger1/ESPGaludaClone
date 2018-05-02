@@ -36,4 +36,12 @@ public class PlayerShooting : MonoBehaviour {
             }
         }
     }
+
+    void Awake() {
+        shotSpawn = transform.Find("ShotSpawn");
+        
+
+
+    }
+
 }

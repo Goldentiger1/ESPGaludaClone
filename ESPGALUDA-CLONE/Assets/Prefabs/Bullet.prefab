@@ -96,7 +96,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6e7c233b15b5142a60ec9f9f5c85c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rb: {fileID: 54971622590594798}
-  Speed: 20
+  playfieldCenter: {fileID: 0}
+  speed: 10
+  localPos: {x: 0, y: 0, z: 0}
 --- !u!135 &135467504410291776
 SphereCollider:
   m_ObjectHideFlags: 1
