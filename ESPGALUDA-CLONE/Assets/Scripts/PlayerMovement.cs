@@ -3,6 +3,10 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Players localposition variable and Cameras CameraObject variable.
+    public Transform playfieldCenter;
+    public Vector3 localPos;
+
     // Create Variables.
 
     public Rigidbody Rb;
@@ -36,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
         Move();
         X360Move();
         Movingbounds();
-       
+
+        // stays in place on screen if localPos is not changed
+        transform.position = playfieldCenter.position + localPos;
+
     }
 
     public void Move()
