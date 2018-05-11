@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -174,6 +174,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ef2a56db53c3bfb40950c904096746ca, type: 2}
   m_StaticBatchInfo:
@@ -227,8 +228,13 @@ Transform:
   m_LocalScale: {x: 2.38912, y: 1, z: 6.6698933}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1204167511 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4243256134123362, guid: f4151320ee66f204ba2accdec8409a34,
+    type: 2}
+  m_PrefabInternal: {fileID: 1279328250}
 --- !u!1001 &1279328250
 Prefab:
   m_ObjectHideFlags: 0
@@ -281,7 +287,12 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -5.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4243256134123362, guid: f4151320ee66f204ba2accdec8409a34, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -30
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114054609697229372, guid: f4151320ee66f204ba2accdec8409a34, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f4151320ee66f204ba2accdec8409a34, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1479849689
@@ -347,13 +358,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &1768456353 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4053416150963030, guid: f4151320ee66f204ba2accdec8409a34,
-    type: 2}
-  m_PrefabInternal: {fileID: 1279328250}
 --- !u!1 &1885426796
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +428,6 @@ GameObject:
   - component: {fileID: 1941154202}
   - component: {fileID: 1941154201}
   - component: {fileID: 1941154200}
-  - component: {fileID: 1941154207}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -457,6 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b479ed2c44ac34db059cd1b719ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playfieldCenter: {fileID: 1204167511}
+  localPos: {x: 0, y: 0, z: 0}
   Rb: {fileID: 1941154202}
   Speed: 10
   XMax: 10
@@ -495,8 +502,9 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 010a87375a940804bae9060c341a08b2, type: 2}
+  - {fileID: 2100000, guid: b0651cc121a63124eafd0229bead0b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -545,24 +553,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1941154199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -11.3, z: -36.9}
+  m_LocalPosition: {x: -0.7, y: -11.3, z: -36.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 138408801}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1941154207
+--- !u!1 &2112347177 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1146290075865294, guid: f4151320ee66f204ba2accdec8409a34,
+    type: 2}
+  m_PrefabInternal: {fileID: 1279328250}
+--- !u!114 &2112347179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941154199}
-  m_Enabled: 0
+  m_GameObject: {fileID: 2112347177}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e8e807cf912e694ba508355c542c55f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c0197e6d27004b4f9cc4a09ff4bfa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playfieldCenter: {fileID: 1768456353}
-  Speed: 0
-  localPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 1941154199}
