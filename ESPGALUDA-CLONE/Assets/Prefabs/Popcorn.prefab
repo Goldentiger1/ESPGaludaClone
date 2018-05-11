@@ -53,14 +53,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859152867236980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.1, y: 0.5, z: 10.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4840014390584424}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4840014390584424
 Transform:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ BoxCollider:
   m_GameObject: {fileID: 1859152867236980}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -112,9 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f60093bf0f364449925e24456f82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popcornEnemy: {fileID: 0}
-  playerCoordinates: {fileID: 0}
+  popcornEnemy: {fileID: 1859152867236980}
   speed: 3
+  playfieldCenter: {fileID: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
   endChase: 0
 --- !u!114 &114353274302177468
 MonoBehaviour:
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b2ad6c15d7aff42b0b058deadfdbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Death: {fileID: 8300000, guid: 9f9664046edc6ee40af2a1aad7da8fc9, type: 3}
+  Death: {fileID: 8300000, guid: a8705207ec59efa41aa5e527fbd97e23, type: 3}
 --- !u!212 &212333771607915078
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,6 +143,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -185,6 +188,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
