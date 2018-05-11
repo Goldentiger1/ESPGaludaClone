@@ -87,6 +87,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:
@@ -155,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
   shotSpawn: {fileID: 4174387613761296}
-  fireRate: 0.25
+  fireRate: 0.1
+  bulletAudioEvent: Bullet
 --- !u!114 &114501470300132724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b479ed2c44ac34db059cd1b719ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playfieldCenter: {fileID: 0}
+  localPos: {x: 0, y: 0, z: 0}
   Rb: {fileID: 54521667289646184}
   Speed: 10
   XMax: 18
