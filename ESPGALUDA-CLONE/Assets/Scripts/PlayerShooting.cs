@@ -9,10 +9,11 @@ public class PlayerShooting : MonoBehaviour {
     public float fireRate;
 
     private float nextFire;
-	
-		
-	// Update is called once per frame
-	void Update ()
+
+    public string bulletAudioEvent;
+
+    // Update is called once per frame
+    void Update ()
     {
         {
 
@@ -23,6 +24,7 @@ public class PlayerShooting : MonoBehaviour {
                 nextFire = Time.time + fireRate;
 
                 clone.transform.position = shotSpawn.transform.position;
+                Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
                 //GetComponent<AudioSource>().Play();
             }
             if (Input.GetButtonDown("X360_RBumper"))
