@@ -6,6 +6,7 @@ public class AudioTrigger : MonoBehaviour {
 
     public string BGM1;
     public string Pickup;
+    
 
     // Use this for initialization
     void Start() {
