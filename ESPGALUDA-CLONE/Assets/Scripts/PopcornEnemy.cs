@@ -18,6 +18,11 @@ public class PopcornEnemy : MonoBehaviour
     float timer;
     public float endChase;
 
+    public float minPopcornPositionX = -5f;
+    public float maxPopcornPositionX = 5f;
+    public float minPopcornPositionZ = -5f;
+    public float maxPopcornPositionZ = 5f;
+
     void Start()
     {
         localPos = transform.position - playfieldCenter.position;
@@ -27,8 +32,9 @@ public class PopcornEnemy : MonoBehaviour
     {
         float movement = speed * Time.deltaTime;
         localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
-
         transform.position = playfieldCenter.position + localPos;
+        timer += Time.deltaTime;
+        endChaseScript();
     }
 
     /* Skripti joka katsoo Popcorn vihollisen viimeisimmän menosuunnan ja tallentaa sen muuttujaan
@@ -38,9 +44,15 @@ public class PopcornEnemy : MonoBehaviour
 
     void endChaseScript()
     {
+        print(timer);
         if (timer >= endChase)
         {
+            localPos.z = transform.position.z - playfieldCenter.position.z;
+            print(localPos);
+            if(localPos.x >= maxPopcornPositionX)
+            {
 
+            }
         }
     }
 }
