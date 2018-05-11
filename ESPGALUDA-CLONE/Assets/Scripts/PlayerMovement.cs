@@ -26,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
-        
+
+        playfieldCenter = GameObject.Find("CameraObject").transform;
+        localPos = transform.position - playfieldCenter.position;
     }
 
     void Update()
@@ -34,50 +36,61 @@ public class PlayerMovement : MonoBehaviour
         //Vector3  (movement = new Vector3 (0,0,10f * Speed) * Time.deltaTime);
 
         // Perform it on all time. Player Moving.
-        Vector3 Movement = new Vector3(0, 0, 10 * Speed) * Time.deltaTime;
-        Rb.MovePosition(transform.position + Movement);
-
-        Move();
-        X360Move();
-        Movingbounds();
+        //Vector3 Movement = new Vector3(0, 0, 10 * Speed) * Time.deltaTime;
+        //Rb.MovePosition(transform.position + Movement);
 
         // stays in place on screen if localPos is not changed
+
+        //localPos = localPos + transform.forward * Time.deltaTime * Speed;
+        //localPos = localPos + transform.position + Movement * Time.deltaTime * Speed;
+        //localPos = localPos + Movement * Time.deltaTime * Speed;
+        //localPos = localPos + transform.position * Speed * Time.deltaTime;
+        //localPos = localPos + transform.position * Time.deltaTime * Speed;
+        var moveDir = Input.GetAxis("Horizontal") * Vector3.right +
+                        Input.GetAxis("Vertical") * Vector3.forward;
+        localPos += moveDir.normalized * Time.deltaTime * Speed;
+
         transform.position = playfieldCenter.position + localPos;
 
+
+        //Move();
+        //X360Move();
+        Movingbounds();
+        
     }
 
     public void Move()
     {
-        if (Input.GetKey("d"))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.Translate(Vector3.right * 0.1f);
+            transform.Translate(Vector3.right * Time.deltaTime);
+            print("Liikkuu oikealle");
 
         }
 
-        if (Input.GetKeyUp("d"))
+        if (Input.GetKeyUp(KeyCode.D))
         {
             transform.Translate(Vector3.right * 0f);
         }
 
 
-        if (Input.GetKey("a"))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.Translate(Vector3.left * 0.1f);
+            transform.Translate(Vector3.left * Time.deltaTime);
+            print("Liikkuu vasemmalle");
         }
 
-        if (Input.GetKeyUp("a"))
+        if (Input.GetKeyUp(KeyCode.A))
         {
-
             transform.Translate(Vector3.left * 0f);
-
         }
 
-        if (Input.GetKey("s"))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.Translate(Vector3.back * 0.1f);
+            transform.Translate(Vector3.back * Time.deltaTime);
         }
 
-        if (Input.GetKeyUp("s"))
+        if (Input.GetKeyUp(KeyCode.S))
         {
             transform.Translate(Vector3.back * 0f);
 
@@ -161,7 +174,6 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(new Vector3(0, rStickX, 0) * turnSpeed * Time.deltaTime);
 
         transform.Rotate(new Vector3(0, rStickX, 0), turnSpeed * Time.deltaTime);
-
     }
 
 
@@ -175,9 +187,13 @@ public class PlayerMovement : MonoBehaviour
 
         GetComponent<Rigidbody>().position = new Vector3 // Liikkumisen rajoituset! ↧↧↧
         (
-            Mathf.Clamp(GetComponent<Rigidbody>().position.x, XMin, XMax), // X Akselin rajat.
+            //Mathf.Clamp(GetComponent<Rigidbody>().position.x, XMin, XMax), // X Akselin rajat.
+            //0.0f,
+            //Mathf.Clamp(GetComponent<Rigidbody>().position.z, ZMin, ZMax) // Z Akselin rajat.
+
+             Mathf.Clamp(localPos.x, XMin, XMax), // X Akselin rajat.
             0.0f,
-            Mathf.Clamp(GetComponent<Rigidbody>().position.z, ZMin, ZMax) // Z Akselin rajat.
+            Mathf.Clamp(localPos.z, ZMin, ZMax) // Z Akselin rajat.
         );
     }
     

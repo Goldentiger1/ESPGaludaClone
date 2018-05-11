@@ -6,6 +6,9 @@ public class DestroyByArea : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.name == "Bullet")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
