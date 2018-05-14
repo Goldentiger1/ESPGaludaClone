@@ -49,13 +49,13 @@ public class PlayerMovement : MonoBehaviour
         var moveDir = Input.GetAxis("Horizontal") * Vector3.right +
                         Input.GetAxis("Vertical") * Vector3.forward;
         localPos += moveDir.normalized * Time.deltaTime * Speed;
-
+        Movingbounds();
         transform.position = playfieldCenter.position + localPos;
 
 
         //Move();
         //X360Move();
-        Movingbounds();
+        
         
     }
 
@@ -179,19 +179,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movingbounds()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // Sallittu liikkuminen X ja Z Akselilla.
-        GetComponent<Rigidbody>().velocity = movement * Speed; // Rigidbody hoitaa liikkeen.
-
-        GetComponent<Rigidbody>().position = new Vector3 // Liikkumisen rajoituset! ↧↧↧
+        localPos = new Vector3 // Liikkumisen rajoituset! ↧↧↧
         (
             //Mathf.Clamp(GetComponent<Rigidbody>().position.x, XMin, XMax), // X Akselin rajat.
             //0.0f,
             //Mathf.Clamp(GetComponent<Rigidbody>().position.z, ZMin, ZMax) // Z Akselin rajat.
 
-             Mathf.Clamp(localPos.x, XMin, XMax), // X Akselin rajat.
+            Mathf.Clamp(localPos.x, XMin, XMax), // X Akselin rajat.
             0.0f,
             Mathf.Clamp(localPos.z, ZMin, ZMax) // Z Akselin rajat.
         );
