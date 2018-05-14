@@ -12,16 +12,12 @@ public class PopcornEnemy : MonoBehaviour
 
     public PlayerMovement player;
 
-    Vector3 oldPos;
-    Vector3 newPos;
-
     float timer;
     public float endChase;
 
     public float minPopcornPositionX = -5f;
-    public float maxPopcornPositionX = 5f;
-    public float minPopcornPositionZ = -5f;
-    public float maxPopcornPositionZ = 5f;
+    public float minHorizontalAngle;
+
 
     void Start()
     {
@@ -45,13 +41,33 @@ public class PopcornEnemy : MonoBehaviour
     void endChaseScript()
     {
         print(timer);
+
         if (timer >= endChase)
         {
-            localPos.z = transform.position.z - playfieldCenter.position.z;
-            print(localPos);
-            if(localPos.x >= maxPopcornPositionX)
-            {
+            Quaternion minAngleRotationCCW = Quaternion.AngleAxis(minHorizontalAngle, Vector3.forward);
+            Quaternion minAngleRotationCW = Quaternion.AngleAxis(-minHorizontalAngle, Vector3.forward);
+            localPos = transform.position - playfieldCenter.position;
 
+            if (Vector3.Angle(localPos, Vector3.forward) < minHorizontalAngle
+                && localPos.x >= minPopcornPositionX)
+            {
+                print("Popcorn is going up and right!");
+                localPos = minAngleRotationCCW * Vector3.forward;
+            }
+            else
+            {
+                print("Popcorn is going down and right!");
+                localPos = minAngleRotationCW * Vector3.forward;
+            }
+
+            if(Vector3.Angle(localPos, Vector3.back) > minHorizontalAngle
+                && localPos.x <= minPopcornPositionX)
+            {
+                print("Popcorn is going down and left!");
+            }
+            else
+            {
+                print("Popcorn is going up and Left!");
             }
         }
     }
