@@ -12,16 +12,12 @@ public class PopcornEnemy : MonoBehaviour
 
     public PlayerMovement player;
 
-    Vector3 oldPos;
-    Vector3 newPos;
-
     float timer;
     public float endChase;
 
-    public float minPopcornPositionX = -5f;
-    public float maxPopcornPositionX = 5f;
-    public float minPopcornPositionZ = -5f;
-    public float maxPopcornPositionZ = 5f;
+    public float minPopcornPositionX;
+    public float minHorizontalAngle;
+
 
     void Start()
     {
@@ -45,13 +41,21 @@ public class PopcornEnemy : MonoBehaviour
     void endChaseScript()
     {
         print(timer);
+
         if (timer >= endChase)
         {
-            localPos.z = transform.position.z - playfieldCenter.position.z;
-            print(localPos);
-            if(localPos.x >= maxPopcornPositionX)
-            {
+            localPos = transform.position - playfieldCenter.position;
 
+            if (Vector3.Angle(localPos, Vector3.forward) > minHorizontalAngle)
+            {
+                if (localPos.x > minPopcornPositionX)
+                {
+                    print("PopcornEnemy is going up and right!");
+                }
+                else
+                {
+                    print("PopcornEnemy is going down and right!");
+                }
             }
         }
     }
@@ -88,4 +92,31 @@ void Update()
 }
 
 */
+
+/* 
+ * ESIMERKKI, joka pitäisi muokata tähän koodiin sopivaksi.
+ * 
+ *  if (Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
+        if (lastVelocity.y >= 0) {
+            print("Bounced  right, was going up!");
+            rb.velocity = minAngleRotationCCW * Vector3.right;
+        }
+        else {
+            print("Bounced right, was going down!");
+            rb.velocity = minAngleRotationCW * Vector3.right;
+        }
+    }
+    // TODO: Fix horizontal left!
+    if(Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
+        if(lastVelocity.y >= 0) {
+            print("Bounced left, was going up!");
+            rb.velocity = minAngleRotationCW * Vector3.left;
+            //rb.velocity = minAngleRotationCCW * Vector3.left;
+        }
+        else {
+            print("Bounced left, was going down!");
+            //rb.velocity = minAngleRotationCW * Vector3.left;
+            rb.velocity = minAngleRotationCCW * Vector3.left;
+        }
+        */
 
