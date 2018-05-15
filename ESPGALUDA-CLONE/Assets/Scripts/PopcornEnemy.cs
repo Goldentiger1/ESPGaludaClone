@@ -15,11 +15,14 @@ public class PopcornEnemy : MonoBehaviour, Enemy
     float timer;
     public float endChase;
 
-    public float minPopcornPositionX;
-    public float minHorizontalAngle;
+    private Vector3 currentDirection = Vector3.forward;
+
+    //public float minPopcornPositionX;
+    //public float minHorizontalAngle;
 
 
-    public void TakeDamage(float dmg) {
+    public void TakeDamage(float dmg)
+    {
 
 
     }
@@ -32,17 +35,29 @@ public class PopcornEnemy : MonoBehaviour, Enemy
     void Update()
     {
         float movement = speed * Time.deltaTime;
-        localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
+        if (timer <= endChase)
+        {
+            localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
+            currentDirection = (player.localPos - localPos).normalized;
+        }
+        else
+        {
+            localPos += currentDirection * movement;
+
+        }
         transform.position = playfieldCenter.position + localPos;
         timer += Time.deltaTime;
-        endChaseScript();
+        print(timer);
     }
+}
 
     /* endChaseScript katsoo tietyn ajan kuluttua PopcornEnemyn viimeisimmän menosuunnan
      * ja asettaa PopcornEnemylle uuden kulkusuunnan playerin jahtaamisen sijasta viimeisimpään
      * menosuuntaan päin.
      * 
      */
+
+        /*
     void endChaseScript()
     {
         print(timer);
@@ -62,9 +77,7 @@ public class PopcornEnemy : MonoBehaviour, Enemy
                     print("PopcornEnemy is going down and right!");
                 }
             }
-        }
-    }
-}
+            */
 
 /*
 public GameObject popcornEnemy;
