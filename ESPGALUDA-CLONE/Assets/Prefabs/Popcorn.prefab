@@ -118,6 +118,10 @@ MonoBehaviour:
   localPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   endChase: 0
+  minPopcornPositionX: -5
+  maxPopcornPositionX: 5
+  minPopcornPositionZ: -5
+  maxPopcornPositionZ: 5
 --- !u!114 &114353274302177468
 MonoBehaviour:
   m_ObjectHideFlags: 1

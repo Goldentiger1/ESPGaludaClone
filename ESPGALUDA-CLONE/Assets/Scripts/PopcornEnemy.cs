@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopcornEnemy : MonoBehaviour
+public class PopcornEnemy : MonoBehaviour, Enemy
 {
     public GameObject popcornEnemy;
     public float speed;
@@ -22,6 +22,11 @@ public class PopcornEnemy : MonoBehaviour
     public float maxPopcornPositionX = 5f;
     public float minPopcornPositionZ = -5f;
     public float maxPopcornPositionZ = 5f;
+
+    public void TakeDamage(float dmg) {
+
+
+    }
 
     void Start()
     {
