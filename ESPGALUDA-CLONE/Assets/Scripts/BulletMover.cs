@@ -20,5 +20,6 @@ public class BulletMover : MonoBehaviour {
         localPos = localPos + transform.forward * Time.deltaTime * speed;
 
         transform.position = playfieldCenter.position + localPos;
+        Destroy(gameObject, 2.0f);
     }
 }
