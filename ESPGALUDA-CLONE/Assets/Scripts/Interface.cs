@@ -5,3 +5,7 @@ using UnityEngine;
 interface Enemy {
     void TakeDamage(float dmg);
 }
+
+interface Player {
+    void PlayerHit(float dmg);
+}

@@ -20,6 +20,8 @@ public class BulletDamage : MonoBehaviour {
         var enemy = other.GetComponent<Enemy>();
         if (enemy != null) {
             enemy.TakeDamage(dmg);
+            print("Damage");
+            Destroy(gameObject);
         }
     }
 }

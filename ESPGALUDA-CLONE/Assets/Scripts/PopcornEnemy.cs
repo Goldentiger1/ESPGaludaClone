@@ -7,6 +7,8 @@ public class PopcornEnemy : MonoBehaviour, Enemy
     public GameObject popcornEnemy;
     public float speed;
 
+    public float hitpoints;
+
     public Transform playfieldCenter;
     public Vector3 localPos;
 
@@ -21,10 +23,11 @@ public class PopcornEnemy : MonoBehaviour, Enemy
     //public float minHorizontalAngle;
 
 
-    public void TakeDamage(float dmg)
-    {
-
-
+    public void TakeDamage(float dmg) {
+        hitpoints -= dmg;
+        if (hitpoints < 0) {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
@@ -47,7 +50,7 @@ public class PopcornEnemy : MonoBehaviour, Enemy
         }
         transform.position = playfieldCenter.position + localPos;
         timer += Time.deltaTime;
-        print(timer);
+        
     }
 }
 

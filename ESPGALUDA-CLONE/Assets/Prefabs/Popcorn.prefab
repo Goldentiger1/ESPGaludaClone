@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4840014390584424}
   - component: {fileID: 212822354820086706}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,11 +36,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4454889918986810}
   - component: {fileID: 212333771607915078}
-  - component: {fileID: 114353274302177468}
   - component: {fileID: 65618545910290872}
   - component: {fileID: 54386863301910168}
   - component: {fileID: 114346007277476964}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Popcorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859152867236980}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1, y: 0.5, z: 10.2}
+  m_LocalPosition: {x: 13.1, y: 0.5, z: 39.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4840014390584424}
@@ -113,27 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popcornEnemy: {fileID: 1859152867236980}
-  speed: 3
+  speed: 5
+  hitpoints: 2
   playfieldCenter: {fileID: 0}
   localPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   endChase: 0
-  minPopcornPositionX: -5
-  maxPopcornPositionX: 5
-  minPopcornPositionZ: -5
-  maxPopcornPositionZ: 5
---- !u!114 &114353274302177468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1859152867236980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b2ad6c15d7aff42b0b058deadfdbc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Death: {fileID: 8300000, guid: a8705207ec59efa41aa5e527fbd97e23, type: 3}
 --- !u!212 &212333771607915078
 SpriteRenderer:
   m_ObjectHideFlags: 1

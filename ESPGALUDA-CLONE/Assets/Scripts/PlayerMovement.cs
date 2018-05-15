@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, Player
 {
     // Players localposition variable and Cameras CameraObject variable.
     public Transform playfieldCenter;
@@ -16,10 +16,21 @@ public class PlayerMovement : MonoBehaviour
     public float ZMax;
     public float ZMin;
 
+    public float Hitpoints;
+    public float Lives;
+
     public float Tilt;
     public float turnSpeed;
 
-    
+    public void PlayerHit (float dmg) {
+        if (Hitpoints == 0) {
+            Hitpoints = 1;
+            Lives--;
+                if (Lives == 0) {
+                Destroy(gameObject);
+            }
+        }
+    }
 
 
     // Perform it on game start. Create Player ship's Rigidbody. 
@@ -30,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         playfieldCenter = GameObject.Find("CameraObject").transform;
         localPos = transform.position - playfieldCenter.position;
     }
+
+ 
 
     void Update()
     {

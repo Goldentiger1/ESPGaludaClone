@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33455817902714594}
   - component: {fileID: 23437969608764686}
   - component: {fileID: 65791000840726260}
-  - component: {fileID: 114742739012175662}
+  - component: {fileID: 114778724917210008}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595177313024662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.45985, y: 1.3, z: 140.66978}
+  m_LocalPosition: {x: -2.5491893, y: 0, z: 15.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4594495770531296}
@@ -212,7 +212,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114742739012175662
+--- !u!114 &114778724917210008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fdb7f55271c684d99997ea14482915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1422818985736736, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
   shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
   shotSpawn: {fileID: 1442850249977500}
-  fireRate: 0.5
+  fireRate: 2
