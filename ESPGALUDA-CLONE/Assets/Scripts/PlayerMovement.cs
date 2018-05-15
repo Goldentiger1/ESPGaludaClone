@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour, Player
+public class PlayerMovement : MonoBehaviour, IPlayer
 {
     // Players localposition variable and Cameras CameraObject variable.
     public Transform playfieldCenter;

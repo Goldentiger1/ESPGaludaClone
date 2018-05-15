@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour {
+public class TowerController : MonoBehaviour, IEnemy {
 
     public GameObject target;
     public GameObject shot;
     public GameObject shotSpawn;
     public float fireRate;
     private float nextFire;
+    public float hitpoints;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	void Update () {
+    public void TakeDamage(float dmg) {
+        hitpoints -= dmg;
+        if (hitpoints < 0) {
+            Destroy(gameObject);
+        }
+    }
+
+        void Update () {
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
@@ -23,7 +26,8 @@ public class TowerController : MonoBehaviour {
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
 
         if (Time.time > nextFire){
-            GameObject clone = Instantiate(shot) as GameObject;
+            GameObject clone = Instantiate(shot);
+
             nextFire = Time.time + fireRate;
 
             clone.transform.position = shotSpawn.transform.position;

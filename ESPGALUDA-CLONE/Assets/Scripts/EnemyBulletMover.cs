@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EnemyBulletMover : MonoBehaviour {
 
-    public 
+    //public 
 }

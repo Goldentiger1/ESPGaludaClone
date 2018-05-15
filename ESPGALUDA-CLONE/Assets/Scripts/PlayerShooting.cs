@@ -21,11 +21,12 @@ public class PlayerShooting : MonoBehaviour {
 
             if (Input.GetButton("Fire1") && Time.time > nextFire) {
                 GameObject clone;
-                clone = Instantiate(shot) as GameObject;
-                nextFire = Time.time + fireRate;
-
+                clone = Instantiate(shot);
                 clone.transform.position = shotSpawn.transform.position;
+                //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
+                //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
                 Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
+                nextFire = Time.time + fireRate;
                 //GetComponent<AudioSource>().Play();
             }
             if (Input.GetButtonDown("X360_RBumper")) {

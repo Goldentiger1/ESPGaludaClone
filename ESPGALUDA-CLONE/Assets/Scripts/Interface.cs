@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface Enemy {
+interface IEnemy {
     void TakeDamage(float dmg);
 }
 
-interface Player {
+interface IPlayer {
     void PlayerHit(float dmg);
 }

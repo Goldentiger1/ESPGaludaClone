@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopcornEnemy : MonoBehaviour, Enemy
+public class PopcornEnemy : MonoBehaviour, IEnemy
 {
     public GameObject popcornEnemy;
     public float speed;
 
     public float hitpoints;
 
-    public Transform playfieldCenter;
     public Vector3 localPos;
 
     public PlayerMovement player;
@@ -32,7 +31,7 @@ public class PopcornEnemy : MonoBehaviour, Enemy
 
     void Start()
     {
-        localPos = transform.position - playfieldCenter.position;
+        localPos = transform.position - World.center.position;
     }
 
     void Update()
@@ -48,7 +47,7 @@ public class PopcornEnemy : MonoBehaviour, Enemy
             localPos += currentDirection * movement;
 
         }
-        transform.position = playfieldCenter.position + localPos;
+        transform.position = World.center.position + localPos;
         timer += Time.deltaTime;
         
     }

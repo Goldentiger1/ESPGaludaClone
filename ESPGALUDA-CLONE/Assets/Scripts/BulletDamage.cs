@@ -17,7 +17,7 @@ public class BulletDamage : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        var enemy = other.GetComponent<Enemy>();
+        var enemy = other.GetComponent<IEnemy>();
         if (enemy != null) {
             enemy.TakeDamage(dmg);
             print("Damage");
