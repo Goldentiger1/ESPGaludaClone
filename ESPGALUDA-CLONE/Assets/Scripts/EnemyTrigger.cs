@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour {
 
-    public GameObject ship;
+    public List<GameObject> ships;
 
     void OnTriggerEnter(Collider other) {
     if (other.gameObject.layer == LayerMask.NameToLayer("Camera")) {
-            print("Hello");
+            foreach (var ship in ships)
             ship.SetActive(true);
         }    
     }
 
     void Awake() {
-        ship.SetActive(false);    
+        foreach (var ship in ships)
+            ship.SetActive(false);
     }
 }
 
