@@ -39,7 +39,13 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
         float movement = speed * Time.deltaTime;
         if (timer <= endChase)
         {
-
+            // Popcorn rotation
+            Vector3 targetDirection = player.transform.position - transform.position;
+            targetDirection.y = 0;
+            Quaternion currentRotation = transform.rotation;
+            Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
+            transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+            // Popcorn movement
             localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
             currentDirection = (player.localPos - localPos).normalized;
         }
