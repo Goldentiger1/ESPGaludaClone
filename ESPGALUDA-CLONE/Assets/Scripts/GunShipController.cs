@@ -2,23 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour, IEnemy {
+public class GunShipController : MonoBehaviour {
 
-    public GameObject target;
+    public GameObject gunship;
     public GameObject shot;
     public GameObject shotSpawn;
-    public float fireRate;
-    private float nextFire;
+    public GameObject target;
+    public float speed;
     public float hitpoints;
+    public float leaveScreen;
+    public Vector3 localPos;
+    public float fireRate;
+    public float movementSpeed;
+    private float nextFire;
 
-    public void TakeDamage(float dmg) {
+    float timer;
+
+    public void TakeDamage(float dmg)
+    {
         hitpoints -= dmg;
-        if (hitpoints < 0) {
+        if (hitpoints < 0)
+        {
             Destroy(gameObject);
         }
     }
 
-        void Update () {
+    void Start()
+    {
+        localPos = transform.position - World.center.position;
+    }
+
+    void Update(){
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
@@ -32,8 +46,7 @@ public class TowerController : MonoBehaviour, IEnemy {
 
             clone.transform.position = shotSpawn.transform.position;
             clone.transform.rotation = targetRotation;
-            //Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
-            //GetComponent<AudioSource>().Play();
+            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
         }
     }
 }
