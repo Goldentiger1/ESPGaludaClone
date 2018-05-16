@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPlayer
 {
     // Players localposition variable and Cameras CameraObject variable.
     public Transform playfieldCenter;
@@ -16,10 +16,21 @@ public class PlayerMovement : MonoBehaviour
     public float ZMax;
     public float ZMin;
 
+    public float Hitpoints;
+    public float Lives;
+
     public float Tilt;
     public float turnSpeed;
 
-    
+    public void PlayerHit (float dmg) {
+        if (Hitpoints == 0) {
+            Hitpoints = 1;
+            Lives--;
+                if (Lives == 0) {
+                Destroy(gameObject);
+            }
+        }
+    }
 
 
     // Perform it on game start. Create Player ship's Rigidbody. 
@@ -30,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         playfieldCenter = GameObject.Find("CameraObject").transform;
         localPos = transform.position - playfieldCenter.position;
     }
+
+ 
 
     void Update()
     {
@@ -49,13 +62,13 @@ public class PlayerMovement : MonoBehaviour
         var moveDir = Input.GetAxis("Horizontal") * Vector3.right +
                         Input.GetAxis("Vertical") * Vector3.forward;
         localPos += moveDir.normalized * Time.deltaTime * Speed;
-
+        Movingbounds();
         transform.position = playfieldCenter.position + localPos;
 
 
         //Move();
         //X360Move();
-        Movingbounds();
+        
         
     }
 
@@ -179,19 +192,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movingbounds()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // Sallittu liikkuminen X ja Z Akselilla.
-        GetComponent<Rigidbody>().velocity = movement * Speed; // Rigidbody hoitaa liikkeen.
-
-        GetComponent<Rigidbody>().position = new Vector3 // Liikkumisen rajoituset! ↧↧↧
+        localPos = new Vector3 // Liikkumisen rajoituset! ↧↧↧
         (
             //Mathf.Clamp(GetComponent<Rigidbody>().position.x, XMin, XMax), // X Akselin rajat.
             //0.0f,
             //Mathf.Clamp(GetComponent<Rigidbody>().position.z, ZMin, ZMax) // Z Akselin rajat.
 
-             Mathf.Clamp(localPos.x, XMin, XMax), // X Akselin rajat.
+            Mathf.Clamp(localPos.x, XMin, XMax), // X Akselin rajat.
             0.0f,
             Mathf.Clamp(localPos.z, ZMin, ZMax) // Z Akselin rajat.
         );

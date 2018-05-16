@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class BulletMover : MonoBehaviour {
 
-    public Transform playfieldCenter;
-
     public float speed;
 
     public Vector3 localPos;
+    
 
     void Start() {
-        playfieldCenter = GameObject.Find("CameraObject").transform;
-        localPos = transform.position - playfieldCenter.position;
+        //playfieldCenter = GameObject.Find("CameraObject").transform;
+        localPos = transform.position - World.center.position;
+        Destroy(gameObject, 2.0f);
     }
 
     void Update() {
- 
+
         localPos = localPos + transform.forward * Time.deltaTime * speed;
 
-        transform.position = playfieldCenter.position + localPos;
+        transform.position = World.center.position + localPos;
     }
 }

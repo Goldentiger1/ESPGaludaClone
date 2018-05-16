@@ -5,7 +5,8 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour {
 
     public string BGM1;
-    public string sdp_pickup;
+    public string Pickup;
+    
 
     // Use this for initialization
     void Start() {
@@ -19,8 +20,8 @@ public class AudioTrigger : MonoBehaviour {
             Fabric.EventManager.Instance.PostEvent(BGM1);
         }
 
-        if (Input.GetKeyDown(KeyCode.W)) {
-            Fabric.EventManager.Instance.PostEvent(sdp_pickup);
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            Fabric.EventManager.Instance.PostEvent(Pickup);
         }
     }
 }

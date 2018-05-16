@@ -1,0 +1,39 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TowerController : MonoBehaviour, IEnemy {
+
+    public GameObject target;
+    public GameObject shot;
+    public GameObject shotSpawn;
+    public float fireRate;
+    private float nextFire;
+    public float hitpoints;
+
+    public void TakeDamage(float dmg) {
+        hitpoints -= dmg;
+        if (hitpoints < 0) {
+            Destroy(gameObject);
+        }
+    }
+
+        void Update () {
+        Vector3 targetDirection = target.transform.position - transform.position;
+        targetDirection.y = 0;
+        Quaternion currentRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
+        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+
+        if (Time.time > nextFire){
+            GameObject clone = Instantiate(shot);
+
+            nextFire = Time.time + fireRate;
+
+            clone.transform.position = shotSpawn.transform.position;
+            clone.transform.rotation = targetRotation; 
+            //Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
+            //GetComponent<AudioSource>().Play();
+        }
+    }
+}

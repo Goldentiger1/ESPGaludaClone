@@ -2,40 +2,141 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopcornEnemy : MonoBehaviour {
-
+public class PopcornEnemy : MonoBehaviour, IEnemy
+{
     public GameObject popcornEnemy;
-    public GameObject playerCoordinates;
     public float speed;
+
+    public float hitpoints;
+
+    public Vector3 localPos;
+
+    public PlayerMovement player;
 
     float timer;
     public float endChase;
 
-    Transform oldPosition;
-    Transform newPosition;
+    private Vector3 currentDirection = Vector3.forward;
+
+    //public float minPopcornPositionX;
+    //public float minHorizontalAngle;
+
+
+    public void TakeDamage(float dmg) {
+        hitpoints -= dmg;
+        if (hitpoints < 0) {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        oldPosition = GetComponent<Transform>();
-        newPosition = playerCoordinates.GetComponent<Transform>();
+        localPos = transform.position - World.center.position;
     }
 
     void Update()
     {
         float movement = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(oldPosition.position, newPosition.position, movement);
-        timer += Time.deltaTime;
-    }
-
-    /* Skripti joka katsoo Popcorn vihollisen viimeisimmän menosuunnan ja tallentaa sen muuttujaan
-     * Tietyn ajan kuluttua lopettaa pelaajan jahtaamisen ja asettaa Popcornin menosuunnan suoraan eteenpäin
-     * siitä pisteestä, missä se oli viimeiseksi pelaajan jahtaamisen jälkeen.
-     */
-    void endChaseScript() {
-
-        if(timer >= endChase) {          
+        if (timer <= endChase)
+        {
+            localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
+            currentDirection = (player.localPos - localPos).normalized;
+        }
+        else
+        {
+            localPos += currentDirection * movement;
 
         }
+        transform.position = World.center.position + localPos;
+        timer += Time.deltaTime;
+        
     }
-
 }
+
+    /* endChaseScript katsoo tietyn ajan kuluttua PopcornEnemyn viimeisimmän menosuunnan
+     * ja asettaa PopcornEnemylle uuden kulkusuunnan playerin jahtaamisen sijasta viimeisimpään
+     * menosuuntaan päin.
+     * 
+     */
+
+        /*
+    void endChaseScript()
+    {
+        print(timer);
+
+        if (timer >= endChase)
+        {
+            localPos = transform.position - playfieldCenter.position;
+
+            if (Vector3.Angle(localPos, Vector3.forward) > minHorizontalAngle)
+            {
+                if (localPos.x > minPopcornPositionX)
+                {
+                    print("PopcornEnemy is going up and right!");
+                }
+                else
+                {
+                    print("PopcornEnemy is going down and right!");
+                }
+            }
+            */
+
+/*
+public GameObject popcornEnemy;
+public Vector3 localPos;
+public float speed;
+
+Transform oldPosition;
+Transform newPosition;
+
+public Transform playfieldCenter;   
+public GameObject playerCoordinates;
+
+float timer;
+public float endChase;
+
+void Start()
+{
+
+    oldPosition = GetComponent<Transform>();
+    newPosition = playerCoordinates.GetComponent<Transform>();
+    localPos = transform.position - playfieldCenter.position;
+}
+
+void Update()
+{
+    float movement = speed * Time.deltaTime;
+    localPos = localPos + Vector3.MoveTowards(oldPosition.position, newPosition.position, movement);      
+   // transform.position = Vector3.MoveTowards(oldPosition.position, newPosition.position, movement);
+    timer += Time.deltaTime;
+}
+
+*/
+
+/* 
+ * ESIMERKKI, joka pitäisi muokata tähän koodiin sopivaksi.
+ * 
+ *  if (Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
+        if (lastVelocity.y >= 0) {
+            print("Bounced  right, was going up!");
+            rb.velocity = minAngleRotationCCW * Vector3.right;
+        }
+        else {
+            print("Bounced right, was going down!");
+            rb.velocity = minAngleRotationCW * Vector3.right;
+        }
+    }
+    // TODO: Fix horizontal left!
+    if(Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
+        if(lastVelocity.y >= 0) {
+            print("Bounced left, was going up!");
+            rb.velocity = minAngleRotationCW * Vector3.left;
+            //rb.velocity = minAngleRotationCCW * Vector3.left;
+        }
+        else {
+            print("Bounced left, was going down!");
+            //rb.velocity = minAngleRotationCW * Vector3.left;
+            rb.velocity = minAngleRotationCCW * Vector3.left;
+        }
+        */
+
