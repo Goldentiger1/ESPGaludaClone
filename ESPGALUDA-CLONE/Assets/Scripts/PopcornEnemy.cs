@@ -39,6 +39,7 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
         float movement = speed * Time.deltaTime;
         if (timer <= endChase)
         {
+
             localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
             currentDirection = (player.localPos - localPos).normalized;
         }
@@ -112,31 +113,3 @@ void Update()
 }
 
 */
-
-/* 
- * ESIMERKKI, joka pitäisi muokata tähän koodiin sopivaksi.
- * 
- *  if (Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
-        if (lastVelocity.y >= 0) {
-            print("Bounced  right, was going up!");
-            rb.velocity = minAngleRotationCCW * Vector3.right;
-        }
-        else {
-            print("Bounced right, was going down!");
-            rb.velocity = minAngleRotationCW * Vector3.right;
-        }
-    }
-    // TODO: Fix horizontal left!
-    if(Vector3.Angle(rb.velocity, Vector3.right) < minHorizontalAngle) {
-        if(lastVelocity.y >= 0) {
-            print("Bounced left, was going up!");
-            rb.velocity = minAngleRotationCW * Vector3.left;
-            //rb.velocity = minAngleRotationCCW * Vector3.left;
-        }
-        else {
-            print("Bounced left, was going down!");
-            //rb.velocity = minAngleRotationCW * Vector3.left;
-            rb.velocity = minAngleRotationCCW * Vector3.left;
-        }
-        */
-

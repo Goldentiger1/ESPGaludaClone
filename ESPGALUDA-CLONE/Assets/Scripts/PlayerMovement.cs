@@ -3,8 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour, IPlayer
 {
-    // Players localposition variable and Cameras CameraObject variable.
-    public Transform playfieldCenter;
+    // Players localposition variable
     public Vector3 localPos;
 
     // Create Variables.
@@ -38,8 +37,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     {
         Rb = GetComponent<Rigidbody>();
 
-        playfieldCenter = GameObject.Find("CameraObject").transform;
-        localPos = transform.position - playfieldCenter.position;
+        localPos = transform.position - World.center.position;
     }
 
  
@@ -63,7 +61,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
                         Input.GetAxis("Vertical") * Vector3.forward;
         localPos += moveDir.normalized * Time.deltaTime * Speed;
         Movingbounds();
-        transform.position = playfieldCenter.position + localPos;
+        transform.position = World.center.position + localPos;
 
 
         //Move();
