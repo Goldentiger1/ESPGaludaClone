@@ -9,12 +9,21 @@ public class SeqTrigger : MonoBehaviour {
     public float timer;
     public float tickTime;
     public float HowMany;
+    PlayerMovement player;
+
+    void Start() {
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+    }
 
     void Update() {
         if (HowMany > 0) { 
         timer += Time.deltaTime;
         if (timer > tickTime) {
-            Instantiate(Ship);
+                var enemy = Instantiate(Ship);
+                var popc = enemy.GetComponent<PopcornEnemy>();
+                if (popc != null) {
+                    popc.player = player;
+                }
             timer = 0;
             HowMany--;
             }
