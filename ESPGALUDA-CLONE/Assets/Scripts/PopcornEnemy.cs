@@ -32,6 +32,7 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
     void Start()
     {
         localPos = transform.position - World.center.position;
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     void Update()
