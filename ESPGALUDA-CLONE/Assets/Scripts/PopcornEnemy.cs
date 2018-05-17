@@ -43,22 +43,24 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
             // Popcorn rotation
             Vector3 targetDirection = player.transform.position - transform.position;
             targetDirection.y = 0;
-            Quaternion currentRotation = transform.rotation;
-            Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
-            transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+            if (targetDirection != Vector3.zero)
+            {
+                Quaternion currentRotation = transform.rotation;
+                //Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+            }
             // Popcorn movement
             localPos = Vector3.MoveTowards(localPos, player.localPos, movement);
             currentDirection = (player.localPos - localPos).normalized;
-        }
-        else
-        {
+        } else {
             localPos += currentDirection * movement;
 
         }
         transform.position = World.center.position + localPos;
         timer += Time.deltaTime;
-        
     }
+
 }
 
     /* endChaseScript katsoo tietyn ajan kuluttua PopcornEnemyn viimeisimmän menosuunnan
