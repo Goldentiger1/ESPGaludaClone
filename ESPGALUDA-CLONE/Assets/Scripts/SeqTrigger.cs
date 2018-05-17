@@ -19,7 +19,8 @@ public class SeqTrigger : MonoBehaviour {
         if (HowMany > 0) { 
         timer += Time.deltaTime;
         if (timer > tickTime) {
-                var enemy = Instantiate(Ship);
+                var enemy = Instantiate(Ship, transform.position, Quaternion.identity);
+                enemy.transform.position = transform.position;
                 var popc = enemy.GetComponent<PopcornEnemy>();
                 if (popc != null) {
                     popc.player = player;

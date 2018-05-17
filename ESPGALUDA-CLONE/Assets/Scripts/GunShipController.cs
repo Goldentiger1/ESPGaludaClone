@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShipController : MonoBehaviour {
+public class GunShipController : MonoBehaviour, IEnemy {
 
     public GameObject gunship;
     public GameObject shot;
     public GameObject shotSpawn;
-    public GameObject target;
+    public PlayerMovement player;
     public float speed;
     public float hitpoints;
     public float leaveScreen;
@@ -30,10 +30,11 @@ public class GunShipController : MonoBehaviour {
     void Start()
     {
         localPos = transform.position - World.center.position;
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     void Update(){
-        Vector3 targetDirection = target.transform.position - transform.position;
+        Vector3 targetDirection = player.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
