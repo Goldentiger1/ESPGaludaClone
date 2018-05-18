@@ -8,7 +8,6 @@ public class EnemyBulletMover : MonoBehaviour {
 
     public Vector3 localPos;
 
-
     void Start()
     {
         //playfieldCenter = GameObject.Find("CameraObject").transform;
@@ -20,7 +19,6 @@ public class EnemyBulletMover : MonoBehaviour {
     {
 
         localPos = localPos + transform.forward * Time.deltaTime * speed;
-
         transform.position = World.center.position + localPos;
     }
 }
