@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  player: {fileID: 114501470300132724, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
+  dmg: 1
   localPos: {x: 0, y: 0, z: 0}
 --- !u!135 &135647355380487942
 SphereCollider:
@@ -106,7 +106,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1029805222595320}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

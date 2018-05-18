@@ -8,7 +8,7 @@ public class PopcornShooting : MonoBehaviour {
 
     public GameObject player;
 
-    public GameObject shotspawn;
+    public Transform shotspawn;
     public GameObject enemyBullet;
     public bool bulletShot = false;
 
@@ -18,6 +18,7 @@ public class PopcornShooting : MonoBehaviour {
     void Start()
     {
         player = GameObject.Find("Player");
+        shotspawn = GetComponent<Transform>().Find("Shotspawn");
     }
 
     void Update()
@@ -31,9 +32,9 @@ public class PopcornShooting : MonoBehaviour {
             if(bulletShot == false)
             {
                 bulletShot = true;
-                GameObject clone = Instantiate(enemyBullet);
-                clone.transform.position = shotspawn.transform.position;
-                clone.transform.rotation = targetRotation;
+                GameObject clone = Instantiate(enemyBullet, shotspawn.position, shotspawn.rotation);
+                //clone.transform.position = shotspawn.transform.position;
+                //clone.transform.rotation = targetRotation;
             }
 
         }
