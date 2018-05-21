@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletMover : MonoBehaviour {
+public class EnemyBulletMover : MonoBehaviour
+{
 
     public float speed;
+    public float dmg;
 
     public Vector3 localPos;
-
 
     void Start()
     {
@@ -20,7 +21,17 @@ public class EnemyBulletMover : MonoBehaviour {
     {
 
         localPos = localPos + transform.forward * Time.deltaTime * speed;
-
         transform.position = World.center.position + localPos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<IPlayer>();
+        if (player != null)
+        {
+            player.PlayerHit(dmg);
+            print("OUCH");
+            //Destroy(gameObject);
+        }
     }
 }
