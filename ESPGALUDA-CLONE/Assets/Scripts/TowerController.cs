@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour, IEnemy {
 
+    private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
+
     public GameObject target;
     public GameObject shot;
     public GameObject shotSpawn;
@@ -18,7 +20,10 @@ public class TowerController : MonoBehaviour, IEnemy {
         if (hitpoints < 0) {
             Destroy(gameObject);
             for (int i = 0; i < 10; i++) {
-                Instantiate(Crystal, transform.position, Quaternion.identity);
+                float radius = Mathf.Log(i + 1, 2); // distance from center
+                float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
+                Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
+                Instantiate(Crystal, transform.position + offset, Quaternion.identity);
             }
         }
     }
