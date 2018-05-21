@@ -13,6 +13,7 @@ public class EnemyTrigger : MonoBehaviour {
     }
 
     void Awake() {
+
             Wave.SetActive(false);
     }
 }

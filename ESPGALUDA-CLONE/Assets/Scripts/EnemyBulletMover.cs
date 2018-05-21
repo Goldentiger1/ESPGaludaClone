@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletMover : MonoBehaviour {
+public class EnemyBulletMover : MonoBehaviour
+{
 
     public float speed;
 
     public Vector3 localPos;
-
 
     void Start()
     {
@@ -20,7 +20,8 @@ public class EnemyBulletMover : MonoBehaviour {
     {
 
         localPos = localPos + transform.forward * Time.deltaTime * speed;
-
         transform.position = World.center.position + localPos;
     }
+
 }
+
