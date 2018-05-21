@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4773529587642626}
   - component: {fileID: 65620363868377580}
-  - component: {fileID: 114447051740713646}
+  - component: {fileID: 114477683184880660}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -83,7 +83,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114447051740713646
+--- !u!114 &114477683184880660
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,10 +91,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906735277034234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be31307c9778fa4783565bad3f0bedf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6175cb930b7211c4cbe05ee56bcd7ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupAudioEvent: protocrystal
+  crystalAudioEvent: Protocrystal
+  localPos: {x: 0, y: 0, z: 0}
+  speed: 15
+  player: {fileID: 0}
 --- !u!212 &212064360102115594
 SpriteRenderer:
   m_ObjectHideFlags: 1

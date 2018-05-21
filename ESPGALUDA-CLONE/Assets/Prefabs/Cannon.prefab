@@ -568,6 +568,7 @@ MonoBehaviour:
   shotSpawn: {fileID: 1442850249977500}
   fireRate: 2
   hitpoints: 40
+  Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
 --- !u!136 &136269348851433128
 CapsuleCollider:
   m_ObjectHideFlags: 1

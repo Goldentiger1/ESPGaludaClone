@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
 
     public float Hitpoints;
     public float Lives;
+    public float Crystals;
 
     public float Tilt;
     public float turnSpeed;
@@ -41,7 +42,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         localPos = transform.position - World.center.position;
     }
 
- 
+ public void GainCrystal () {
+        Crystals += 1;
+    }
 
     void Update()
     {

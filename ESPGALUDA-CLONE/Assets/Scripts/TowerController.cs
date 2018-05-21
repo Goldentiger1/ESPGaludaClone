@@ -10,15 +10,20 @@ public class TowerController : MonoBehaviour, IEnemy {
     public float fireRate;
     private float nextFire;
     public float hitpoints;
+    public GameObject Crystal;
+
 
     public void TakeDamage(float dmg) {
         hitpoints -= dmg;
         if (hitpoints < 0) {
             Destroy(gameObject);
+            for (int i = 0; i < 10; i++) {
+                Instantiate(Crystal, transform.position, Quaternion.identity);
+            }
         }
     }
 
-        void Update () {
+    void Update () {
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;

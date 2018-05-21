@@ -9,7 +9,6 @@ public class Pickupmanager : MonoBehaviour {
 
     void GunAdd() { }
     private void OnTriggerEnter(Collider other) {
-        print("jep");
         if (other.name == "Player") {
             GameObject.FindObjectOfType<PlayerShooting>().GunAdd();
             Destroy(gameObject);
