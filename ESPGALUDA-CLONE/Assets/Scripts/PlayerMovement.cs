@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float turnSpeed;
 
     public void PlayerHit (float dmg) {
+        Hitpoints -= dmg;
         if (Hitpoints == 0) {
             Hitpoints = 1;
             Lives--;
