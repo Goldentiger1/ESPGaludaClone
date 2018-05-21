@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54521667289646184}
   - component: {fileID: 114501470300132724}
   - component: {fileID: 114084873267010132}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4395887988236512}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: ShotSpawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4174387613761296}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: ShotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4752063499928460}
   - component: {fileID: 212873340985084070}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

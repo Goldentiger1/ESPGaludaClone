@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4154067516088200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PopcornPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4801237581077874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shotspawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4962419012538364}
   - component: {fileID: 33578347609654416}
   - component: {fileID: 23741314252780142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Popcorn_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 65605425391568630}
   - component: {fileID: 114252737305652912}
   - component: {fileID: 114455779076007586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Popcorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
