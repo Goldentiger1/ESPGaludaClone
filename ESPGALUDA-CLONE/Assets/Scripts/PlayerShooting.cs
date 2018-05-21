@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
 
     public GameObject shot;
+    public GameObject laser;
     public Transform shotSpawn;
     public Transform shotSpawn1;
     public float fireRate;
+    public float laserfireRate;
+    public bool LaserON = false;
 
     public bool powerup1;
 
     private float nextFire;
 
     public string bulletAudioEvent;
+
+
 
     // Update is called once per frame
     void Update() {
@@ -38,10 +43,12 @@ public class PlayerShooting : MonoBehaviour {
                 //GetComponent<AudioSource>().Play();
             }
         }
+        LaserGunShot();
     }
 
     void Awake() {
         shotSpawn = transform.Find("ShotSpawn");
+        shotSpawn1 = transform.Find("ShotSpawn1");
     }
 
     public void GunAdd() {
@@ -53,5 +60,27 @@ public class PlayerShooting : MonoBehaviour {
             clone1.transform.position = shotSpawn1.transform.position;
         }
 
+    }
+
+    public void LaserGunShot()
+    {
+        //if (Input.GetKey("Fire1") && Time.time > nextFire)
+        if (Input.GetKey(KeyCode.Mouse2) && Time.time > nextFire)
+
+        {
+            GameObject clone2;        
+            clone2 = Instantiate(laser) as GameObject;
+            LaserON = true;
+            nextFire = Time.deltaTime + laserfireRate;
+            clone2.transform.position = shotSpawn1.transform.position;
+
+            //localPos = localPos + transform.forward * Time.deltaTime * speed;
+            // clone2.transform.position = transform.position += Vector3.forward * Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse2)) 
+        {
+            LaserON = false;
+        }
     }
 }

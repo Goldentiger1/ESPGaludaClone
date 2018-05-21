@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     // Create Variables.
 
     public Rigidbody Rb;
+    public bool LaserGun = false;
     public float Speed;
     public float XMax;
     public float XMin;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         Rb = GetComponent<Rigidbody>();
 
         localPos = transform.position - World.center.position;
+       
     }
 
  
@@ -64,10 +66,28 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         transform.position = World.center.position + localPos;
 
 
+        // Checked bool.
+        //LaserGun = GameObject.Find("laser").GetComponent<PlayerShooting>().LaserON;
+        LaserGun = GetComponent<PlayerShooting>().LaserON;
+        
+        if (LaserGun == true)
+        {
+            Speed = 5; // Player Movement should be Slower.
+            print("Hidastuu");
+            
+        }
+
+        if (LaserGun == false)
+        {
+            Speed = 10; // Player Movement should be Faster.
+            print("Nopeutta lisää");
+        }
+
+
         //Move();
         //X360Move();
-        
-        
+
+
     }
 
     public void Move()
