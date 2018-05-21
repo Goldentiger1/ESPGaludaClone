@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,7 +159,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 90998d07fca637e41ad814a4284143b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b0651cc121a63124eafd0229bead0b73, type: 2}
+      objectReference: {fileID: 2100000, guid: 629d9080e98a73d489fb6bd135ea25c5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90998d07fca637e41ad814a4284143b3, type: 3}
   m_IsPrefabParent: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   gunship: {fileID: 895341566}
   shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
   shotSpawn: {fileID: 1648529867}
-  target: {fileID: 1838887018}
+  player: {fileID: 0}
   speed: 5
   hitpoints: 5
   leaveScreen: 5
@@ -450,7 +450,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45da1eaca0f66a640ae68f0c61550083, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45da1eaca0f66a640ae68f0c61550083, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
