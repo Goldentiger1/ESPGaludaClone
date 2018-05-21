@@ -12,6 +12,7 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
     public Vector3 localPos;
 
     public PlayerMovement player;
+    public GameObject Crystal;
 
     float timer;
     public float endChase;
@@ -26,6 +27,7 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
         hitpoints -= dmg;
         if (hitpoints < 0) {
             Destroy(gameObject);
+            Instantiate(Crystal, transform.position, Quaternion.identity);
         }
     }
 

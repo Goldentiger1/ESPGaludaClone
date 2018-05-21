@@ -18,11 +18,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer
 
     public float Hitpoints;
     public float Lives;
+    public float Crystals;
 
     public float Tilt;
     public float turnSpeed;
 
     public void PlayerHit (float dmg) {
+        Hitpoints -= dmg;
         if (Hitpoints == 0) {
             Hitpoints = 1;
             Lives--;
@@ -42,7 +44,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer
        
     }
 
- 
+ public void GainCrystal () {
+        Crystals += 1;
+    }
 
     void Update()
     {

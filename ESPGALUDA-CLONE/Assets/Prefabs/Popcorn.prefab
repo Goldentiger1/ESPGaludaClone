@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4154067516088200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PopcornPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,10 +34,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4801237581077874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shotspawn
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4962419012538364}
   - component: {fileID: 33578347609654416}
   - component: {fileID: 23741314252780142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Popcorn_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 65605425391568630}
   - component: {fileID: 114252737305652912}
   - component: {fileID: 114455779076007586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Popcorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964986813832860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.87, y: 2, z: 3.8}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: -10.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154067516088200}
@@ -217,6 +217,7 @@ MonoBehaviour:
   hitpoints: 2
   localPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+  Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
   endChase: 20
 --- !u!114 &114455779076007586
 MonoBehaviour:

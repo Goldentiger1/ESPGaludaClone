@@ -6,7 +6,6 @@ public class EnemyBulletMover : MonoBehaviour
 {
 
     public float speed;
-    public float dmg;
 
     public Vector3 localPos;
 
@@ -24,14 +23,5 @@ public class EnemyBulletMover : MonoBehaviour
         transform.position = World.center.position + localPos;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var player = other.GetComponent<IPlayer>();
-        if (player != null)
-        {
-            player.PlayerHit(dmg);
-            print("OUCH");
-            //Destroy(gameObject);
-        }
-    }
 }
+
