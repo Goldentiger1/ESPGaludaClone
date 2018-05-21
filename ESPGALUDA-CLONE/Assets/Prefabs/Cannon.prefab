@@ -211,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595177313024662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5491893, y: 0, z: 15.48}
+  m_LocalPosition: {x: -4.5, y: 0, z: -25.3}
   m_LocalScale: {x: 0.7, y: 1, z: 0.7}
   m_Children:
   - {fileID: 4884875750880012}
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
+  shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1442850249977500}
   fireRate: 2
   hitpoints: 40
