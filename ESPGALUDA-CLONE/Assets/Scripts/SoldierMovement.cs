@@ -6,15 +6,18 @@ public class SoldierMovement : MonoBehaviour {
 
     public float speed;
     public Vector3 localPos;
-    public List<Vector3> waypoints = new List<Vector3>();
+    public List<Transform> waypoints = new List<Transform>();
+    Vector3 movingPos;
 
     void Start(){
         localPos = transform.position - World.center.position;
+        movingPos = waypoints[0].position  - World.center.position;
+        
     }
 
     void Update(){
         float movement = speed * Time.deltaTime;
-        localPos = Vector3.MoveTowards(localPos, waypoints[0], movement);
+        localPos = Vector3.MoveTowards(localPos, movingPos, movement);
     }
 
 }
