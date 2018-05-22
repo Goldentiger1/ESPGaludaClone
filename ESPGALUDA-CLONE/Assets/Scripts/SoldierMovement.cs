@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierMovement : MonoBehaviour {
+public class SoldierMovement : EnemyBehaviour {
 
     public float speed;
     public Vector3 localPos;
@@ -11,7 +11,7 @@ public class SoldierMovement : MonoBehaviour {
 
     void Start(){
         localPos = transform.position - World.center.position;
-        movingPos = waypoints[0].position  - World.center.position;
+       // movingPos = waypoints[0].position  - World.center.position;
         
     }
 
