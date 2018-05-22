@@ -565,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward: 10
   hitpoints: 40
+  score: 500
   target: {fileID: 0}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1442850249977500}

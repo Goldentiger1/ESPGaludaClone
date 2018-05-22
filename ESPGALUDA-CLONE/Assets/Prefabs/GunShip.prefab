@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward: 0
   hitpoints: 5
+  score: 250
   gunship: {fileID: 1795110798665340}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1025433221132484}

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public static GameManager instance;
+
     public Text statusText;
     public Text scoreText;
 
@@ -26,8 +28,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void EnemyKilled() {
-        score += FindObjectOfType<EnemyBehaviour>().score;
+    public void EnemyKilled(EnemyBehaviour e) {
+        score += e.score;
+        UpdateLivesScoreText();
+    }
+
+    private void UpdateLivesScoreText() {
+        scoreText.text = " Score: " + score;
+
     }
 
     public void LifeLost() {
@@ -40,9 +48,13 @@ public class GameManager : MonoBehaviour {
         statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
         scoreText.text = "Score: " + score;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Awake() {
+        instance = this;   
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
