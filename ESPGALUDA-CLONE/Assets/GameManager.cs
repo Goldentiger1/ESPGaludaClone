@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     public float score;
 
 
-    public GameObject Crystal;
+    public GameObject crystal;
     public bool kakusei;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
