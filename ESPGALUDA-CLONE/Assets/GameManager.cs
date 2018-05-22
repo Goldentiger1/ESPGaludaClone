@@ -10,21 +10,20 @@ public class GameManager : MonoBehaviour {
 
     public Text statusText;
     public Text scoreText;
+    public Text crystalText;
 
     public float score;
-    public int lives;
 
-    static GameObject StaticCrystal;
-    public GameObject Crystal;
+    public GameObject crystal;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
-    public static void CreateCrystals(int number, Transform enemy) {
+    public void CreateCrystals(int number, Transform enemy) {
         for (int i = 0; i < number; i++) {
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
-            Instantiate(StaticCrystal, enemy.position + offset, Quaternion.identity);
+            Instantiate(crystal, enemy.position + offset, Quaternion.identity);
         }
     }
 
@@ -33,20 +32,25 @@ public class GameManager : MonoBehaviour {
         UpdateLivesScoreText();
     }
 
-    private void UpdateLivesScoreText() {
-        scoreText.text = " Score: " + score;
+    public void UpdateLivesScoreText() {
+        scoreText.text = "Score: " + score;
+        statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
+        crystalText.text = "Crystals: " + FindObjectOfType<PlayerMovement>().Crystals;
 
     }
 
     public void LifeLost() {
-        lives--;
+        FindObjectOfType<PlayerMovement>().Lives--;
+        UpdateLivesScoreText();
+        if (FindObjectOfType<PlayerMovement>().Lives < 0) {
+            statusText.text = "You died";
+            scoreText.text = "sucker!";
+        }
     }
 
 	// Use this for initialization
 	void Start () {
-            StaticCrystal = Crystal;
-        statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
-        scoreText.text = "Score: " + score;
+        UpdateLivesScoreText();
 	}
 
     void Awake() {

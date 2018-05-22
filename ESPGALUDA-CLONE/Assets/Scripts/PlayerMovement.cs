@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public void PlayerHit (float dmg) {
         Hitpoints -= dmg;
         if (Hitpoints == 0) {
-            Hitpoints = 1;
-            Lives--;
-                if (Lives == 0) {
+            Hitpoints = 5;
+            GameManager.instance.LifeLost();
+            if (Lives < 0) {
                 Destroy(gameObject);
             }
         }

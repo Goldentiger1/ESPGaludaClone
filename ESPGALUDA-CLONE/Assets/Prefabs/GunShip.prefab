@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629ee9029fda2b74aad7134d05432368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
+  reward: 5
   hitpoints: 5
   score: 250
   gunship: {fileID: 1795110798665340}

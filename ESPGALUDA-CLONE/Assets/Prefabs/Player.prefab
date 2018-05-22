@@ -192,8 +192,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7982373, y: 1.859642, z: 1.628685}
-  m_Center: {x: -0.06160927, y: -0.9001999, z: -0.10396576}
+  m_Size: {x: 0.53164697, y: 0.5181794, z: 0.640419}
+  m_Center: {x: 0.026916027, y: 0, z: 0.15095901}
 --- !u!114 &114084873267010132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,9 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
+  laser: {fileID: 1959884814199538, guid: e140a8955810e6a48840d925b0cb8bcf, type: 2}
   shotSpawn: {fileID: 4174387613761296}
   shotSpawn1: {fileID: 4395887988236512}
   fireRate: 0.1
+  laserfireRate: 0
+  LaserON: 0
   powerup1: 0
   bulletAudioEvent: Bullet
 --- !u!114 &114501470300132724
@@ -224,13 +227,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPos: {x: 0, y: 0, z: 0}
   Rb: {fileID: 54521667289646184}
+  LaserGun: 0
   Speed: 10
   XMax: 7
   XMin: -7
   ZMax: 8
   ZMin: -8
-  Hitpoints: 1
+  Hitpoints: 100
   Lives: 1
+  Crystals: 0
   Tilt: 5
   turnSpeed: 5
 --- !u!212 &212873340985084070
