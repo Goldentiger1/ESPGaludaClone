@@ -212,9 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f60093bf0f364449925e24456f82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reward: 1
+  hitpoints: 2
   popcornEnemy: {fileID: 1964986813832860}
   speed: 5
-  hitpoints: 2
   localPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}

@@ -2,31 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour, IEnemy {
+public class TowerController : EnemyBehaviour {
 
-    private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
     public GameObject target;
     public GameObject shot;
     public GameObject shotSpawn;
     public float fireRate;
     private float nextFire;
-    public float hitpoints;
+    //public float hitpoints;
     public GameObject Crystal;
 
 
-    public void TakeDamage(float dmg) {
-        hitpoints -= dmg;
-        if (hitpoints < 0) {
-            Destroy(gameObject);
-            for (int i = 0; i < 10; i++) {
-                float radius = Mathf.Log(i + 1, 2); // distance from center
-                float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
-                Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
-                Instantiate(Crystal, transform.position + offset, Quaternion.identity);
-            }
-        }
-    }
+    //public void TakeDamage(float dmg) {
+    //    hitpoints -= dmg;
+    //    if (hitpoints < 0) {
+    //        Destroy(gameObject);
+    //        GameManager.CreateCrystals(10, transform);
+    //    }
+    //}
 
     void Update () {
         Vector3 targetDirection = target.transform.position - transform.position;

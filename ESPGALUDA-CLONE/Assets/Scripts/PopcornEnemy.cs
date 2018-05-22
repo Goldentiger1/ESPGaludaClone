@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopcornEnemy : MonoBehaviour, IEnemy
+public class PopcornEnemy : EnemyBehaviour
 {
     public GameObject popcornEnemy;
     public float speed;
 
-    public float hitpoints;
+    //public float hitpoints;
 
     public Vector3 localPos;
 
@@ -23,13 +23,13 @@ public class PopcornEnemy : MonoBehaviour, IEnemy
     //public float minHorizontalAngle;
 
 
-    public void TakeDamage(float dmg) {
-        hitpoints -= dmg;
-        if (hitpoints < 0) {
-            Destroy(gameObject);
-            Instantiate(Crystal, transform.position, Quaternion.identity);
-        }
-    }
+    //public void TakeDamage(float dmg) {
+    //    hitpoints -= dmg;
+    //    if (hitpoints < 0) {
+    //        Destroy(gameObject);
+    //        GameManager.CreateCrystals(1, transform);
+    //    }
+    //}
 
     void Start()
     {
