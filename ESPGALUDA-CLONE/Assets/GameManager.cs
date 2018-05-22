@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     static GameObject StaticCrystal;
     public GameObject Crystal;
+    public bool kakusei;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        kakusei = false;
             StaticCrystal = Crystal;
         statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
         scoreText.text = "Score: " + score;
