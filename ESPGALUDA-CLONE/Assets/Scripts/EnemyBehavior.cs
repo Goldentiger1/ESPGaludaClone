@@ -5,6 +5,7 @@ using UnityEngine;
 abstract public class EnemyBehaviour : MonoBehaviour {
     public int reward;
     public float hitpoints;
+    public float score;
 
     public void TakeDamage(float dmg) {
         hitpoints -= dmg;

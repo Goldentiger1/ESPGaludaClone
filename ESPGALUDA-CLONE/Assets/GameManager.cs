@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour {
     public Text statusText;
     public Text scoreText;
 
+    public float score;
+    public int lives;
+
     static GameObject StaticCrystal;
     public GameObject Crystal;
 
@@ -23,12 +26,19 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    
+    public void EnemyKilled() {
+        score += FindObjectOfType<EnemyBehaviour>().score;
+    }
 
+    public void LifeLost() {
+        lives--;
+    }
 
 	// Use this for initialization
 	void Start () {
             StaticCrystal = Crystal;
+        statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
+        scoreText.text = "Score: " + score;
 	}
 	
 	// Update is called once per frame
