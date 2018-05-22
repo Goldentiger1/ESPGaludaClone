@@ -23,17 +23,48 @@ public class PlayerShooting : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         {
-
-            if (Input.GetButton("Fire1") && Time.time > nextFire) {
-                GameObject clone;
-                clone = Instantiate(shot);
-                clone.transform.position = shotSpawn.transform.position;
-                //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
-                //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
-                Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
-                nextFire = Time.time + fireRate;
-                //GetComponent<AudioSource>().Play();
+            if (Input.GetButtonDown("Fire2"))
+            {
+                GameManager.instance.kakusei = true;
             }
+
+            if (Input.GetButtonUp("Fire2"))
+            {
+                GameManager.instance.kakusei = false;
+            }
+
+            if(Input.GetButton("Fire1"))
+            {
+                if(GameManager.instance.kakusei)
+                {
+                    int enemyLayerMask = 1 << 9;
+                    RaycastHit hit;
+                    if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, Mathf.Infinity, enemyLayerMask))
+                    {
+                        // todo: piirrä säde viholliseen asti
+                        hit.collider.gameObject.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
+                        print("aijaijai");
+                    }
+                    else
+                    {
+                        // todo: piirrä riittävän pitkä säde
+                    }
+                }
+                else if (Time.time > nextFire)
+                {
+                    GameObject clone;
+                    clone = Instantiate(shot);
+                    clone.transform.position = shotSpawn.transform.position;
+                    //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
+                    //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
+                    Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
+                    nextFire = Time.time + fireRate;
+                    //GetComponent<AudioSource>().Play();
+                }
+            }
+
+           
+            
             if (Input.GetButtonDown("X360_RBumper")) {
                 GameObject clone;
                 clone = Instantiate(shot) as GameObject;
@@ -43,7 +74,7 @@ public class PlayerShooting : MonoBehaviour {
                 //GetComponent<AudioSource>().Play();
             }
         }
-        LaserGunShot();
+       // LaserGunShot();
     }
 
     void Awake() {
