@@ -563,11 +563,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fdb7f55271c684d99997ea14482915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reward: 10
+  hitpoints: 40
   target: {fileID: 0}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1442850249977500}
   fireRate: 2
-  hitpoints: 40
   Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
 --- !u!136 &136269348851433128
 CapsuleCollider:

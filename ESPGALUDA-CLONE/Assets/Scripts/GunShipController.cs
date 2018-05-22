@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShipController : MonoBehaviour, IEnemy {
+public class GunShipController : EnemyBehaviour {
 
     public GameObject gunship;
     public GameObject shot;
     public GameObject shotSpawn;
     public PlayerMovement player;
     public float speed;
-    public float hitpoints;
     public float leaveScreen;
     public Vector3 localPos;
     public float fireRate;
@@ -18,14 +17,6 @@ public class GunShipController : MonoBehaviour, IEnemy {
 
     float timer;
 
-    public void TakeDamage(float dmg)
-    {
-        hitpoints -= dmg;
-        if (hitpoints < 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {
