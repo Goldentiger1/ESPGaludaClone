@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     // Create Variables.
 
     public Rigidbody Rb;
-    public bool LaserGun = false;
+    //public bool LaserGun = false;
     public float Speed;
     public float XMax;
     public float XMin;
@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public void PlayerHit (float dmg) {
         Hitpoints -= dmg;
         if (Hitpoints == 0) {
-            Hitpoints = 1;
-            Lives--;
-                if (Lives == 0) {
+            Hitpoints = 5;
+            GameManager.instance.LifeLost();
+            if (Lives < 0) {
                 Destroy(gameObject);
             }
         }
@@ -70,22 +70,26 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         transform.position = World.center.position + localPos;
 
 
-        // Checked bool.
-        //LaserGun = GameObject.Find("laser").GetComponent<PlayerShooting>().LaserON;
-        LaserGun = GetComponent<PlayerShooting>().LaserON;
-        
-        if (LaserGun == true)
-        {
-            Speed = 5; // Player Movement should be Slower.
-            print("Hidastuu");
-            
-        }
 
-        if (LaserGun == false)
-        {
-            Speed = 10; // Player Movement should be Faster.
-            print("Nopeutta lisää");
-        }
+
+        // Checked bool.
+        // Kakusei mode = ON/OFF   GameManager.instance.kakusei = true;   GameManager.instance.kakusei = false;
+
+        //LaserGun = GameObject.Find("laser").GetComponent<PlayerShooting>().LaserON;
+        //LaserGun = GetComponent<PlayerShooting>().LaserON;
+        
+        //if (GameManager.instance.kakusei == true)
+        //{
+        //    Speed = 5; // Player Movement should be Slower.
+        //    print("Hidastuu");
+            
+        //}
+
+        //if (GameManager.instance.kakusei == false)
+        //{
+        //    Speed = 10; // Player Movement should be Faster.
+        //    print("Nopeutta lisää");
+        //}
 
 
         //Move();

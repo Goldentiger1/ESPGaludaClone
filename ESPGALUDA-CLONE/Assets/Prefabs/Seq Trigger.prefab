@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911c15d7191266f4d83b39e328c6dd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ship: {fileID: 1859152867236980, guid: e8714ee4b47cc7242aef263a69cf8560, type: 2}
+  Ship: {fileID: 1964986813832860, guid: e8714ee4b47cc7242aef263a69cf8560, type: 2}
   timer: 2
   tickTime: 1
   HowMany: 5
