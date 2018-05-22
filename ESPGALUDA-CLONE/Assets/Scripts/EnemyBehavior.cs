@@ -11,7 +11,9 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         hitpoints -= dmg;
         if (hitpoints < 0) {
             Destroy(gameObject);
+            GameManager.instance.EnemyKilled(this);
             GameManager.CreateCrystals(reward, transform);
+            
         }
     }
 }
