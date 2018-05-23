@@ -7,15 +7,35 @@ public class SoldierSpawner : MonoBehaviour{
     public Transform spawnPoint;
     public GameObject soldierEnemy;
     public Transform[] waypoints;
+    private Transform soldierTrigger;
+
 
     float timer;
     public float tickTime;
     int currentWaypoint;
 
     void Start(){
+        soldierTrigger = GameObject.Find("SoldierTrigger").GetComponent<Transform>();
+
+        foreach(Transform child in soldierTrigger)
+        {
+            if(child.Find("Spawnpoint"))
+            {
+                continue;
+            }
+            else
+            {
+                for(int i = 0; i < waypoints.Length; i++)
+                {
+                    //waypoints[i] == child;
+                }
+            }
+        }
+        /*
         waypoints = transform.GetComponentsInChildren<Transform>();
         spawnPoint = waypoints[1];
         currentWaypoint = 2;
+        */
     }
 
     void Update() {
