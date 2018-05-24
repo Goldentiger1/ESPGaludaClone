@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour {
     public Transform shotSpawn;
     public Transform shotSpawn1;
     public float fireRate;
+    public float laserRate;
     public float laserfireRate;
     public bool LaserON = false;
 
@@ -22,57 +23,60 @@ public class PlayerShooting : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetButtonDown("Fire2"))
         {
-            if (Input.GetButtonDown("Fire2"))
-            {
-                GameManager.instance.kakusei = true;
-            }
+            GameManager.instance.kakusei = true;
+        }
 
-            if (Input.GetButtonUp("Fire2"))
-            {
-                GameManager.instance.kakusei = false;
-            }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            GameManager.instance.kakusei = false;
+        }
 
-            if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
+        {
+            if(GameManager.instance.kakusei)
             {
-                if(GameManager.instance.kakusei)
+                int enemyLayerMask = 1 << 9;
+                RaycastHit hit;
+                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, Mathf.Infinity, enemyLayerMask))
                 {
-                    int enemyLayerMask = 1 << 9;
-                    RaycastHit hit;
-                    if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, Mathf.Infinity, enemyLayerMask))
-                    {
-                        // todo: piirrä säde viholliseen asti
-                        hit.collider.gameObject.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
-                        print("aijaijai");
-                    }
-                    else
-                    {
-                        // todo: piirrä riittävän pitkä säde
-                    }
+                    // todo: piirrä säde viholliseen asti
+                    hit.collider.gameObject.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
+                    
                 }
-                else if (Time.time > nextFire)
+                else
                 {
-                    GameObject clone;
-                    clone = Instantiate(shot);
-                    clone.transform.position = shotSpawn.transform.position;
-                    //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
-                    //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
-                    Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
-                    nextFire = Time.time + fireRate;
-                    //GetComponent<AudioSource>().Play();
+                    // todo: piirrä riittävän pitkä säde
+                 
+                    
+                    Physics.Raycast(shotSpawn.transform.position,transform.forward * 100,enemyLayerMask);
+                    // Debug.DrawLine(Vector3.zero, new Vector3(0,0,100), Color.red);
                 }
             }
+            else if (Time.time > nextFire)
+            {
+                //GameManager.instance.kakusei = false;
+                GameObject clone;
+                clone = Instantiate(shot);
+                clone.transform.position = shotSpawn.transform.position;
+                //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
+                //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
+                Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
+                nextFire = Time.time + fireRate;
+                //GetComponent<AudioSource>().Play();
+            }
+        }
 
            
             
-            if (Input.GetButtonDown("X360_RBumper")) {
-                GameObject clone;
-                clone = Instantiate(shot) as GameObject;
-                nextFire = Time.time + fireRate;
+        if (Input.GetButtonDown("X360_RBumper")) {
+            GameObject clone;
+            clone = Instantiate(shot) as GameObject;
+            nextFire = Time.time + fireRate;
 
-                clone.transform.position = shotSpawn.transform.position;
-                //GetComponent<AudioSource>().Play();
-            }
+            clone.transform.position = shotSpawn.transform.position;
+            //GetComponent<AudioSource>().Play();
         }
        // LaserGunShot();
     }
