@@ -12,10 +12,12 @@ public class PlayerShooting : MonoBehaviour {
     public float laserRate;
     public float laserfireRate;
     public bool LaserON = false;
+    public float maxLaserDistance;
 
     public bool powerup1;
 
     private float nextFire;
+    private LineRenderer laserRenderer;
 
     public string bulletAudioEvent;
 
@@ -33,26 +35,38 @@ public class PlayerShooting : MonoBehaviour {
             GameManager.instance.kakusei = false;
         }
 
+        //if(GameManager.instance.kakusei && Input.GetButtonDown("Fire1"))
+        //{
+        //    laserRenderer.enabled = true;
+        //}
+
+        if(Input.GetButtonUp("Fire1") || !GameManager.instance.kakusei)
+        {
+            laserRenderer.enabled = false;
+        }
+
         if (Input.GetButton("Fire1"))
         {
             if(GameManager.instance.kakusei)
             {
                 int enemyLayerMask = 1 << 9;
                 RaycastHit hit;
-                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, Mathf.Infinity, enemyLayerMask))
+                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask))
                 {
                     // todo: piirrä säde viholliseen asti
-                    hit.collider.gameObject.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
-                    
+                    GameObject enemy = hit.collider.gameObject;
+                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
+                    laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
                 }
                 else
                 {
                     // todo: piirrä riittävän pitkä säde
-                 
-                    
+
+                    laserRenderer.SetPosition(1, Vector3.forward * maxLaserDistance);   
                     Physics.Raycast(shotSpawn.transform.position,transform.forward * 100,enemyLayerMask);
                     // Debug.DrawLine(Vector3.zero, new Vector3(0,0,100), Color.red);
                 }
+                laserRenderer.enabled = true;
             }
             else if (Time.time > nextFire)
             {
@@ -84,6 +98,7 @@ public class PlayerShooting : MonoBehaviour {
     void Awake() {
         shotSpawn = transform.Find("ShotSpawn");
         shotSpawn1 = transform.Find("ShotSpawn1");
+        laserRenderer = GetComponentInChildren<LineRenderer>();
     }
 
     public void GunAdd() {
