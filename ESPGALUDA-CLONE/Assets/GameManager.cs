@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject crystal;
     public bool kakusei;
+    public GameObject player;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
@@ -56,10 +57,11 @@ public class GameManager : MonoBehaviour {
         kakusei = false;
         statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
         scoreText.text = "Score: " + score;
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 
     void Awake() {
-        instance = this;   
+        instance = this;
     }
 
     // Update is called once per frame

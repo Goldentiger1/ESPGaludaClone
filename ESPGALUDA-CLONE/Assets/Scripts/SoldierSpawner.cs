@@ -9,7 +9,7 @@ public class SoldierSpawner : MonoBehaviour
 
     private GameObject soldierTrigger;
     public Transform spawnPoint;
-    public Transform[] waypoints;
+    public List<Transform> waypoints;
     private int currentWaypoint = 0;
     private int count = 0;
 
@@ -18,20 +18,13 @@ public class SoldierSpawner : MonoBehaviour
 
     void Start()
     {
-        // To-Do Fix code there could be many more soldier triggers.
-        soldierTrigger = this.gameObject;
-
-        foreach (Transform child in soldierTrigger.transform)
+        waypoints = new List<Transform>();
+        foreach (Transform child in transform)
         {
-
-            if (child.name == "Spawnpoint")
+            if (child.name.ToLower() != "spawnpoint")
             {
-                currentWaypoint--;
-                continue;
+                waypoints.Add(child);
             }
-            waypoints[count] = transform.GetChild(currentWaypoint);
-            currentWaypoint++;
-            count++;
         }
     }
 
@@ -43,7 +36,7 @@ public class SoldierSpawner : MonoBehaviour
     void Update()
     {
 
-        if (currentWaypoint < waypoints.Length)
+        if (currentWaypoint < waypoints.Count)
         {
             timer += Time.deltaTime;
 
