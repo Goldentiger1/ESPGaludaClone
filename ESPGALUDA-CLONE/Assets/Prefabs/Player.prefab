@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422818985736736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 0.5, z: -26.36}
+  m_LocalPosition: {x: -0.03, y: 0.5, z: -42.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4174387613761296}
@@ -243,7 +243,7 @@ MonoBehaviour:
   laserRate: 0
   laserfireRate: 0.01
   LaserON: 0
-  maxLaserDistance: 10
+  maxLaserDistance: 20
   powerup1: 1
   bulletAudioEvent: Bullet
 --- !u!114 &114501470300132724
@@ -264,8 +264,8 @@ MonoBehaviour:
   XMin: -7
   ZMax: 8
   ZMin: -8
-  Hitpoints: 100
-  Lives: 1
+  Hitpoints: 5
+  Lives: 3
   Crystals: 0
   Tilt: 5
   turnSpeed: 5

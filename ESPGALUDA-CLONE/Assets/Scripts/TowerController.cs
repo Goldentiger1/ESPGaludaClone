@@ -25,7 +25,7 @@ public class TowerController : EnemyBehaviour {
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
 
         float currentFireRate = (GameManager.instance.kakusei) ? kakuseiFireRate : fireRate;
