@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float ZMax;
     public float ZMin;
 
+    public float origHP;
     public float Hitpoints;
     public float Lives;
     public float Crystals;
@@ -25,8 +26,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer
 
     public void PlayerHit (float dmg) {
         Hitpoints -= dmg;
+        GameManager.instance.UpdateLivesScoreText();
         if (Hitpoints == 0) {
-            Hitpoints = 5;
+            Hitpoints = origHP;
             GameManager.instance.LifeLost();
             if (Lives < 0) {
                 Destroy(gameObject);
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
     {
+        origHP = Hitpoints;
         Rb = GetComponent<Rigidbody>();
 
         localPos = transform.position - World.center.position;

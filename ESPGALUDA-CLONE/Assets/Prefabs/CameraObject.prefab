@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35fe1628a3c989428580fc929fab164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  plane: {fileID: 0}
+  player: {fileID: 4115092081018596, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
+  plane: {fileID: 23731776553959980, guid: 94fbfee9a06320446809cf8d9bf02f46, type: 2}
   camWidth: 13.5
 --- !u!114 &114572700091052568
 MonoBehaviour:
