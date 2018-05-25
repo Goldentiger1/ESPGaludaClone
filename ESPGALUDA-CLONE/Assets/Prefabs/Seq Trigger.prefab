@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ship: {fileID: 1964986813832860, guid: e8714ee4b47cc7242aef263a69cf8560, type: 2}
   timer: 2
-  tickTime: 1
+  tickTime: 0.6
   HowMany: 5

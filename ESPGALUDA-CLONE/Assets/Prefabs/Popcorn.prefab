@@ -67,9 +67,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4788360198089076}
   - component: {fileID: 54404373809039090}
-  - component: {fileID: 65605425391568630}
   - component: {fileID: 114252737305652912}
   - component: {fileID: 114455779076007586}
+  - component: {fileID: 136833552522525408}
   m_Layer: 9
   m_Name: Popcorn
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964986813832860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: -31.32}
+  m_LocalPosition: {x: -17.01123, y: 134.77405, z: 26.081354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154067516088200}
@@ -189,18 +189,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65605425391568630
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964986813832860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1845398, y: 3.1505382, z: 1}
-  m_Center: {x: -0.046152115, y: -0.27530193, z: -3.5956295e-16}
 --- !u!114 &114252737305652912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,10 +201,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reward: 1
+  expl: 4
   hitpoints: 2
   score: 100
+  fireRate: 1
+  kakuseiFireRate: 0.5
+  destroyAudioEvent: PopcornDeath
   popcornEnemy: {fileID: 1964986813832860}
-  speed: 5
+  speed: 10
   localPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
@@ -238,4 +230,17 @@ MonoBehaviour:
     type: 2}
   bulletShot: 0
   timer: 0
-  cTShoot: 5
+  cTShoot: 1.5
+--- !u!136 &136833552522525408
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964986813832860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5748549
+  m_Height: 3.1497097
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.0136060715}

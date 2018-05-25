@@ -566,10 +566,11 @@ MonoBehaviour:
   reward: 10
   hitpoints: 40
   score: 500
-  target: {fileID: 0}
+  fireRate: 2
+  kakuseiFireRate: 1
+  target: {fileID: 1422818985736736, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1442850249977500}
-  fireRate: 2
   Crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
 --- !u!136 &136269348851433128
 CapsuleCollider:

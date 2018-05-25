@@ -264,7 +264,7 @@ MonoBehaviour:
   XMin: -7
   ZMax: 8
   ZMin: -8
-  Hitpoints: 5
+  Hitpoints: 3
   Lives: 3
   Crystals: 0
   Tilt: 5
