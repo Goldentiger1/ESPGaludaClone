@@ -11,7 +11,6 @@ public class GunShipController : EnemyBehaviour {
     public float speed;
     public float leaveScreen;
     public Vector3 localPos;
-    public float fireRate;
     public float movementSpeed;
     private float nextFire;
 

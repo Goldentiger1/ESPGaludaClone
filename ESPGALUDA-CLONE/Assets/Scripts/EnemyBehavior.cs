@@ -6,6 +6,8 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     public int reward;
     public float hitpoints;
     public float score;
+    public float fireRate;
+    public float kakuseiFireRate;
 
     public void TakeDamage(float dmg) {
         hitpoints -= dmg;

@@ -1035,6 +1035,11 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 961454347}
+    - target: {fileID: 114778724917210008, guid: 6ed934877a3367c4887a41e3b641bc42,
+        type: 2}
+      propertyPath: kakuseiFireRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ed934877a3367c4887a41e3b641bc42, type: 2}
   m_IsPrefabParent: 0
