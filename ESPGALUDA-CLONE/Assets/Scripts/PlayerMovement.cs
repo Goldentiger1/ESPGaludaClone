@@ -73,23 +73,20 @@ public class PlayerMovement : MonoBehaviour, IPlayer
 
 
         // Checked bool.
-        // Kakusei mode = ON/OFF   GameManager.instance.kakusei = true;   GameManager.instance.kakusei = false;
 
-        //LaserGun = GameObject.Find("laser").GetComponent<PlayerShooting>().LaserON;
-        //LaserGun = GetComponent<PlayerShooting>().LaserON;
-        
-        //if (GameManager.instance.kakusei == true)
-        //{
-        //    Speed = 5; // Player Movement should be Slower.
-        //    print("Hidastuu");
-            
-        //}
 
-        //if (GameManager.instance.kakusei == false)
-        //{
-        //    Speed = 10; // Player Movement should be Faster.
-        //    print("Nopeutta lisää");
-        //}
+        if (GameManager.instance.kakusei)
+        {
+            Speed = 5; // Player Movement should be Slower.
+            print("Hidastuu");
+
+        }
+
+        if (!GameManager.instance.kakusei)
+        {
+            Speed = 10; // Player Movement should be Faster.
+            print("Nopeutta lisää");
+        }
 
 
         //Move();
