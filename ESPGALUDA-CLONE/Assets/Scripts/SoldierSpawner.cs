@@ -4,39 +4,34 @@ using UnityEngine;
 
 public class SoldierSpawner : MonoBehaviour{
 
-    public Transform spawnPoint;
     public GameObject soldierEnemy;
-    public Transform[] waypoints;
-    private Transform soldierTrigger;
 
+    private Transform soldierTrigger;
+    public Transform spawnPoint;
+    public Transform[] waypoints;
+    int currentWaypoint = 0;
 
     float timer;
     public float tickTime;
-    int currentWaypoint;
 
     void Start(){
+
         soldierTrigger = GameObject.Find("SoldierTrigger").GetComponent<Transform>();
 
-        foreach(Transform child in soldierTrigger)
-        {
-            if(child.Find("Spawnpoint"))
-            {
+        foreach(Transform child in soldierTrigger){
+            if (child.name == "Spawnpoint"){
                 continue;
             }
-            else
-            {
-                for(int i = 0; i < waypoints.Length; i++)
-                {
-                    //waypoints[i] == child;
-                }
+            //waypoints[currentWaypoint] = child.
             }
-        }
+        }       
+        
         /*
         waypoints = transform.GetComponentsInChildren<Transform>();
         spawnPoint = waypoints[1];
         currentWaypoint = 2;
         */
-    }
+    
 
     void Update() {
         if (currentWaypoint < waypoints.Length) {
@@ -50,3 +45,4 @@ public class SoldierSpawner : MonoBehaviour{
         }
     }
 }
+
