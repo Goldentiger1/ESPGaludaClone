@@ -2,41 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierSpawner : MonoBehaviour{
+public class SoldierSpawner : MonoBehaviour
+{
 
     public GameObject soldierEnemy;
 
-    private Transform soldierTrigger;
+    private GameObject soldierTrigger;
     public Transform spawnPoint;
     public Transform[] waypoints;
-    int currentWaypoint = 0;
+    private int currentWaypoint = 0;
+    private int count = 0;
 
-    float timer;
+    private float timer;
     public float tickTime;
 
-    void Start(){
+    void Start()
+    {
+        // To-Do Fix code there could be many more soldier triggers.
+        soldierTrigger = this.gameObject;
 
-        soldierTrigger = GameObject.Find("SoldierTrigger").GetComponent<Transform>();
+        foreach (Transform child in soldierTrigger.transform)
+        {
 
-        foreach(Transform child in soldierTrigger){
-            if (child.name == "Spawnpoint"){
+            if (child.name == "Spawnpoint")
+            {
+                currentWaypoint--;
                 continue;
             }
-            //waypoints[currentWaypoint] = child.
-            }
-        }       
-        
-        /*
-        waypoints = transform.GetComponentsInChildren<Transform>();
-        spawnPoint = waypoints[1];
-        currentWaypoint = 2;
-        */
-    
+            waypoints[count] = transform.GetChild(currentWaypoint);
+            currentWaypoint++;
+            count++;
+        }
+    }
 
-    void Update() {
-        if (currentWaypoint < waypoints.Length) {
+    /*waypoints = transform.GetComponentsInChildren<Transform>();
+     * spawnPoint = waypoints[1];
+     * currentWaypoint = 2;
+     */
+
+    void Update()
+    {
+
+        if (currentWaypoint < waypoints.Length)
+        {
             timer += Time.deltaTime;
-            while (timer > tickTime) {
+
+            while (timer > tickTime)
+            {
                 var enemy = Instantiate(soldierEnemy, spawnPoint.position, Quaternion.identity);
                 enemy.GetComponent<SoldierMovement>().target = waypoints[currentWaypoint].position;
                 timer -= tickTime;
