@@ -41,13 +41,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         }
     }
 
-    //public void OnTriggerEnter(Collider other) {
-    
-    //        PlayerHit(1);
-    //        GameManager.instance.Explosion(expl, other.transform);
-    //        Destroy(other.gameObject);
-        
-    //}
+    public void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            PlayerHit(1);
+            GameManager.instance.Explosion(expl, other.transform);
+            Destroy(other.gameObject);
+        }
+    }
 
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
