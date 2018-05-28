@@ -100,13 +100,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422818985736736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.5, z: -42.6}
+  m_LocalPosition: {x: 0, y: 0.5, z: -46.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4174387613761296}
-  - {fileID: 4752063499928460}
   - {fileID: 4395887988236512}
   - {fileID: 4401947411490584}
+  - {fileID: 4752063499928460}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,7 +134,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4115092081018596}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4401947411490584
 Transform:
@@ -147,7 +147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4115092081018596}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4752063499928460
 Transform:
@@ -160,7 +160,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4115092081018596}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &23379783569998366
 MeshRenderer:
@@ -222,8 +222,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.53164697, y: 0.5181794, z: 0.640419}
-  m_Center: {x: 0.026916027, y: 0, z: 0.15095901}
+  m_Size: {x: 0.44864625, y: 0.5181794, z: 0.51978827}
+  m_Center: {x: 0.008892924, y: 0, z: 0.044463873}
 --- !u!114 &114084873267010132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,11 +264,14 @@ MonoBehaviour:
   XMin: -7
   ZMax: 8
   ZMin: -8
+  origHP: 0
   Hitpoints: 3
   Lives: 3
   Crystals: 0
+  expl: 0
   Tilt: 5
   turnSpeed: 5
+  deathAudioEvent: PlayerDeath
 --- !u!120 &120368181669250034
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -309,7 +312,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 25.07}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 3
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:

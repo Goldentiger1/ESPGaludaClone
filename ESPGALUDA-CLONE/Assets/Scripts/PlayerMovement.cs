@@ -20,9 +20,12 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float Hitpoints;
     public float Lives;
     public float Crystals;
+    public int expl;
 
     public float Tilt;
     public float turnSpeed;
+
+    public string deathAudioEvent;
 
     public void PlayerHit (float dmg) {
         Hitpoints -= dmg;
@@ -31,6 +34,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer
             Hitpoints = origHP;
             GameManager.instance.LifeLost();
             if (Lives < 0) {
+                Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
+                GameManager.instance.Explosion(expl, transform);
                 Destroy(gameObject);
             }
         }

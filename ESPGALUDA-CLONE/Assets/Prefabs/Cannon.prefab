@@ -191,12 +191,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reward: 10
-  expl: 0
+  expl: 6
   hitpoints: 20
   score: 500
   fireRate: 2
   kakuseiFireRate: 1
-  destroyAudioEvent: 
+  destroyAudioEvent: TowerDeath
   target: {fileID: 0}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1442850249977500}
