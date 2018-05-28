@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &348462475 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114897237369725614, guid: d1f4a95b8028a074b80790e26629e00c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1361374261}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &575542735
 Prefab:
   m_ObjectHideFlags: 0
@@ -167,6 +173,11 @@ Prefab:
       propertyPath: crystalText
       value: 
       objectReference: {fileID: 1916167381}
+    - target: {fileID: 114994783448131690, guid: 90f1569c3a163574ab9813700c3d227c,
+        type: 2}
+      propertyPath: hpText
+      value: 
+      objectReference: {fileID: 348462475}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90f1569c3a163574ab9813700c3d227c, type: 2}
   m_IsPrefabParent: 0
@@ -472,7 +483,7 @@ Prefab:
         type: 2}
       propertyPath: soldierEnemy
       value: 
-      objectReference: {fileID: 1002752963528832, guid: ad9d5b771ad184240a87e3658df66013,
+      objectReference: {fileID: 1799160659518372, guid: ad9d5b771ad184240a87e3658df66013,
         type: 2}
     - target: {fileID: 114518999482851608, guid: d6d4320484b82c8428846c8df30d3cf1,
         type: 2}

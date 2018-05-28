@@ -10,7 +10,7 @@ public class SoldierSpawner : MonoBehaviour
     private GameObject soldierTrigger;
     public Transform spawnPoint;
     public List<Transform> waypoints;
-    private int currentWaypoint = 0;
+    public int currentWaypoint = 0;
     private int count = 0;
 
     private float timer;
