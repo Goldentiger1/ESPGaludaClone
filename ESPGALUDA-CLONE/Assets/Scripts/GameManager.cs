@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
     public Text statusText;
     public Text scoreText;
     public Text crystalText;
-    public Text hpText;
 
     public float score;
 
@@ -52,7 +51,6 @@ public class GameManager : MonoBehaviour {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
         crystalText.text = "Crystals: " + FindObjectOfType<PlayerMovement>().Crystals;
-        hpText.text = "Hitpoints: " + FindObjectOfType<PlayerMovement>().Hitpoints;
 
     }
 
@@ -62,8 +60,7 @@ public class GameManager : MonoBehaviour {
         if (FindObjectOfType<PlayerMovement>().Lives < 0) {
             scoreText.text = "You died!";
             statusText.text = "Next time";
-            hpText.text = "learn to play";
-            crystalText.text = "You boob!";
+            crystalText.text = "learn to play!";
         }
     }
 

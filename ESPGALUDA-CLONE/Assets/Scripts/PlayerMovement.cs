@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         if (Hitpoints == 0) {
             Hitpoints = origHP;
             GameManager.instance.LifeLost();
-            if (Lives < 0) {
+            if (Lives == 0) {
                 Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
                 GameManager.instance.Explosion(expl, transform);
                 Destroy(gameObject);
@@ -41,6 +41,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         }
     }
 
+    //public void OnTriggerEnter(Collider other) {
+    
+    //        PlayerHit(1);
+    //        GameManager.instance.Explosion(expl, other.transform);
+    //        Destroy(other.gameObject);
+        
+    //}
 
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
