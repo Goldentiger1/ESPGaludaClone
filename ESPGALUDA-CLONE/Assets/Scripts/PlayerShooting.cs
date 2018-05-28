@@ -55,7 +55,7 @@ public class PlayerShooting : MonoBehaviour {
                 {
                     // todo: piirrä säde viholliseen asti
                     GameObject enemy = hit.collider.gameObject;
-                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(2 * Time.deltaTime);
+                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.deltaTime);
                     laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
                 }
                 else

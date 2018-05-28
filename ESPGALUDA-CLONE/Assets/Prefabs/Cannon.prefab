@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward: 10
   expl: 0
-  hitpoints: 40
+  hitpoints: 20
   score: 500
   fireRate: 2
   kakuseiFireRate: 1

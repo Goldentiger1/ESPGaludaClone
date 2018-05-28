@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 
         for (int o = 0; o < number; o++) {
             float radius = Mathf.Log(o + 1, 2); // distance from center
-            float angle = ((o * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
+            float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
             var expl = Instantiate(explosion, enemy.position + offset, Quaternion.Euler(90,0,0));
             Destroy(expl, 0.5f);

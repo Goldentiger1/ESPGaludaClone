@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reward: 1
-  expl: 4
+  expl: 3
   hitpoints: 2
   score: 100
   fireRate: 1
