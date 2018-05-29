@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierShooting : MonoBehaviour{
+public class SoldierShooting : EnemyBehaviour{
 
     public Transform player;
     public Transform shotspawn;
     public GameObject enemyBullet;
     public float bulletShot = 0;
+    public float nextFire;
+    float timer;
 
     void Start(){
         player = GameManager.instance.player.transform;
@@ -19,14 +21,17 @@ public class SoldierShooting : MonoBehaviour{
     void Update(){
         Vector3 targetDirection = player.transform.position - transform.position;
         Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
+        timer += Time.deltaTime;
 
-       // if(transform.position == )
-        {
-            while(bulletShot < 7)
+            while(timer >= nextFire && bulletShot < 7)
             {
-                GameObject clone = Instantiate(enemyBullet, shotspawn.position, shotspawn.rotation);
-                bulletShot++;
-            }
+                {
+                    GameObject clone = Instantiate(enemyBullet, shotspawn.position, shotspawn.rotation);
+                    bulletShot++;
+                    timer -= nextFire;
+
+                }
+                
         }
     }
 
