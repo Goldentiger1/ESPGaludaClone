@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float origHP;
     public float Hitpoints;
     public float Lives;
-    public float Crystals;
+    public int Crystals;
     public int expl;
 
     public float Tilt;
