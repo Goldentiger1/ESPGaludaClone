@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour {
     public float score;
 
     public GameObject explosion;
+    public GameObject blood;
     public GameObject crystal;
     public GameObject player;
 
     public bool kakusei;
 
     public string bgmAudioEvent;
+    private string p;
+
+    public PlayerMovement play;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
@@ -44,6 +48,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void Blood (int number, Transform enemy) {
+        for (int o = 0; o < number; o++) {
+            float radius = Mathf.Log(o + 1, 2); // distance from center
+            float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
+            Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
+            var expl = Instantiate(blood, enemy.position + offset, Quaternion.Euler(90, 0, 0));
+        }
+
+    }
+
     public void EnemyKilled(EnemyBehaviour e) {
         score += e.score;
         UpdateLivesScoreText();
@@ -52,15 +66,15 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateLivesScoreText() {
         scoreText.text = "Score: " + score;
-        statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
-        crystalText.text = "Crystals: " + FindObjectOfType<PlayerMovement>().Crystals;
+        statusText.text = "Lives: " + play.Lives;
+        crystalText.text = "Crystals: " + play.Crystals;
 
     }
 
     public void LifeLost() {
-        FindObjectOfType<PlayerMovement>().Lives--;
+        play.Lives--;
         UpdateLivesScoreText();
-        if (FindObjectOfType<PlayerMovement>().Lives < 0) {
+        if (play.Lives < 0) {
             scoreText.text = "You died!";
             statusText.text = "Next time";
             crystalText.text = "learn to play!";
@@ -68,15 +82,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LifeAdd() {
-        FindObjectOfType<PlayerMovement>().Lives++;
+        play.Lives++;
         UpdateLivesScoreText();
     }
 
 	// Use this for initialization
 	void Start () {
+        play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
         kakusei = false;
-        statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
+        statusText.text = "Lives: " + play.Lives;
         scoreText.text = "Score: " + score;
         player = GameObject.FindGameObjectWithTag("Player");
         Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
@@ -88,5 +103,6 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
     }
 }
