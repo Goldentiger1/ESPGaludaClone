@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void LifeAdd() {
+        FindObjectOfType<PlayerMovement>().Lives++;
+        UpdateLivesScoreText();
+    }
+
 	// Use this for initialization
 	void Start () {
         UpdateLivesScoreText();

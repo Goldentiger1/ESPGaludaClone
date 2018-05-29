@@ -207,6 +207,9 @@ MonoBehaviour:
   score: 100
   fireRate: 1
   kakuseiFireRate: 0.5
+  powerupProbability: 0
+  spawnedAtDeath: {fileID: 1000820302572724, guid: a5a6dab4de9985346b4d091450796074,
+    type: 2}
   destroyAudioEvent: PopcornDeath
   popcornEnemy: {fileID: 1964986813832860}
   speed: 10
