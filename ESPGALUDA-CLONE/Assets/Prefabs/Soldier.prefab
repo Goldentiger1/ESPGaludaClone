@@ -167,30 +167,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845f8fce7dcac8549b9d2478fa0662bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
-  expl: 0
-  hitpoints: 0
-  score: 0
-  fireRate: 0
-  kakuseiFireRate: 0
-  destroyAudioEvent: 
   speed: 2
   target: {x: 0, y: 0, z: 0}
+  waitToShoot: 6
 --- !u!114 &114561816423578916
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1799160659518372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c89a00436c6fe74290a80a6724255a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sM: {fileID: 114345425892385326}
-  sS: {fileID: 114518999482851608, guid: d6d4320484b82c8428846c8df30d3cf1, type: 2}
+  reward: 0
+  expl: 0
+  hitpoints: 0
+  score: 0
+  fireRate: 2
+  kakuseiFireRate: 1
+  destroyAudioEvent: 
   player: {fileID: 0}
   shotspawn: {fileID: 0}
   enemyBullet: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1,
     type: 2}
   bulletShot: 0
+  nextFire: 0.1
