@@ -7,10 +7,10 @@ public class Pickupmanager : MonoBehaviour {
     public string pickupAudioEvent;
 
 
-    void GunAdd() { }
+    void LifeAdd() { }
     private void OnTriggerEnter(Collider other) {
         if (other.name == "Player") {
-            GameObject.FindObjectOfType<PlayerShooting>().GunAdd();
+            GameObject.FindObjectOfType<GameManager>().LifeAdd();
             Destroy(gameObject);
             Fabric.EventManager.Instance.PostEvent(pickupAudioEvent);
         }

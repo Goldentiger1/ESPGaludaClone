@@ -196,6 +196,9 @@ MonoBehaviour:
   score: 500
   fireRate: 2
   kakuseiFireRate: 1
+  powerupProbability: 0.2
+  spawnedAtDeath: {fileID: 1000820302572724, guid: a5a6dab4de9985346b4d091450796074,
+    type: 2}
   destroyAudioEvent: TowerDeath
   target: {fileID: 0}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}

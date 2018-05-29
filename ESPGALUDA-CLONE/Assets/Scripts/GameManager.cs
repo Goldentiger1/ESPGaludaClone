@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour {
 
     public GameObject explosion;
     public GameObject crystal;
-    public bool kakusei;
     public GameObject player;
+
+    public bool kakusei;
+
+    public string bgmAudioEvent;
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
@@ -64,6 +67,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void LifeAdd() {
+        FindObjectOfType<PlayerMovement>().Lives++;
+        UpdateLivesScoreText();
+    }
+
 	// Use this for initialization
 	void Start () {
         UpdateLivesScoreText();
@@ -71,6 +79,7 @@ public class GameManager : MonoBehaviour {
         statusText.text = "Lives: " + FindObjectOfType<PlayerMovement>().Lives;
         scoreText.text = "Score: " + score;
         player = GameObject.FindGameObjectWithTag("Player");
+        Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
 	}
 
     void Awake() {
