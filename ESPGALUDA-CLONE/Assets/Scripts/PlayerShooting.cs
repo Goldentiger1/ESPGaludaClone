@@ -25,22 +25,18 @@ public class PlayerShooting : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            GameManager.instance.kakusei = true;
+        if (Input.GetButtonDown("Fire2")) {
+            GameManager.instance.kakusei = !GameManager.instance.kakusei;
         }
 
-        if (Input.GetButtonUp("Fire2"))
-        {
-            GameManager.instance.kakusei = false;
-        }
+
 
         //if(GameManager.instance.kakusei && Input.GetButtonDown("Fire1"))
         //{
         //    laserRenderer.enabled = true;
         //}
 
-        if(Input.GetButtonUp("Fire1") || !GameManager.instance.kakusei)
+        if (Input.GetButtonUp("Fire1") || !GameManager.instance.kakusei)
         {
             laserRenderer.enabled = false;
         }

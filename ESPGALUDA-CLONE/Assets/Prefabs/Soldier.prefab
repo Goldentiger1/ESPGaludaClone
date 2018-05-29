@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4437816129631496}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Shotspawn
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4035151829466634}
   - component: {fileID: 33251909992379724}
   - component: {fileID: 23219829946831290}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SoldierPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 65587311499460448}
   - component: {fileID: 114345425892385326}
   - component: {fileID: 114561816423578916}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845f8fce7dcac8549b9d2478fa0662bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   target: {x: 0, y: 0, z: 0}
   waitToShoot: 6
 --- !u!114 &114561816423578916
@@ -181,13 +181,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c89a00436c6fe74290a80a6724255a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
+  reward: 1
   expl: 0
-  hitpoints: 0
-  score: 0
+  blood: 1
+  hitpoints: 1
+  score: 10
   fireRate: 2
   kakuseiFireRate: 1
-  destroyAudioEvent: 
+  powerupProbability: 0
+  spawnedAtDeath: {fileID: 0}
+  g: {fileID: 0}
+  destroyAudioEvent: SoldierDeath
   player: {fileID: 0}
   shotspawn: {fileID: 0}
   enemyBullet: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1,
