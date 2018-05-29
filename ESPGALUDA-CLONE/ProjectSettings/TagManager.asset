@@ -14,12 +14,12 @@ TagManager:
   - 
   - 
   - Camera
-  - Enemy
+  - Flying Enemies
   - Player Bullet
   - Enemy Bullet
   - Player Character
   - Cleanup
-  - 
+  - Ground Enemies
   - 
   - 
   - 

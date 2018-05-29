@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4121466833003732}
   - component: {fileID: 33402631055013938}
   - component: {fileID: 23780616615948546}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tower_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4884875750880012}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: shotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 23437969608764686}
   - component: {fileID: 114778724917210008}
   - component: {fileID: 136332356948642704}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward: 10
   expl: 6
+  blood: 0
   hitpoints: 20
   score: 500
   fireRate: 2
@@ -199,6 +200,7 @@ MonoBehaviour:
   powerupProbability: 0.2
   spawnedAtDeath: {fileID: 1000820302572724, guid: a5a6dab4de9985346b4d091450796074,
     type: 2}
+  g: {fileID: 0}
   destroyAudioEvent: TowerDeath
   target: {fileID: 0}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
