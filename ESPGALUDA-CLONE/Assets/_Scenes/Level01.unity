@@ -3062,6 +3062,11 @@ Prefab:
       propertyPath: hpText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114994783448131690, guid: 90f1569c3a163574ab9813700c3d227c,
+        type: 2}
+      propertyPath: bgmAudioEvent
+      value: BGM1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90f1569c3a163574ab9813700c3d227c, type: 2}
   m_IsPrefabParent: 0
