@@ -90,9 +90,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         if (invincibleTimer > 0) {
             invincibleTimer -= Time.deltaTime;
         }
-        if (invincibleTimer < 0) {
-            invincibleTimer = 0;
-        }
+        //if (invincibleTimer < 0) {
+        //    invincibleTimer = 0;
+        //}
         //Vector3  (movement = new Vector3 (0,0,10f * Speed) * Time.deltaTime);
 
         // Perform it on all time. Player Moving.
