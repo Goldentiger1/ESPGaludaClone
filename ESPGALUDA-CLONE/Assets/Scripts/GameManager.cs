@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
     public void UpdateLivesScoreText() {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
-        crystalText.text = "Crystals: " + play.Crystals;
+        crystalText.text = "Crystals: " + (int)play.Crystals;
 
     }
 

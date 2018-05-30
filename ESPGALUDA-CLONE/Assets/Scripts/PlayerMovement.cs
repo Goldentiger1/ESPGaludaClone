@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float origHP;
     public float Hitpoints;
     public float Lives;
-    public int Crystals;
+    public float Crystals;
     public int expl;
 
     bool invincible;
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     {
         origHP = Hitpoints;
         Rb = GetComponent<Rigidbody>();
-
+        
         localPos = transform.position - World.center.position;
        
     }
@@ -89,6 +89,14 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     void Update() {
         if (invincibleTimer > 0) {
             invincibleTimer -= Time.deltaTime;
+        }
+        Crystals = Mathf.Clamp(Crystals, 0, 500);
+
+        if (Crystals >= 500) {
+            Crystals = 500;
+        }
+        if (Crystals <= 0) {
+            Crystals = 0;
         }
         //if (invincibleTimer < 0) {
         //    invincibleTimer = 0;

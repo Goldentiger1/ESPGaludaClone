@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827886672679094}
   - component: {fileID: 114994783448131690}
+  - component: {fileID: 114493752807259372}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114493752807259372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843538897540012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6175cb930b7211c4cbe05ee56bcd7ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redInd: {fileID: 0}
+  WhiteInd: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &114994783448131690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,8 +69,11 @@ MonoBehaviour:
   statusText: {fileID: 0}
   scoreText: {fileID: 0}
   crystalText: {fileID: 0}
-  hpText: {fileID: 0}
   score: 0
   explosion: {fileID: 1454664746376030, guid: 368a83df0a11ec84783a68e6812aae89, type: 2}
+  blood: {fileID: 1082057562236596, guid: 737fdc5ddae2a804da0621c9da4dae13, type: 2}
   crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
+  player: {fileID: 0}
   kakusei: 0
+  bgmAudioEvent: BGM1
+  play: {fileID: 0}

@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422818985736736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 0.5, z: -34.32}
+  m_LocalPosition: {x: 0, y: 0.5, z: -46.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4174387613761296}
@@ -301,7 +301,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422818985736736}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.44864625, y: 0.5181794, z: 0.51978827}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!114 &114084873267010132
@@ -395,15 +395,15 @@ MonoBehaviour:
   ZMax: 8
   ZMin: -8
   origHP: 0
-  Hitpoints: 3
+  Hitpoints: 1
   Lives: 3
   Crystals: 0
-  expl: 0
+  expl: 10
   Tilt: 5
   turnSpeed: 5
   invincibleTimer: 0
-  invincibilityTime: 0
-  invispeed: 0
+  invincibilityTime: 2
+  invispeed: 2
   deathAudioEvent: PlayerDeath
 --- !u!114 &114532844443636736
 MonoBehaviour:

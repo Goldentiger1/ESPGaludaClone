@@ -7,8 +7,8 @@ public class CrystalManager : MonoBehaviour {
 
     public Image redInd;
     public Image WhiteInd;
-    private float fullInd;
     public PlayerMovement player;
+    public float depleteSpeed;
 
 
     void Start() {
@@ -19,15 +19,17 @@ public class CrystalManager : MonoBehaviour {
 
     void Update() {
         KakuseiModeIndicator();
-
+        GameManager.instance.UpdateLivesScoreText();
+        if (GameManager.instance.kakusei) {
+            player.Crystals -= Time.deltaTime * depleteSpeed;
+        }
     }
 
     void KakuseiModeIndicator()
     {
             redInd.enabled = false;
             WhiteInd.enabled = false;
-            fullInd++;
-            fullInd = player.Crystals / 500f; //player.Crystals / 500f;
+            var fullInd = player.Crystals / 500f; 
                                  
             redInd.fillAmount = fullInd; 
 
@@ -35,7 +37,8 @@ public class CrystalManager : MonoBehaviour {
         {
             redInd.enabled = true;
             WhiteInd.enabled = true;
-            fullInd -= player.Crystals-- * (Time.deltaTime / 4);
+            //fullInd -= player.Crystals-- * (Time.deltaTime / 4);
+
         }
         
     }
