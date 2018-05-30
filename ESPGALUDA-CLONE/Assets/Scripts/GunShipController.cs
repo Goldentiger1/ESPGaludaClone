@@ -24,6 +24,10 @@ public class GunShipController : EnemyBehaviour {
     }
 
     void Update(){
+
+        localPos = localPos + transform.forward * Time.deltaTime * speed;
+        transform.position = World.center.position + localPos;
+
         Vector3 targetDirection = player.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
@@ -37,7 +41,6 @@ public class GunShipController : EnemyBehaviour {
 
             clone.transform.position = shotSpawn.transform.position;
             clone.transform.rotation = targetRotation;
-            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
         }
     }
 }
