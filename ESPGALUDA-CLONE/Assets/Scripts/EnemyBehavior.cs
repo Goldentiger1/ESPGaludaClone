@@ -23,6 +23,9 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         spawnedAtDeath = g;
     }
 
+    public void inKakusei() {
+        fireRate = kakuseiFireRate;
+    }
 
     public void TakeDamage(float dmg) {
         g = GameManager.instance;

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour, IPlayer
-{
+public class PlayerMovement : MonoBehaviour, IPlayer {
     // Players localposition variable
     public Vector3 localPos;
 
@@ -22,30 +21,47 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public int Crystals;
     public int expl;
 
+    bool invincible;
+
     public float Tilt;
     public float turnSpeed;
 
+    public float invincibleTimer;
+    public float invincibilityTime;
+
     public string deathAudioEvent;
 
-    public void PlayerHit (float dmg) {
-        Hitpoints -= dmg;
-        GameManager.instance.UpdateLivesScoreText();
-        if (Hitpoints == 0) {
-            Hitpoints = origHP;
-            GameManager.instance.LifeLost();
-            if (Lives == 0) {
-                Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
-                GameManager.instance.Explosion(expl, transform);
-                Destroy(gameObject);
-            }
-        }
+    bool Invincible() {
+        return invincibleTimer > 0;
     }
 
-    public void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-            PlayerHit(1);
-            GameManager.instance.Explosion(expl, other.transform);
-            Destroy(other.gameObject);
+    public void PlayerHit(float dmg) {
+        //if (!Invincible()) {
+            Hitpoints -= dmg;
+          //  invincible = true;
+            //invincibleTimer += Time.deltaTime;
+            //if (invincibleTimer < invincibleTickTime) {
+              //  invincible = false;
+            //}
+            GameManager.instance.UpdateLivesScoreText();
+            if (Hitpoints == 0) {
+                Hitpoints = origHP;
+                GameManager.instance.LifeLost();
+                if (Lives == 0) {
+                    Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
+                    GameManager.instance.Explosion(expl, transform);
+                    Destroy(gameObject);
+                }
+            }
+        }
+    //}
+
+    public void OnTriggerEnter(Collider other) { {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Flying Enemies")) {
+                PlayerHit(1);
+                GameManager.instance.Explosion(expl, other.transform);
+                Destroy(other.gameObject);
+            }
         }
     }
 
