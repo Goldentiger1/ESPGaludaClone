@@ -24,11 +24,17 @@ public class GunShipController : EnemyBehaviour {
     }
 
     void Update(){
+        float movement = speed * Time.deltaTime;
+
+        // rotation ->
         Vector3 targetDirection = player.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+
+
+
 
         if (Time.time > nextFire){
             GameObject clone = Instantiate(shot);
@@ -37,7 +43,6 @@ public class GunShipController : EnemyBehaviour {
 
             clone.transform.position = shotSpawn.transform.position;
             clone.transform.rotation = targetRotation;
-            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
         }
     }
 }
