@@ -24,15 +24,17 @@ public class GunShipController : EnemyBehaviour {
     }
 
     void Update(){
+        float movement = speed * Time.deltaTime;
 
-        localPos = localPos + transform.forward * Time.deltaTime * speed;
-        transform.position = World.center.position + localPos;
-
+        // rotation ->
         Vector3 targetDirection = player.transform.position - transform.position;
         targetDirection.y = 0;
         Quaternion currentRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
+
+
+
 
         if (Time.time > nextFire){
             GameObject clone = Instantiate(shot);
