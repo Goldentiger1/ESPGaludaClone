@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
     public float invincibleTimer;
     public float invincibilityTime;
+    public float invispeed;
 
     public string deathAudioEvent;
 
@@ -35,15 +36,21 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         return invincibleTimer > 0;
     }
 
+
+
     public void PlayerHit(float dmg) {
-        //if (!Invincible()) {
+        if (!Invincible()) {
+            invincibleTimer = invincibilityTime;
             Hitpoints -= dmg;
-          //  invincible = true;
-            //invincibleTimer += Time.deltaTime;
-            //if (invincibleTimer < invincibleTickTime) {
-              //  invincible = false;
-            //}
-            GameManager.instance.UpdateLivesScoreText();
+            
+        }
+
+    //  invincible = true;
+    //invincibleTimer += Time.deltaTime;
+    //if (invincibleTimer < invincibleTickTime) {
+    //  invincible = false;
+    //}
+    GameManager.instance.UpdateLivesScoreText();
             if (Hitpoints == 0) {
                 Hitpoints = origHP;
                 GameManager.instance.LifeLost();
@@ -79,8 +86,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         Crystals += 1;
     }
 
-    void Update()
-    {
+    void Update() {
+        if (invincibleTimer > 0) {
+            invincibleTimer -= Time.deltaTime;
+        }
+        //if (invincibleTimer < 0) {
+        //    invincibleTimer = 0;
+        //}
         //Vector3  (movement = new Vector3 (0,0,10f * Speed) * Time.deltaTime);
 
         // Perform it on all time. Player Moving.

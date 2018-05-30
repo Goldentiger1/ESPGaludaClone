@@ -16,7 +16,7 @@ public class Crystal : MonoBehaviour {
         if (other.name == "Player") {
             Destroy(gameObject);
             Fabric.EventManager.Instance.PostEvent(crystalAudioEvent);
-            GameObject.FindObjectOfType<PlayerMovement>().GainCrystal();
+            player.GainCrystal();
             GameManager.instance.UpdateLivesScoreText();
 
         }
