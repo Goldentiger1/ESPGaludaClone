@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
     void Update() {
         if (invincibleTimer > 0) {
-            invincibleTimer -= Time.deltaTime;
+            invincibleTimer -= Time.unscaledDeltaTime;
         }
         Crystals = Mathf.Clamp(Crystals, 0, 500);
 
@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         //localPos = localPos + transform.position * Time.deltaTime * Speed;
         var moveDir = Input.GetAxis("Horizontal") * Vector3.right +
                         Input.GetAxis("Vertical") * Vector3.forward;
-        localPos += moveDir.normalized * Time.deltaTime * Speed;
+        localPos += moveDir.normalized * Time.unscaledDeltaTime * Speed;
         Movingbounds();
         transform.position = World.center.position + localPos;
 
@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Time.deltaTime);
+            transform.Translate(Vector3.right * Time.unscaledDeltaTime);
             print("Liikkuu oikealle");
 
         }
@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.Translate(Vector3.left * Time.deltaTime);
+            transform.Translate(Vector3.left * Time.unscaledDeltaTime);
             print("Liikkuu vasemmalle");
         }
 
@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.Translate(Vector3.back * Time.deltaTime);
+            transform.Translate(Vector3.back * Time.unscaledDeltaTime);
         }
 
         if (Input.GetKeyUp(KeyCode.S))
@@ -254,13 +254,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
         float rStickX = Input.GetAxis("X360_RStickX");
 
-        Vector3 XPASS = transform.TransformDirection(new Vector3(hAxis, 0, vAxis) * Speed * Time.deltaTime);
+        Vector3 XPASS = transform.TransformDirection(new Vector3(hAxis, 0, vAxis) * Speed * Time.unscaledDeltaTime);
 
         Rb.MovePosition(transform.position + XPASS);
 
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, rStickX, 0) * turnSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, rStickX, 0) * turnSpeed * Time.unscaledDeltaTime);
 
-        transform.Rotate(new Vector3(0, rStickX, 0), turnSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, rStickX, 0), turnSpeed * Time.unscaledDeltaTime);
     }
 
 

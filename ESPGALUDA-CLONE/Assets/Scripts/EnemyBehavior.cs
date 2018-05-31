@@ -15,7 +15,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
 
     public GameObject spawnedAtDeath;
 
-    public GameManager g;
+    GameManager g;
     
     public string destroyAudioEvent;
 

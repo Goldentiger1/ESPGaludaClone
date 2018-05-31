@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 
     public PlayerMovement play;
 
+
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
     public void CreateCrystals(int number, Transform enemy) {
@@ -103,6 +104,8 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        if (kakusei) {
+            Time.timeScale = 0.5f;
+        } else Time.timeScale = 1.0f;
     }
 }

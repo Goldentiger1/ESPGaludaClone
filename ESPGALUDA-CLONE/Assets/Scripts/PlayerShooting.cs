@@ -23,6 +23,7 @@ public class PlayerShooting : MonoBehaviour {
 
 
 
+
     // Update is called once per frame
     void Update() {
         if (Input.GetButtonDown("Fire2")) {
@@ -45,13 +46,13 @@ public class PlayerShooting : MonoBehaviour {
         {
             if(GameManager.instance.kakusei)
             {
-                int enemyLayerMask = 1 << 9;
+                int enemyLayerMask = LayerMask.GetMask("Enemy", "Flying Enemies", "Ground Enemies");
                 RaycastHit hit;
                 if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask))
                 {
                     // todo: piirrä säde viholliseen asti
                     GameObject enemy = hit.collider.gameObject;
-                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.deltaTime);
+                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.unscaledDeltaTime);
                     laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
                 }
                 else
@@ -64,7 +65,7 @@ public class PlayerShooting : MonoBehaviour {
                 }
                 laserRenderer.enabled = true;
             }
-            else if (Time.time > nextFire)
+            else if (Time.unscaledTime > nextFire)
             {
                 //GameManager.instance.kakusei = false;
                 GameObject clone;
@@ -73,7 +74,7 @@ public class PlayerShooting : MonoBehaviour {
                 //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
                 //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
                 Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
-                nextFire = Time.time + fireRate;
+                nextFire = Time.unscaledTime + fireRate;
                 //GetComponent<AudioSource>().Play();
             }
         }
@@ -83,7 +84,7 @@ public class PlayerShooting : MonoBehaviour {
         if (Input.GetButtonDown("X360_RBumper")) {
             GameObject clone;
             clone = Instantiate(shot) as GameObject;
-            nextFire = Time.time + fireRate;
+            nextFire = Time.unscaledTime + fireRate;
 
             clone.transform.position = shotSpawn.transform.position;
             //GetComponent<AudioSource>().Play();
@@ -98,10 +99,10 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     public void GunAdd() {
-        if (Input.GetButton("Fire1") && Time.time > nextFire) {
+        if (Input.GetButton("Fire1") && Time.unscaledTime > nextFire) {
             GameObject clone1;
             clone1 = Instantiate(shot) as GameObject;
-            nextFire = Time.time + fireRate;
+            nextFire = Time.unscaledTime + fireRate;
 
             clone1.transform.position = shotSpawn1.transform.position;
         }
@@ -111,13 +112,13 @@ public class PlayerShooting : MonoBehaviour {
     public void LaserGunShot()
     {
         //if (Input.GetKey("Fire1") && Time.time > nextFire)
-        if (Input.GetKey(KeyCode.Mouse2) && Time.time > nextFire)
+        if (Input.GetKey(KeyCode.Mouse2) && Time.unscaledTime > nextFire)
 
         {
             GameObject clone2;        
             clone2 = Instantiate(laser) as GameObject;
             LaserON = true;
-            nextFire = Time.deltaTime + laserfireRate;
+            nextFire = Time.unscaledDeltaTime + laserfireRate;
             clone2.transform.position = shotSpawn1.transform.position;
 
             //localPos = localPos + transform.forward * Time.deltaTime * speed;

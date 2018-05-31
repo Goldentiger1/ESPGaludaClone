@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f60093bf0f364449925e24456f82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 200
+  reward: 5
   expl: 3
   blood: 0
   hitpoints: 2
@@ -182,7 +182,6 @@ MonoBehaviour:
   powerupProbability: 0
   spawnedAtDeath: {fileID: 1000820302572724, guid: a5a6dab4de9985346b4d091450796074,
     type: 2}
-  g: {fileID: 0}
   destroyAudioEvent: PopcornDeath
   popcornEnemy: {fileID: 1964986813832860}
   speed: 8

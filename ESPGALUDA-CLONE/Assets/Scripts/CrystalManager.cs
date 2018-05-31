@@ -21,7 +21,7 @@ public class CrystalManager : MonoBehaviour {
         KakuseiModeIndicator();
         GameManager.instance.UpdateLivesScoreText();
         if (GameManager.instance.kakusei) {
-            player.Crystals -= Time.deltaTime * depleteSpeed;
+            player.Crystals -= Time.unscaledDeltaTime * depleteSpeed;
         }
     }
 
