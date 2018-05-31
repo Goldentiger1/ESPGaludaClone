@@ -126,18 +126,18 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         // Checked bool.
 
 
-        if (GameManager.instance.kakusei)
-        {
-            Speed = 5; // Player Movement should be Slower.
-            print("Hidastuu");
+        ////if (GameManager.instance.kakusei)
+        ////{
+        //  //  Speed = 5; // Player Movement should be Slower.
+        //    //print("Hidastuu");
 
-        }
+        //}
 
-        if (!GameManager.instance.kakusei)
-        {
-            Speed = 10; // Player Movement should be Faster.
-            print("Nopeutta lisää");
-        }
+        //if (!GameManager.instance.kakusei)
+        //{
+        //    Speed = 10; // Player Movement should be Faster.
+        //    print("Nopeutta lisää");
+        //}
 
 
         //Move();

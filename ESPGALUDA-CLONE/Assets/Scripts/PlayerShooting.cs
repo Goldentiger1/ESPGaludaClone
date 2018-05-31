@@ -33,18 +33,32 @@ public class PlayerShooting : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetButtonDown("Fire2")) {
-            if (play.Crystals >= 25) {
-                GameManager.instance.kakusei = !GameManager.instance.kakusei;
-            }
-        }
-        if (play.Crystals <= 0) {
-            if (GameManager.instance.kakusei) {
-                Time.timeScale = 1.0f;
-                if (Input.GetButtonDown("Fire2")) {
-                    GameManager.instance.kakusei = false;
+            if (GameManager.instance.gameState == GameState.Normal) {
+                if (play.Crystals >= 25) {
+                    GameManager.instance.gameState = GameState.Kakusei;
+                } else {
+                    GameManager.instance.gameState = GameState.KakuseiOver;
                 }
+            } else {
+                GameManager.instance.gameState = GameState.Normal;
             }
         }
+
+        //if (Input.GetButtonDown("Fire2")) {
+        //    if (play.Crystals >= 25) {
+        //        GameManager.instance.gameState = (GameManager.instance.gameState == GameState.Normal) ? GameState.Kakusei : GameState.Normal;
+        //        //GameManager.instance.gameState = GameManager.instance.gameState;
+        //    } else if {
+                
+        //    }
+        //}
+        //if (play.Crystals <= 0) {
+        //    if (GameManager.instance.gameState == GameState.Kakusei) {
+        //        if (Input.GetButtonDown("Fire2")) {
+        //            GameManager.instance.gameState = GameState.KakuseiOver;
+        //        }
+        //    }
+        //}
 
 
         //if(GameManager.instance.kakusei && Input.GetButtonDown("Fire1"))
@@ -52,14 +66,14 @@ public class PlayerShooting : MonoBehaviour {
         //    laserRenderer.enabled = true;
         //}
 
-        if (Input.GetButtonUp("Fire1") || !GameManager.instance.kakusei)
+        if (Input.GetButtonUp("Fire1") || GameManager.instance.gameState == GameState.Normal)
         {
             laserRenderer.enabled = false;
         }
 
         if (Input.GetButton("Fire1"))
         {
-            if(GameManager.instance.kakusei)
+            if(GameManager.instance.gameState != GameState.Normal)
             {
                 int enemyLayerMask = LayerMask.GetMask("Enemy", "Flying Enemies", "Ground Enemies");
                 RaycastHit hit;
