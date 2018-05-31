@@ -6,30 +6,45 @@ public class PlayerShooting : MonoBehaviour {
 
     public GameObject shot;
     public GameObject laser;
+
     public Transform shotSpawn;
     public Transform shotSpawn1;
+
     public float fireRate;
     public float laserRate;
     public float laserfireRate;
-    public bool LaserON = false;
     public float maxLaserDistance;
+    private float nextFire;
 
     public bool powerup1;
+    public bool LaserON = false;
 
-    private float nextFire;
     private LineRenderer laserRenderer;
 
     public string bulletAudioEvent;
 
+    public PlayerMovement play;
 
+    void Start() {
+        play = FindObjectOfType<PlayerMovement>();
+    }
 
 
     // Update is called once per frame
     void Update() {
         if (Input.GetButtonDown("Fire2")) {
-            GameManager.instance.kakusei = !GameManager.instance.kakusei;
+            if (play.Crystals >= 25) {
+                GameManager.instance.kakusei = !GameManager.instance.kakusei;
+            }
         }
-
+        if (play.Crystals <= 0) {
+            if (GameManager.instance.kakusei) {
+                Time.timeScale = 1.0f;
+                if (Input.GetButtonDown("Fire2")) {
+                    GameManager.instance.kakusei = false;
+                }
+            }
+        }
 
 
         //if(GameManager.instance.kakusei && Input.GetButtonDown("Fire1"))
