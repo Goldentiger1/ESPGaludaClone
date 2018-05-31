@@ -672,6 +672,7 @@ MonoBehaviour:
   redInd: {fileID: 456588913}
   WhiteInd: {fileID: 964859627}
   player: {fileID: 0}
+  depleteSpeed: 0
 --- !u!1001 &1474992005
 Prefab:
   m_ObjectHideFlags: 0
