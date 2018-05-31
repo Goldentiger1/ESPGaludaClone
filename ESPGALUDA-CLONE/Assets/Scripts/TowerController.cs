@@ -28,7 +28,7 @@ public class TowerController : EnemyBehaviour {
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
 
-        float currentFireRate = (GameManager.instance.kakusei) ? kakuseiFireRate : fireRate;
+        float currentFireRate = (GameManager.instance.gameState != GameState.Normal) ? kakuseiFireRate : fireRate;
 
         if (Time.time > nextFire) {
             GameObject clone = Instantiate(shot);

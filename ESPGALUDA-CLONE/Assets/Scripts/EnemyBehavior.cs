@@ -36,7 +36,9 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             g.Explosion(expl, transform);
             g.Blood(blood, transform);
             g.EnemyKilled(this);
-            g.CreateCrystals(reward, transform);
+            if (g.gameState == GameState.Normal) {
+                g.CreateCrystals(reward, transform);
+            }
             Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
             bool isPowerup = Random.value < powerupProbability;
             if (isPowerup) {

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+    public enum GameState { Normal, Kakusei, KakuseiOver }    
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour {
     public GameObject crystal;
     public GameObject player;
 
-    public bool kakusei;
+    public GameState gameState;
 
     public string bgmAudioEvent;
     private string p;
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
-        kakusei = false;
+        gameState = GameState.Normal;
         statusText.text = "Lives: " + play.Lives;
         scoreText.text = "Score: " + score;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (kakusei) {
+        if (gameState == GameState.Kakusei) {
             Time.timeScale = 0.5f;
         } else Time.timeScale = 1.0f;
     }

@@ -20,8 +20,11 @@ public class CrystalManager : MonoBehaviour {
     void Update() {
         KakuseiModeIndicator();
         GameManager.instance.UpdateLivesScoreText();
-        if (GameManager.instance.kakusei) {
+        if (GameManager.instance.gameState == GameState.Kakusei) {
             player.Crystals -= Time.unscaledDeltaTime * depleteSpeed;
+            if (player.Crystals <= 0) {
+                GameManager.instance.gameState = GameState.KakuseiOver;
+            }
         }
     }
 
@@ -33,7 +36,7 @@ public class CrystalManager : MonoBehaviour {
                                  
             redInd.fillAmount = fullInd; 
 
-        if (GameManager.instance.kakusei)
+        if (GameManager.instance.gameState == GameState.Kakusei)
         {
             redInd.enabled = true;
             WhiteInd.enabled = true;
