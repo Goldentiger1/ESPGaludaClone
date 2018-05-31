@@ -8,7 +8,7 @@ public class TowerController : EnemyBehaviour {
     public GameObject target;
     public GameObject shot;
     public GameObject shotSpawn;
-    private float nextFire;
+    private float lastFire;
     //public float hitpoints;
     public GameObject Crystal;
 
@@ -28,12 +28,13 @@ public class TowerController : EnemyBehaviour {
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
 
-        float currentFireRate = (GameManager.instance.gameState != GameState.Normal) ? kakuseiFireRate : fireRate;
+
+        float nextFire = lastFire + 1 / (GameManager.instance.gameState == GameState.Kakusei ? kakuseiFireRate : fireRate);
 
         if (Time.time > nextFire) {
             GameObject clone = Instantiate(shot);
 
-            nextFire = Time.time + currentFireRate;
+            lastFire = Time.time;
 
             clone.transform.position = shotSpawn.transform.position;
             clone.transform.rotation = targetRotation;
