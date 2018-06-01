@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
     public GameObject explosion;
     public GameObject blood;
     public GameObject crystal;
+    public GameObject gold;
     public GameObject player;
 
     public GameState gameState;
@@ -37,6 +38,15 @@ public class GameManager : MonoBehaviour {
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
             Instantiate(crystal, enemy.position + offset, Quaternion.identity);
+        }
+    }
+
+    public void CreateGold (int number, Transform enemy) {
+        for (int i = 0; i < number; i++) {
+            float radius = Mathf.Log(i + 1, 2); // distance from center
+            float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
+            Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
+            Instantiate(gold, enemy.position + offset, Quaternion.identity);
         }
     }
 

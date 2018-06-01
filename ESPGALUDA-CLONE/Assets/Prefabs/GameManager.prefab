@@ -174,7 +174,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 100'
+  m_Text: scoreText
 --- !u!114 &114702497374113860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Crystals: 500'
+  m_Text: crystalText
 --- !u!114 &114806751804976302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lives: 3'
+  m_Text: statusText
 --- !u!114 &114912086150071130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +280,7 @@ MonoBehaviour:
   explosion: {fileID: 1454664746376030, guid: 368a83df0a11ec84783a68e6812aae89, type: 2}
   blood: {fileID: 1082057562236596, guid: 737fdc5ddae2a804da0621c9da4dae13, type: 2}
   crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
+  gold: {fileID: 1375573041144846, guid: 97277049abdb3a14497a59d0e1f48157, type: 2}
   player: {fileID: 0}
   gameState: 0
   bgmAudioEvent: BGM1

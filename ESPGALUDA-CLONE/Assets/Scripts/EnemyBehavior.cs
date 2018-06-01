@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 abstract public class EnemyBehaviour : MonoBehaviour {
-    public int reward;
+    public int crystalReward;
+    public int goldReward;
     public int expl;
     public int blood;
 
@@ -37,7 +38,10 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             g.Blood(blood, transform);
             g.EnemyKilled(this);
             if (g.gameState == GameState.Normal) {
-                g.CreateCrystals(reward, transform);
+                g.CreateCrystals(crystalReward, transform);
+            }
+            if (g.gameState == GameState.Kakusei) {
+                g.CreateGold(goldReward, transform);
             }
             Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
             bool isPowerup = Random.value < powerupProbability;

@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f60093bf0f364449925e24456f82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 5
+  crystalReward: 5
+  goldReward: 5
   expl: 3
   blood: 0
   hitpoints: 2
