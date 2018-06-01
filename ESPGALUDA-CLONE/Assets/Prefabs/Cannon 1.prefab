@@ -290,7 +290,7 @@ MonoBehaviour:
     type: 2}
   destroyAudioEvent: TowerDeath
   target: {fileID: 0}
-  shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
+  shot: {fileID: 1196339410733112, guid: 06eb8c5f5a34f0044bd7ad2d4fbd5ced, type: 2}
   shotSpawn0: {fileID: 1385235698906282}
   shotSpawn1: {fileID: 1043509714758734}
   shotSpawn2: {fileID: 1633341959708278}

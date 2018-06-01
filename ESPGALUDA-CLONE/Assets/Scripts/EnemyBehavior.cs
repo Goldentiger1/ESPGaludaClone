@@ -53,7 +53,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
                         Destroy(bullet);
                     }
                 }
-                
+
             }
             Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
             bool isPowerup = Random.value < powerupProbability;

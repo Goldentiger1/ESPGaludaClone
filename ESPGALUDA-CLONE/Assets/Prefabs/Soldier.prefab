@@ -194,7 +194,7 @@ MonoBehaviour:
   destroyAudioEvent: SoldierDeath
   player: {fileID: 0}
   shotspawn: {fileID: 0}
-  enemyBullet: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1,
+  enemyBullet: {fileID: 1196339410733112, guid: 06eb8c5f5a34f0044bd7ad2d4fbd5ced,
     type: 2}
   bulletShot: 0
   nextFire: 0.1
