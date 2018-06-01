@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public Text statusText;
     public Text scoreText;
     public Text crystalText;
+    public Text goldText;
 
     public float score;
 
