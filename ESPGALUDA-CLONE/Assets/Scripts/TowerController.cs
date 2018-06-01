@@ -46,6 +46,11 @@ public class TowerController : EnemyBehaviour {
             GameObject clone2 = Instantiate(shot);
             GameObject clone3 = Instantiate(shot);
 
+            RegisterBullet(clone0);
+            RegisterBullet(clone1);
+            RegisterBullet(clone2);
+            RegisterBullet(clone3);
+
             lastFire = Time.time;
 
             clone0.transform.position = shotSpawn0.transform.position;

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldAudioEvent: Gold
   localPos: {x: 0, y: 0, z: 0}
-  speed: 5
+  speed: 15
   player: {fileID: 0}
 --- !u!136 &136489848238182106
 CapsuleCollider:

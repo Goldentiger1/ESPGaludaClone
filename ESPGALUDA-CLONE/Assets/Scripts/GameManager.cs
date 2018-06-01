@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public Text statusText;
     public Text scoreText;
     public Text crystalText;
+    public Text goldText;
 
     public float score;
 
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
         crystalText.text = "Crystals: " + (int)play.Crystals;
-
+        goldText.text = "Gold: " + play.Gold;
     }
 
     public void LifeLost() {
@@ -90,7 +91,9 @@ public class GameManager : MonoBehaviour {
         if (play.Lives < 0) {
             scoreText.text = "You died!";
             statusText.text = "Next time";
-            crystalText.text = "learn to play!";
+            goldText.text = "learn to play,";
+            crystalText.text = "You idiot!!";
+
         }
     }
 
@@ -104,8 +107,6 @@ public class GameManager : MonoBehaviour {
         play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
         gameState = GameState.Normal;
-        statusText.text = "Lives: " + play.Lives;
-        scoreText.text = "Score: " + score;
         player = GameObject.FindGameObjectWithTag("Player");
         Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
 	}
