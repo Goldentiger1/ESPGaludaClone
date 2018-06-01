@@ -26,6 +26,10 @@ public class TowerController : EnemyBehaviour {
     //    }
     //}
 
+    void Start() {
+        target = GameObject.Find("Player");
+    }
+
     void Update() {
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0;
