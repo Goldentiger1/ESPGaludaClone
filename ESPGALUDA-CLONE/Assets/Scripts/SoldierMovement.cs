@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierMovement : MonoBehaviour{
+public class SoldierMovement : MonoBehaviour
+{
 
     public float speed;
     //public List<GameObject> waypoints = new List<GameObject>();
@@ -13,12 +14,16 @@ public class SoldierMovement : MonoBehaviour{
 
 
 
-    void Start(){
+
+    void Start()
+    {
         //waypoints = GetComponentInChildren<GameObject>();
         player = GameManager.instance.player.transform;
+       
     }
 
-    void Update(){
+    void Update()
+    {
         timer += Time.deltaTime;
         float movement = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, movement);
@@ -30,9 +35,26 @@ public class SoldierMovement : MonoBehaviour{
             Quaternion currentRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
-            if (timer >= waitToShoot) { 
+            if (timer >= waitToShoot)
+            {
                 GetComponent<SoldierShooting>().enabled = true;
-        }
-        }
+                
+            }
+
+            if (GameManager.instance.gameState == GameState.Kakusei)
+            {
+                waitToShoot = 2;
+            }
+
+            else
+            {
+                waitToShoot = 6;
+            }
+        }          
+            
+            
     }
+
+        
 }
+
