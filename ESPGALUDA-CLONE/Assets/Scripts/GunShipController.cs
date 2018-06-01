@@ -39,6 +39,8 @@ public class GunShipController : EnemyBehaviour {
         if (Time.time > nextFire){
             GameObject clone = Instantiate(shot);
 
+            RegisterBullet(clone);
+
             nextFire = Time.time + fireRate;
 
             clone.transform.position = shotSpawn.transform.position;

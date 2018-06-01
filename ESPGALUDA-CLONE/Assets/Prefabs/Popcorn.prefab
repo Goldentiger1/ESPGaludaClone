@@ -172,10 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f60093bf0f364449925e24456f82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalReward: 5
-  goldReward: 5
+  crystalReward: 15
   expl: 3
   blood: 0
+  bullets: []
   hitpoints: 2
   score: 100
   fireRate: 1
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  shotspawn: {fileID: 1470256119719212}
   enemyBullet: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1,
     type: 2}
+  shotspawn: {fileID: 1470256119719212}
   bulletShot: 0
   timer: 0
   cTShoot: 2

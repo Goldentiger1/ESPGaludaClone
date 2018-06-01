@@ -202,16 +202,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629ee9029fda2b74aad7134d05432368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 5
-  expl: 0
+  crystalReward: 10
+  expl: 5
   blood: 0
+  bullets: []
   hitpoints: 5
   score: 250
   fireRate: 0.2
   kakuseiFireRate: 0
   powerupProbability: 0
   spawnedAtDeath: {fileID: 0}
-  g: {fileID: 0}
   destroyAudioEvent: 
   gunship: {fileID: 1795110798665340}
   shot: {fileID: 1029805222595320, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}

@@ -30,7 +30,9 @@ public class SoldierShooting : EnemyBehaviour{
                     bulletShot++;
                     timer -= nextFire;
 
-                }
+                    RegisterBullet(clone);
+
+            }
                 
         }
     }
