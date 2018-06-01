@@ -53,6 +53,11 @@ public class TowerController : EnemyBehaviour {
             GameObject clone2 = Instantiate(shot, shotSpawn2.transform.position, targetRotation * Quaternion.LookRotation(new Vector3(-1, 0, 2)));
             GameObject clone3 = Instantiate(shot, shotSpawn3.transform.position, targetRotation * Quaternion.LookRotation(new Vector3(1, 0, 2)));
 
+            RegisterBullet(clone0);
+            RegisterBullet(clone1);
+            RegisterBullet(clone2);
+            RegisterBullet(clone3);
+
             lastFire = Time.time;
             /*
             clone0.transform.position = shotSpawn0.transform.position;
