@@ -41,10 +41,17 @@ public class TowerController : EnemyBehaviour {
         float nextFire = lastFire + 1 / (GameManager.instance.gameState == GameState.Kakusei ? kakuseiFireRate : fireRate);
 
         if (Time.time > nextFire) {
+
+            /*
              GameObject clone0 = Instantiate(shot);
             GameObject clone1 = Instantiate(shot);
             GameObject clone2 = Instantiate(shot);
             GameObject clone3 = Instantiate(shot);
+            */
+            GameObject clone0 = Instantiate(shot, shotSpawn0.transform.position, targetRotation);
+            GameObject clone1 = Instantiate(shot, shotSpawn1.transform.position, targetRotation);
+            GameObject clone2 = Instantiate(shot, shotSpawn2.transform.position, targetRotation * Quaternion.LookRotation(new Vector3(-1, 0, 2)));
+            GameObject clone3 = Instantiate(shot, shotSpawn3.transform.position, targetRotation * Quaternion.LookRotation(new Vector3(1, 0, 2)));
 
             RegisterBullet(clone0);
             RegisterBullet(clone1);
@@ -52,7 +59,7 @@ public class TowerController : EnemyBehaviour {
             RegisterBullet(clone3);
 
             lastFire = Time.time;
-
+            /*
             clone0.transform.position = shotSpawn0.transform.position;
             clone0.transform.rotation = targetRotation;
 
@@ -64,6 +71,7 @@ public class TowerController : EnemyBehaviour {
 
             clone3.transform.position = shotSpawn3.transform.position;
             clone3.transform.rotation = targetRotation;
+            */
             //Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
             //GetComponent<AudioSource>().Play();
         }
