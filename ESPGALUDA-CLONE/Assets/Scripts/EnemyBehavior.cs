@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 abstract public class EnemyBehaviour : MonoBehaviour {
-    public int reward;
+
+    public int crystalReward;
     public int expl;
     public int blood;
+
+    public List<GameObject> bullets = new List<GameObject>();
 
     public float hitpoints;
     public float score;
@@ -23,6 +26,10 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         spawnedAtDeath = g;
     }
 
+    public void RegisterBullet (GameObject bullet) {
+        bullets.Add(bullet);
+    }
+
     public void inKakusei() {
         fireRate = kakuseiFireRate;
     }
@@ -37,7 +44,16 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             g.Blood(blood, transform);
             g.EnemyKilled(this);
             if (g.gameState == GameState.Normal) {
-                g.CreateCrystals(reward, transform);
+                g.CreateCrystals(crystalReward, transform);
+            }
+            if (g.gameState == GameState.Kakusei) {
+                foreach (var bullet in bullets) {
+                    if (bullet != null) {
+                        g.CreateGold(1, bullet.transform);
+                        Destroy(bullet);
+                    }
+                }
+
             }
             Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
             bool isPowerup = Random.value < powerupProbability;

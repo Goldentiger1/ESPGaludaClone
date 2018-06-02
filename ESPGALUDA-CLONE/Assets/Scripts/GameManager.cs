@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour {
     public Text statusText;
     public Text scoreText;
     public Text crystalText;
+    public Text goldText;
 
     public float score;
 
     public GameObject explosion;
     public GameObject blood;
     public GameObject crystal;
+    public GameObject gold;
     public GameObject player;
 
     public GameState gameState;
@@ -37,6 +39,15 @@ public class GameManager : MonoBehaviour {
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
             Instantiate(crystal, enemy.position + offset, Quaternion.identity);
+        }
+    }
+
+    public void CreateGold (int number, Transform enemy) {
+        for (int i = 0; i < number; i++) {
+            float radius = Mathf.Log(i + 1, 2); // distance from center
+            float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
+            Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
+            Instantiate(gold, enemy.position + offset, Quaternion.identity);
         }
     }
 
@@ -71,7 +82,7 @@ public class GameManager : MonoBehaviour {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
         crystalText.text = "Crystals: " + (int)play.Crystals;
-
+        goldText.text = "Gold: " + play.Gold;
     }
 
     public void LifeLost() {
@@ -80,7 +91,9 @@ public class GameManager : MonoBehaviour {
         if (play.Lives < 0) {
             scoreText.text = "You died!";
             statusText.text = "Next time";
-            crystalText.text = "learn to play!";
+            goldText.text = "learn to play,";
+            crystalText.text = "You idiot!!";
+
         }
     }
 
@@ -94,8 +107,6 @@ public class GameManager : MonoBehaviour {
         play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
         gameState = GameState.Normal;
-        statusText.text = "Lives: " + play.Lives;
-        scoreText.text = "Score: " + score;
         player = GameObject.FindGameObjectWithTag("Player");
         Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
 	}

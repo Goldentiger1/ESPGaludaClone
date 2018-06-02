@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float Hitpoints;
     public float Lives;
     public float Crystals;
+    public float Gold;
+
     public int expl;
 
     bool invincible;
@@ -84,6 +86,10 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
  public void GainCrystal () {
         Crystals += 1;
+    }
+
+public void GainGold () {
+        Gold += 1;
     }
 
     void Update() {
