@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
     public Rigidbody Rb;
     //public bool LaserGun = false;
-    public float Speed;
+    float Speed;
+    public float normalSpeed;
+    public float slowSpeed;
     public float XMax;
     public float XMin;
     public float ZMax;
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float Lives;
     public float Crystals;
     public float Gold;
+    //public float laserTimer;
+    PlayerShooting ps;
 
     public int expl;
 
@@ -81,7 +85,9 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         Rb = GetComponent<Rigidbody>();
         
         localPos = transform.position - World.center.position;
-       
+
+        //laserTimer = GetComponent<PlayerShooting>().laserTimer;
+        ps = GetComponent<PlayerShooting>();
     }
 
  public void GainCrystal () {
@@ -132,18 +138,15 @@ public void GainGold () {
         // Checked bool.
 
 
-        ////if (GameManager.instance.kakusei)
-        ////{
-        //  //  Speed = 5; // Player Movement should be Slower.
-        //    //print("Hidastuu");
+        if (ps.MovementSlowdown())
+        {
+        Speed = slowSpeed; // Player Movement should be Slower.
+        print("Hidastuu");
 
-        //}
-
-        //if (!GameManager.instance.kakusei)
-        //{
-        //    Speed = 10; // Player Movement should be Faster.
-        //    print("Nopeutta lisää");
-        //}
+        } else {
+        Speed = normalSpeed; // Player Movement should be Faster.
+        print("Nopeutta lisää");
+        }
 
 
         //Move();

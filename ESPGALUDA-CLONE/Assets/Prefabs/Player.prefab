@@ -351,10 +351,12 @@ MonoBehaviour:
   fireRate: 0.1
   laserRate: 0
   laserfireRate: 0.01
-  LaserON: 0
   maxLaserDistance: 20
-  powerup1: 1
+  laserTimer: 0
+  laserTimerSpeed: 15
+  LaserON: 0
   bulletAudioEvent: Bullet
+  play: {fileID: 0}
 --- !u!114 &114398719936337038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,7 +391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPos: {x: 0, y: 0, z: 0}
   Rb: {fileID: 54521667289646184}
-  Speed: 10
+  normalSpeed: 10
+  slowSpeed: 5
   XMax: 7
   XMin: -7
   ZMax: 8
@@ -398,6 +401,7 @@ MonoBehaviour:
   Hitpoints: 1
   Lives: 3
   Crystals: 0
+  Gold: 0
   expl: 10
   Tilt: 5
   turnSpeed: 5

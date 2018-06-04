@@ -14,9 +14,11 @@ public class PlayerShooting : MonoBehaviour {
     public float laserRate;
     public float laserfireRate;
     public float maxLaserDistance;
+    public float laserTimer;
+    public float laserTimerSpeed;
     private float nextFire;
 
-    public bool powerup1;
+    //public bool powerup1;
     public bool LaserON = false;
 
     private LineRenderer laserRenderer;
@@ -29,6 +31,9 @@ public class PlayerShooting : MonoBehaviour {
         play = FindObjectOfType<PlayerMovement>();
     }
 
+    public bool MovementSlowdown() {
+        return laserTimer >= 2; // TODO
+    }
 
     // Update is called once per frame
     void Update() {
@@ -49,7 +54,7 @@ public class PlayerShooting : MonoBehaviour {
         //        GameManager.instance.gameState = (GameManager.instance.gameState == GameState.Normal) ? GameState.Kakusei : GameState.Normal;
         //        //GameManager.instance.gameState = GameManager.instance.gameState;
         //    } else if {
-                
+
         //    }
         //}
         //if (play.Crystals <= 0) {
@@ -66,36 +71,33 @@ public class PlayerShooting : MonoBehaviour {
         //    laserRenderer.enabled = true;
         //}
 
-        if (Input.GetButtonUp("Fire1") || GameManager.instance.gameState == GameState.Normal)
-        {
+        if (Input.GetButtonUp("Fire1")) {
             laserRenderer.enabled = false;
+            laserTimer = 0;
+            nextFire = Time.unscaledTime + fireRate;
         }
 
-        if (Input.GetButton("Fire1"))
-        {
-            if(GameManager.instance.gameState != GameState.Normal)
-            {
+        if (Input.GetButton("Fire1")) {
+
+            if (laserTimer >= 2) {
+                laserTimer = 2;
+                //nextFire = Time.unscaledTime + 10;
                 int enemyLayerMask = LayerMask.GetMask("Enemy", "Flying Enemies", "Ground Enemies");
                 RaycastHit hit;
-                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask))
-                {
+                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask)) {
                     // todo: piirrä säde viholliseen asti
                     GameObject enemy = hit.collider.gameObject;
                     enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.unscaledDeltaTime);
                     laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
-                }
-                else
-                {
+                } else {
                     // todo: piirrä riittävän pitkä säde
-
-                    laserRenderer.SetPosition(1, Vector3.forward * maxLaserDistance);   
-                    Physics.Raycast(shotSpawn.transform.position,transform.forward * 100,enemyLayerMask);
+                    laserRenderer.SetPosition(1, Vector3.forward * maxLaserDistance);
+                    Physics.Raycast(shotSpawn.transform.position, transform.forward * 100, enemyLayerMask);
                     // Debug.DrawLine(Vector3.zero, new Vector3(0,0,100), Color.red);
                 }
                 laserRenderer.enabled = true;
-            }
-            else if (Time.unscaledTime > nextFire)
-            {
+
+            } else if (Time.unscaledTime > nextFire) {
                 //GameManager.instance.kakusei = false;
                 GameObject clone;
                 clone = Instantiate(shot);
@@ -105,12 +107,14 @@ public class PlayerShooting : MonoBehaviour {
                 Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
                 nextFire = Time.unscaledTime + fireRate;
                 //GetComponent<AudioSource>().Play();
+                laserTimer += Time.unscaledDeltaTime * laserTimerSpeed;
+
             }
         }
 
-           
-            
-        if (Input.GetButtonDown("X360_RBumper")) {
+
+
+            if (Input.GetButtonDown("X360_RBumper")) {
             GameObject clone;
             clone = Instantiate(shot) as GameObject;
             nextFire = Time.unscaledTime + fireRate;
@@ -118,45 +122,41 @@ public class PlayerShooting : MonoBehaviour {
             clone.transform.position = shotSpawn.transform.position;
             //GetComponent<AudioSource>().Play();
         }
-       // LaserGunShot();
+        // LaserGunShot();
     }
 
     void Awake() {
         shotSpawn = transform.Find("ShotSpawn");
-        shotSpawn1 = transform.Find("ShotSpawn1");
+        //shotSpawn1 = transform.Find("ShotSpawn1");
         laserRenderer = GetComponentInChildren<LineRenderer>();
     }
 
-    public void GunAdd() {
-        if (Input.GetButton("Fire1") && Time.unscaledTime > nextFire) {
-            GameObject clone1;
-            clone1 = Instantiate(shot) as GameObject;
-            nextFire = Time.unscaledTime + fireRate;
+    //public void GunAdd() {
+    //    if (Input.GetButton("Fire1") && Time.unscaledTime > nextFire) {
+    //        GameObject clone1;
+    //        clone1 = Instantiate(shot) as GameObject;
+    //        nextFire = Time.unscaledTime + fireRate;
 
-            clone1.transform.position = shotSpawn1.transform.position;
-        }
+    //        clone1.transform.position = shotSpawn1.transform.position;
+    //    }
 
-    }
+    //}
 
-    public void LaserGunShot()
-    {
-        //if (Input.GetKey("Fire1") && Time.time > nextFire)
-        if (Input.GetKey(KeyCode.Mouse2) && Time.unscaledTime > nextFire)
+    //public void LaserGunShot() {
+    //    //if (Input.GetKey("Fire1") && Time.time > nextFire)
+    //    if (Input.GetKey(KeyCode.Mouse2) && Time.unscaledTime > nextFire) {
+    //        GameObject clone2;
+    //        clone2 = Instantiate(laser) as GameObject;
+    //        LaserON = true;
+    //        nextFire = Time.unscaledDeltaTime + laserfireRate;
+    //        clone2.transform.position = shotSpawn1.transform.position;
 
-        {
-            GameObject clone2;        
-            clone2 = Instantiate(laser) as GameObject;
-            LaserON = true;
-            nextFire = Time.unscaledDeltaTime + laserfireRate;
-            clone2.transform.position = shotSpawn1.transform.position;
+    //        //localPos = localPos + transform.forward * Time.deltaTime * speed;
+    //        // clone2.transform.position = transform.position += Vector3.forward * Time.deltaTime;
+    //    }
 
-            //localPos = localPos + transform.forward * Time.deltaTime * speed;
-            // clone2.transform.position = transform.position += Vector3.forward * Time.deltaTime;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse2)) 
-        {
-            LaserON = false;
-        }
-    }
+    //    if (Input.GetKeyUp(KeyCode.Mouse2)) {
+    //        LaserON = false;
+    //    }
+    //}
 }
