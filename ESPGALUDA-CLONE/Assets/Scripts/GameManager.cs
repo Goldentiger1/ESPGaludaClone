@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public Text goldText;
 
     public float score;
+
+    public int Gold;
+
     public Canvas PauseCanvas;
 
     public GameObject explosion;
@@ -28,7 +31,6 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
 
     public string bgmAudioEvent;
-    private string p;
 
     public PlayerMovement play;
 
@@ -82,9 +84,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void EnemyKilled(EnemyBehaviour e)
+    public void GainGold() {
+        Gold += 1;
+    }
+
+        public void EnemyKilled(EnemyBehaviour e)
     {
-        score += e.score;
+        score += e.score * Mathf.Max(Gold / 10, 1);
         UpdateLivesScoreText();
     }
 
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
         crystalText.text = "Crystals: " + (int)play.Crystals;
-        goldText.text = "Gold: " + play.Gold;
+        goldText.text = "Gold: " + GameManager.instance.Gold;
     }
 
     public void LifeLost()

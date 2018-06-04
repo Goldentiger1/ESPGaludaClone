@@ -17,7 +17,7 @@ public class Gold : MonoBehaviour {
         if (other.name == "Player") {
             Destroy(gameObject);
             Fabric.EventManager.Instance.PostEvent(goldAudioEvent);
-            player.GainGold();
+            GameManager.instance.GainGold();
             GameManager.instance.UpdateLivesScoreText();
 
         }
