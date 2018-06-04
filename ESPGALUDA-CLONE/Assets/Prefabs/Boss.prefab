@@ -490,9 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localpos: {x: 0, y: 0, z: 0}
   moveTowards: {fileID: 0}
-  speed: 0
-  spawnpoint: {fileID: 0}
-  boss: {fileID: 0}
+  speed: 10
 --- !u!135 &135701182657444280
 SphereCollider:
   m_ObjectHideFlags: 1
