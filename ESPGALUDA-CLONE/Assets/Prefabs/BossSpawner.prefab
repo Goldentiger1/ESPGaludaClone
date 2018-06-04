@@ -9,59 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1452525878505352}
+  m_RootGameObject: {fileID: 1891215342459524}
   m_IsPrefabParent: 1
---- !u!1 &1452525878505352
+--- !u!1 &1891215342459524
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4079153710594654}
-  - component: {fileID: 65716306308922630}
-  - component: {fileID: 114137365708574906}
+  - component: {fileID: 4208921097298946}
+  - component: {fileID: 114660220892923230}
   m_Layer: 0
-  m_Name: BossTrigger
+  m_Name: BossSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4079153710594654
+--- !u!4 &4208921097298946
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452525878505352}
+  m_GameObject: {fileID: 1891215342459524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 147.09}
-  m_LocalScale: {x: 14.7, y: 1, z: 1}
+  m_LocalPosition: {x: 14, y: 0, z: 136}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65716306308922630
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452525878505352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114137365708574906
+--- !u!114 &114660220892923230
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452525878505352}
+  m_GameObject: {fileID: 1891215342459524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87df73ad69ad5a447a9812e02101a7da, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bddc6cc102a2b34e97b1e07daa9ddf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bM: {fileID: 0}
+  spawnpoint: {fileID: 0}
+  boss: {fileID: 1192787275954236, guid: 1298f236549ad61498df9c426246a9e7, type: 2}
+  spawned: 0
