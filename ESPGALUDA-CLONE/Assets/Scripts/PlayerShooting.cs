@@ -6,9 +6,12 @@ public class PlayerShooting : MonoBehaviour {
 
     public GameObject shot;
     public GameObject laser;
+    public GameObject laser1;
 
     public Transform shotSpawn;
     public Transform shotSpawn1;
+
+    LineRenderer[] lasers;
 
     public float fireRate;
     public float laserRate;
@@ -21,7 +24,7 @@ public class PlayerShooting : MonoBehaviour {
     //public bool powerup1;
     public bool LaserON = false;
 
-    private LineRenderer laserRenderer;
+    //private LineRenderer laserRenderer;
 
     public string bulletAudioEvent;
 
@@ -72,7 +75,9 @@ public class PlayerShooting : MonoBehaviour {
         //}
 
         if (Input.GetButtonUp("Fire1")) {
-            laserRenderer.enabled = false;
+            foreach (var laserRenderer in lasers) {
+                laserRenderer.enabled = false;
+            }
             laserTimer = 0;
             nextFire = Time.unscaledTime + fireRate;
         }
@@ -83,20 +88,22 @@ public class PlayerShooting : MonoBehaviour {
                 laserTimer = 2;
                 //nextFire = Time.unscaledTime + 10;
                 int enemyLayerMask = LayerMask.GetMask("Enemy", "Flying Enemies", "Ground Enemies");
-                RaycastHit hit;
-                if (Physics.Raycast(shotSpawn.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask)) {
-                    // todo: piirrä säde viholliseen asti
-                    GameObject enemy = hit.collider.gameObject;
-                    enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.unscaledDeltaTime);
-                    laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
-                } else {
-                    // todo: piirrä riittävän pitkä säde
-                    laserRenderer.SetPosition(1, Vector3.forward * maxLaserDistance);
-                    Physics.Raycast(shotSpawn.transform.position, transform.forward * 100, enemyLayerMask);
-                    // Debug.DrawLine(Vector3.zero, new Vector3(0,0,100), Color.red);
-                }
-                laserRenderer.enabled = true;
+                foreach (var laserRenderer in lasers) {
 
+                    RaycastHit hit;
+                    if (Physics.Raycast(laserRenderer.transform.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask)) {
+                        // todo: piirrä säde viholliseen asti
+                        GameObject enemy = hit.collider.gameObject;
+                        enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.unscaledDeltaTime);
+                        laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
+                    } else {
+                        // todo: piirrä riittävän pitkä säde
+                        laserRenderer.SetPosition(1, Vector3.forward * maxLaserDistance);
+                        Physics.Raycast(shotSpawn.transform.position, transform.forward * 100, enemyLayerMask);
+                        // Debug.DrawLine(Vector3.zero, new Vector3(0,0,100), Color.red);
+                    }
+                    laserRenderer.enabled = true;
+                }        
             } else if (Time.unscaledTime > nextFire) {
                 //GameManager.instance.kakusei = false;
                 GameObject clone;
@@ -127,8 +134,9 @@ public class PlayerShooting : MonoBehaviour {
 
     void Awake() {
         shotSpawn = transform.Find("ShotSpawn");
-        //shotSpawn1 = transform.Find("ShotSpawn1");
-        laserRenderer = GetComponentInChildren<LineRenderer>();
+        shotSpawn1 = transform.Find("ShotSpawn1");
+        lasers = GetComponentsInChildren<LineRenderer>();
+        //laserRenderer = GetComponentsInChildren<LineRenderer>();
     }
 
     //public void GunAdd() {
