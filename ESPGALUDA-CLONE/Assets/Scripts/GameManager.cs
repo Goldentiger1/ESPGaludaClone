@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-    public enum GameState { Normal, Kakusei, KakuseiOver }    
+    public enum GameState { Normal, Kakusei, KakuseiOver }
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager instance;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Text goldText;
 
     public float score;
+    public Canvas PauseCanvas;
 
     public GameObject explosion;
     public GameObject blood;
@@ -33,8 +35,10 @@ public class GameManager : MonoBehaviour {
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
-    public void CreateCrystals(int number, Transform enemy) {
-        for (int i = 0; i < number; i++) {
+    public void CreateCrystals(int number, Transform enemy)
+    {
+        for (int i = 0; i < number; i++)
+        {
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -42,8 +46,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void CreateGold (int number, Transform enemy) {
-        for (int i = 0; i < number; i++) {
+    public void CreateGold(int number, Transform enemy)
+    {
+        for (int i = 0; i < number; i++)
+        {
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -51,19 +57,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void Explosion(int number, Transform enemy) {
+    public void Explosion(int number, Transform enemy)
+    {
 
-        for (int o = 0; o < number; o++) {
+        for (int o = 0; o < number; o++)
+        {
             float radius = Mathf.Log(o + 1, 2); // distance from center
             float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
-            var expl = Instantiate(explosion, enemy.position + offset, Quaternion.Euler(90,0,0));
+            var expl = Instantiate(explosion, enemy.position + offset, Quaternion.Euler(90, 0, 0));
             Destroy(expl, 0.5f);
         }
     }
 
-    public void Blood (int number, Transform enemy) {
-        for (int o = 0; o < number; o++) {
+    public void Blood(int number, Transform enemy)
+    {
+        for (int o = 0; o < number; o++)
+        {
             float radius = Mathf.Log(o + 1, 2); // distance from center
             float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -72,23 +82,27 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void EnemyKilled(EnemyBehaviour e) {
+    public void EnemyKilled(EnemyBehaviour e)
+    {
         score += e.score;
         UpdateLivesScoreText();
     }
 
 
-    public void UpdateLivesScoreText() {
+    public void UpdateLivesScoreText()
+    {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
         crystalText.text = "Crystals: " + (int)play.Crystals;
         goldText.text = "Gold: " + play.Gold;
     }
 
-    public void LifeLost() {
+    public void LifeLost()
+    {
         play.Lives--;
         UpdateLivesScoreText();
-        if (play.Lives < 0) {
+        if (play.Lives < 0)
+        {
             scoreText.text = "You died!";
             statusText.text = "Next time";
             goldText.text = "learn to play,";
@@ -97,28 +111,67 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void LifeAdd() {
+    public void LifeAdd()
+    {
         play.Lives++;
         UpdateLivesScoreText();
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
         gameState = GameState.Normal;
         player = GameObject.FindGameObjectWithTag("Player");
         Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
-	}
+        PauseCanvas = GameObject.Find("PauseCanvas").GetComponent<Canvas>();
+    }
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
     }
 
     // Update is called once per frame
-    void Update () {
-        if (gameState == GameState.Kakusei) {
+    void Update()
+    {
+        if (gameState == GameState.Kakusei)
+        {
             Time.timeScale = 0.5f;
-        } else Time.timeScale = 1.0f;
+        }
+        else Time.timeScale = 1.0f;
+
+        PauseON();
+    }
+
+    public void PauseON()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            PauseCanvas.enabled = true;
+               
+        }
+
+        if (PauseCanvas.enabled == true)
+        {
+            Time.timeScale = 0;
+        }
+
+    }
+
+    public void PauseOFF()
+    {
+        PauseCanvas.enabled = false;
+    }
+
+    public void ReStart()
+    {
+        SceneManager.LoadScene("Level01");
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }

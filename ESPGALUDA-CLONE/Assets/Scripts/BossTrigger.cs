@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossTrigger : MonoBehaviour {
-    public BossMovement bM;
+    public BossSpawner bM;
 
     void Start()
     {
-        bM = GameObject.Find("Boss").GetComponent<BossMovement>();
+        bM = GameObject.Find("BossSpawner").GetComponent<BossSpawner>();
         bM.enabled = false;
     }
 
