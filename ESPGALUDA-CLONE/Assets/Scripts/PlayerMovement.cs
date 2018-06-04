@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float Hitpoints;
     public float Lives;
     public float Crystals;
-    public float Gold;
+    
     //public float laserTimer;
     PlayerShooting ps;
 
@@ -94,9 +94,6 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         Crystals += 1;
     }
 
-public void GainGold () {
-        Gold += 1;
-    }
 
     void Update() {
         if (invincibleTimer > 0) {
