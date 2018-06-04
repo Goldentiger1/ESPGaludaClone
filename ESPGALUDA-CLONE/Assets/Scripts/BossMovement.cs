@@ -12,7 +12,7 @@ public class BossMovement : MonoBehaviour{
     void Start()
     {
         moveTowards = GameObject.Find("Waypoint01").GetComponent<Transform>();
-      
+        localpos = transform.position - World.center.position;
     }
 
     void Update()
