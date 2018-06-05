@@ -202,11 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629ee9029fda2b74aad7134d05432368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalReward: 10
+  crystalReward: 7
   expl: 5
   blood: 0
   bullets: []
-  hitpoints: 5
+  hitpoints: 7
   score: 250
   fireRate: 0.2
   kakuseiFireRate: 0
