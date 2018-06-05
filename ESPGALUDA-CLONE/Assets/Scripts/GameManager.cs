@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
         else Time.timeScale = 1.0f;
 
         PauseON();
+
     }
 
     public void PauseON()
@@ -162,13 +163,18 @@ public class GameManager : MonoBehaviour
         if (PauseCanvas.enabled == true)
         {
             Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.C)) {
+                PauseCanvas.enabled = !PauseCanvas.enabled;
+            }
         }
 
     }
 
     public void PauseOFF()
     {
-        PauseCanvas.enabled = false;
+                PauseCanvas.enabled = false;
+            
+        
     }
 
     public void ReStart()
