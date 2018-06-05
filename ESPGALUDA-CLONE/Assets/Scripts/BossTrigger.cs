@@ -19,7 +19,7 @@ public class BossTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider box)
     {
-       if(box.tag == "Player")
+       if(box.gameObject.layer == LayerMask.NameToLayer("Camera"))
         {
             bH.SetActive(true);
             bM.enabled = true;

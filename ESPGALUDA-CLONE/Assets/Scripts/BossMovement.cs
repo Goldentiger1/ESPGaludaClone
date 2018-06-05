@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
+    public Vector3 localPos;
     public Transform moveTowards;
     public float speed;
     public bool onWaypoint = false;
-    public float radius;
-    public float angle;
-    public float timeNow;
+    public float startTime;
 
     void Start()
     {
@@ -18,13 +17,15 @@ public class BossMovement : MonoBehaviour
 
     void Update()
     {
-        float movement = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, moveTowards.position, movement);
-        if(transform.position == moveTowards.position && onWaypoint == false)
+        float move = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, moveTowards.position, move);
+        if(Vector3.Distance(transform.position, moveTowards.position) < 0.01f && onWaypoint == false)
         {
-            timeNow = Time.time;
             onWaypoint = true;
-            transform.position = Vector3.right * Mathf.Sin(Time.time - timeNow);
+            startTime = Time.time;
+            localPos = World.center.position - transform.position;
+                
+                // Vector3.right * Mathf.Sin(Time.time - startTime);
         }
     }
 }
