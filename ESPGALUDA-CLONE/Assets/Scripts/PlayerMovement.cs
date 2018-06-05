@@ -138,11 +138,11 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         if (ps.MovementSlowdown())
         {
         Speed = slowSpeed; // Player Movement should be Slower.
-        print("Hidastuu");
+        // print("Hidastuu");
 
         } else {
         Speed = normalSpeed; // Player Movement should be Faster.
-        print("Nopeutta lisää");
+        //print("Nopeutta lisää");
         }
 
 
