@@ -55,6 +55,8 @@ GameObject:
   - component: {fileID: 4010549671965194}
   - component: {fileID: 65051334120263390}
   - component: {fileID: 114393041295883050}
+  - component: {fileID: 114996536270557970}
+  - component: {fileID: 114585009591103906}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -488,9 +490,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2626cb00d0526f243b15f1f8c20abb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localpos: {x: 0, y: 0, z: 0}
   moveTowards: {fileID: 0}
   speed: 10
+  onWaypoint: 0
+  radius: 10
+  angle: 1
+  timeNow: 0
+--- !u!114 &114585009591103906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192787275954236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9315d5fa3333af744b6ee5c0c53e34b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114996536270557970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192787275954236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3433ac99835b48e498d98740e28b313d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135701182657444280
 SphereCollider:
   m_ObjectHideFlags: 1
