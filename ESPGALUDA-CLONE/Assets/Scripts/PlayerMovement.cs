@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerMovement : MonoBehaviour, IPlayer {
     // Players localposition variable
@@ -21,6 +20,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float Hitpoints;
     public float Lives;
     public float Crystals;
+    private SpriteRenderer PlaneRenderer;
     
     //public float laserTimer;
     PlayerShooting ps;
@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float Tilt;
     public float turnSpeed;
 
+    public float RendererTimer;
+    public float UnRendererTimer;
     public float invincibleTimer;
     public float invincibilityTime;
     public float invispeed;
@@ -45,18 +47,29 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
 
     public void PlayerHit(float dmg) {
-        if (!Invincible()) {
+        if (!Invincible())
+        {
             invincibleTimer = invincibilityTime;
             Hitpoints -= dmg;
-            
-        }
 
-    //  invincible = true;
-    //invincibleTimer += Time.deltaTime;
-    //if (invincibleTimer < invincibleTickTime) {
-    //  invincible = false;
-    //}
-    GameManager.instance.UpdateLivesScoreText();
+            //if (RendererTimer >= 0)
+            //{
+            //    RendererTimer -= Time.unscaledDeltaTime;
+            //    PlaneRenderer.enabled = false;
+
+            //}
+        }
+        //else if (UnRendererTimer > RendererTimer)
+        //{
+        //    PlaneRenderer.enabled = true;
+        //}
+
+        //  invincible = true;
+        //invincibleTimer += Time.deltaTime;
+        //if (invincibleTimer < invincibleTickTime) {
+        //  invincible = false;
+        //}
+        GameManager.instance.UpdateLivesScoreText();
             if (Hitpoints == 0) {
                 Hitpoints = origHP;
                 GameManager.instance.LifeLost();
@@ -88,6 +101,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
         //laserTimer = GetComponent<PlayerShooting>().laserTimer;
         ps = GetComponent<PlayerShooting>();
+        PlaneRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
  public void GainCrystal () {
