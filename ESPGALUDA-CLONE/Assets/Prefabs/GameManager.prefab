@@ -922,8 +922,7 @@ MonoBehaviour:
   goldText: {fileID: 114130908542703838}
   score: 0
   Gold: 0
-  PauseCanvas: {fileID: 223524286141207104, guid: 735eee88d5084494aa9bf8917856fcf4,
-    type: 2}
+  PauseCanvas: {fileID: 0}
   explosion: {fileID: 1454664746376030, guid: 368a83df0a11ec84783a68e6812aae89, type: 2}
   blood: {fileID: 1082057562236596, guid: 737fdc5ddae2a804da0621c9da4dae13, type: 2}
   crystal: {fileID: 1906735277034234, guid: 282cf7fce76c18e4799695f6f627ae33, type: 2}
@@ -1010,7 +1009,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763844962059510}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
