@@ -9,6 +9,7 @@ public class EnemyTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
     if (other.gameObject.layer == LayerMask.NameToLayer("Camera")) {
             Wave.SetActive(true);
+            //GetComponent<CameraMovement>().speed = 1;
         }    
     }
 
