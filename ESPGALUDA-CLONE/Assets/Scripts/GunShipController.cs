@@ -24,7 +24,6 @@ public class GunShipController : EnemyBehaviour {
     }
 
     void Update(){
-        float movement = speed * Time.deltaTime;
 
         // rotation ->
         Vector3 targetDirection = player.transform.position - transform.position;
@@ -32,8 +31,6 @@ public class GunShipController : EnemyBehaviour {
         Quaternion currentRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.FromToRotation(Vector3.forward, targetDirection);
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, Time.deltaTime * 180);
-
-
 
 
         if (Time.time > nextFire){
