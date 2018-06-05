@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
-            Instantiate(crystal, enemy.position + offset, Quaternion.identity);
+            Instantiate(crystal, enemy.position + offset, Quaternion.Euler(90,0,0));
         }
     }
 

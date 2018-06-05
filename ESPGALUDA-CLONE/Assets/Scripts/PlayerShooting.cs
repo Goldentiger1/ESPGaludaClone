@@ -107,8 +107,11 @@ public class PlayerShooting : MonoBehaviour {
             } else if (Time.unscaledTime > nextFire) {
                 //GameManager.instance.kakusei = false;
                 GameObject clone;
+                GameObject clone1;
                 clone = Instantiate(shot);
+                clone1 = Instantiate(shot);
                 clone.transform.position = shotSpawn.transform.position;
+                clone1.transform.position = shotSpawn1.transform.position;
                 //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
                 //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
                 Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);

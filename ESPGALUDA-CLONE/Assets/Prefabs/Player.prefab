@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dc812c691bbd8489cf13bf827d2ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1425680166918338, guid: 47ec9e3c7b2f3684085600e69c31f490, type: 2}
+  shot: {fileID: 1060993989397356, guid: 17b25d8030e63c04ba703968b8e27c86, type: 2}
   laser: {fileID: 1959884814199538, guid: e140a8955810e6a48840d925b0cb8bcf, type: 2}
   laser1: {fileID: 1959884814199538, guid: e140a8955810e6a48840d925b0cb8bcf, type: 2}
   shotSpawn: {fileID: 4174387613761296}
@@ -432,7 +432,6 @@ MonoBehaviour:
   Hitpoints: 1
   Lives: 3
   Crystals: 0
-  Gold: 0
   expl: 10
   Tilt: 5
   turnSpeed: 5
