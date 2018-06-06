@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float turnSpeed;
 
     public float RendererTimer;
-    public float UnRendererTimer;
+    public float MaxRendererTimer;
+
     public float invincibleTimer;
     public float invincibilityTime;
     public float invispeed;
@@ -57,13 +58,10 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
             GameManager.instance.LifeLost();
             //Hitpoints -= dmg;
 
-            //if (RendererTimer >= 0)
-            //{
-            //    RendererTimer -= Time.unscaledDeltaTime;
-            //    PlaneRenderer.enabled = false;
-
-            //}
+          
         }
+
+       
         //else if (UnRendererTimer > RendererTimer)
         //{
         //    PlaneRenderer.enabled = true;
@@ -88,9 +86,21 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
                 SceneManager.LoadScene("GameOver");
             }
             }
-        }
+    }
+   
+
+    //public void Blinking(float BlinkingTimer)
+    //{
+    //    for (int o = 0; o < BlinkingTimer; o++)
+    //    {
+    //        PlaneRenderer.enabled = !PlaneRenderer.enabled;
+    //        //coroutine = WaitAndPrint(2.0f);
+    //        BlinkingTimer = 0.2f;
+    //        RendererTimer = BlinkingTimer;
+    //    }
     //}
     //}
+
 
     public void OnTriggerEnter(Collider other) { {
             if (other.gameObject.layer == LayerMask.NameToLayer("Flying Enemies")) {
@@ -114,7 +124,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         PlaneRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
- public void GainCrystal () {
+    public void GainCrystal () {
         Crystals += 1;
     }
 
@@ -122,6 +132,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     void Update() {
         if (invincibleTimer > 0) {
             invincibleTimer -= Time.unscaledDeltaTime;
+            PlaneRenderer.enabled = ((int)(invincibleTimer * 8) % 2 == 0);
+            GetComponentInChildren<BoxCollider>().enabled = false;
+        }
+        else {
+            invincibleTimer = 0;
+            PlaneRenderer.enabled = true;
+            GetComponentInChildren<BoxCollider>().enabled = true;
         }
         Crystals = Mathf.Clamp(Crystals, 0, 500);
 
