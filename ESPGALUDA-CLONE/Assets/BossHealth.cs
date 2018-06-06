@@ -11,12 +11,14 @@ public class BossHealth : EnemyBehaviour
     void Start()
     {
         bossHealthSlider = GameObject.Find("BossHealthSlider").GetComponent<Slider>();
+        bossHealthSlider.maxValue = 100f;
     }
 
     void Update()
     {
         currentHealth = (int)hitpoints;
         bossHealthSlider.value = currentHealth;
+        
     }
 
 }

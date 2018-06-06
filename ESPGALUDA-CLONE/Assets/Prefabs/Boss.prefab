@@ -79,21 +79,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1355329089040580
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4601063257492794}
-  m_Layer: 9
-  m_Name: BulletDirection
-  m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1367193818662116
 GameObject:
   m_ObjectHideFlags: 1
@@ -173,21 +158,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1848985010628210
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4346178251097096}
-  m_Layer: 9
-  m_Name: BulletDirection
-  m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &4010549671965194
 Transform:
   m_ObjectHideFlags: 1
@@ -235,39 +205,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448782390647100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4652203743673464}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4346178251097096
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848985010628210}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4652203743673464}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4601063257492794
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355329089040580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4627517124803558}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4627517124803558
 Transform:
   m_ObjectHideFlags: 1
@@ -280,7 +224,6 @@ Transform:
   m_Children:
   - {fileID: 4128393898426404}
   - {fileID: 4826983172472610}
-  - {fileID: 4601063257492794}
   m_Father: {fileID: 4737687748047850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -296,7 +239,6 @@ Transform:
   m_Children:
   - {fileID: 4087466518913840}
   - {fileID: 4181152412952948}
-  - {fileID: 4346178251097096}
   m_Father: {fileID: 4737687748047850}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -321,13 +263,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1208813940946124}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4627517124803558}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4993326874632466
 Transform:
   m_ObjectHideFlags: 1
@@ -490,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2626cb00d0526f243b15f1f8c20abb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localPos: {x: 0, y: 0, z: 0}
   moveTowards: {fileID: 0}
   speed: 10
   onWaypoint: 0
@@ -509,7 +452,7 @@ MonoBehaviour:
   expl: 0
   blood: 0
   bullets: []
-  hitpoints: 1000
+  hitpoints: 100
   score: 0
   fireRate: 0
   kakuseiFireRate: 0
@@ -529,6 +472,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3433ac99835b48e498d98740e28b313d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Patterns: 0
+  bossPosition: {fileID: 0}
+  playerPosition: {fileID: 0}
+  fired: 1
+  bossGun01: {fileID: 0}
+  bossGun02: {fileID: 0}
+  bulletSpawn01: {fileID: 0}
+  bulletSpawn02: {fileID: 0}
+  bullet: {fileID: 1196339410733112, guid: 06eb8c5f5a34f0044bd7ad2d4fbd5ced, type: 2}
 --- !u!135 &135701182657444280
 SphereCollider:
   m_ObjectHideFlags: 1

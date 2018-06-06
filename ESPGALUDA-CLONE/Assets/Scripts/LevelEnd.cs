@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Camera")) {
-            Time.timeScale = 0;
-            print("LOPPU");
-        }
-    }
+    
 }
