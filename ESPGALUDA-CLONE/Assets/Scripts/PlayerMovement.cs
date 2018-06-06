@@ -83,8 +83,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
                 GameManager.instance.Explosion(expl, transform);
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 GameManager.instance.PlayerDead();
-                GetComponentInChildren<PlayerMovement>().enabled = false;
-            deathTimer += Time.unscaledDeltaTime * 5;
+                //GetComponentInChildren<BoxCollider>().enabled = false;
+                //deathTimer += Time.unscaledDeltaTime * 5;
                 if (deathTimer >= 1.5f) {
                 GameManager.instance.AudioStop();
                 SceneManager.LoadScene("GameOver");
@@ -134,12 +134,17 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
 
     void Update() {
+        if (Lives <= 0) {
+            deathTimer += Time.unscaledDeltaTime / 2;
+        }
+        if (Lives >= 1)
         if (invincibleTimer > 0) {
             invincibleTimer -= Time.unscaledDeltaTime;
             PlaneRenderer.enabled = ((int)(invincibleTimer * 8) % 2 == 0);
             GetComponentInChildren<BoxCollider>().enabled = false;
         }
         else {
+            if (Lives >= 1)
             invincibleTimer = 0;
             PlaneRenderer.enabled = true;
             GetComponentInChildren<BoxCollider>().enabled = true;
