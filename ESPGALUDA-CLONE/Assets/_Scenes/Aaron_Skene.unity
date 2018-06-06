@@ -194,6 +194,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4395887988236512, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174387613761296, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.266
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9459bb6a770d1e64590a99fd3574eb2b, type: 2}
   m_IsPrefabParent: 0
@@ -306,6 +314,185 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &729051785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 729051786}
+  - component: {fileID: 729051788}
+  - component: {fileID: 729051787}
+  m_Layer: 0
+  m_Name: BossBattle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729051786
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729051785}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1550001501}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729051787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729051785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1137554331, guid: 8fbbb066689c25147bc9215ea62dbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventName: BossTheme
+  _eventID: 0
+  _overrideEventTriggerAction: 0
+  _overrideParameters:
+    _overrideIncomingEventAction: 0
+    _incomingEventAction: 0
+    _overrideEventAction: 0
+    _type: 0
+    _floatParameter: 1
+    _stringParameter: 
+    _switchPresetData:
+      _sourcePreset: 
+      _targetPreset: 
+    _dspParameterData:
+      _dspType: 0
+      _parameter: 
+      _value: 0
+      _time: 0
+      _curve: 0.5
+    _transitionToSnapshotData:
+      _snapshot: 
+      _timeToReach: 0
+--- !u!114 &729051788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729051785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -71199202, guid: 8fbbb066689c25147bc9215ea62dbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numVirtualizationEvents: 100
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 0
+  _priority: 128
+  _panLevel: 1
+  _spreadLevel: 0
+  _spatialize: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _customCurvesType: 0
+  _customCurvesName: 
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _notifyParentComponent: 0
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _musicTimeResetOnPlay: 0
+  _midiProperties:
+    _overrideParentNoteTracking: 0
+    _noteTracking: 0
+    _keyRangeMin: 0
+    _keyRangeMax: 127
+    _velocityRangeMin: 0
+    _velocityRangeMax: 127
+    _channelRangeMin: 1
+    _channelRangeMax: 16
+    _rootNote: -36
+    _transpose: 0
+    _velocity: 0
+  _overrideSpatializeProperty: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 8300000, guid: 0848dc4638ba2be45b05e991cc9ae347, type: 3}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _ignoreNativeLoop: 0
+  _randomizeStart: 0
+  _randomizeStartPercentage: 100
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _startLoopMarkerIndex: 0
+  _endLoopMarkerIndex: 1
+  _loopRegionIndex: 0
+  _randomizeStartLoopMarkerIndex: 0
+  _randomizeEndLoopMarkerIndex: 0
+  _randomizeRegionIndex: 0
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _syncRegionsWithTempo: 0
+  _audioClipTempo: 120
+  _regions: []
 --- !u!1001 &888257106
 Prefab:
   m_ObjectHideFlags: 0
@@ -438,6 +625,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114660220892923230, guid: 1cf4fbf8dcbf7d042861878c1d60168d,
+        type: 2}
+      propertyPath: bossAudioEvent
+      value: BossTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660220892923230, guid: 1cf4fbf8dcbf7d042861878c1d60168d,
+        type: 2}
+      propertyPath: stopAudioEvent
+      value: AudioStop
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cf4fbf8dcbf7d042861878c1d60168d, type: 2}
   m_IsPrefabParent: 0
@@ -504,6 +701,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.size
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4361759921528560, guid: 8f37bf0d058db2249a2ae358fb60479a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -536,6 +738,66 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[3]
+      value: BossTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[4]
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[5]
+      value: Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[6]
+      value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[7]
+      value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[8]
+      value: PlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[9]
+      value: PlayerHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[10]
+      value: PopcornDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[11]
+      value: Protocrystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[12]
+      value: SoldierDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627402893392228, guid: 8f37bf0d058db2249a2ae358fb60479a,
+        type: 2}
+      propertyPath: _eventList.Array.data[13]
+      value: TowerDeath
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f37bf0d058db2249a2ae358fb60479a, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1550001501 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4600565285237578, guid: 8f37bf0d058db2249a2ae358fb60479a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1550001500}
