@@ -162,10 +162,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ReStart() {
+        AudioStop();
         SceneManager.LoadScene("Level01");
     }
 
     public void ToMenu() {
+        AudioStop();
         SceneManager.LoadScene("MenuScene");
     }
 }
