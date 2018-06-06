@@ -637,8 +637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9315d5fa3333af744b6ee5c0c53e34b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalReward: 0
-  expl: 0
+  crystalReward: 50
+  expl: 20
   blood: 0
   bullets: []
   hitpoints: 100
@@ -647,7 +647,7 @@ MonoBehaviour:
   kakuseiFireRate: 0
   powerupProbability: 0
   spawnedAtDeath: {fileID: 0}
-  destroyAudioEvent: 
+  destroyAudioEvent: BossDeath
   currentHealth: 0
   bossHealthSlider: {fileID: 0}
 --- !u!114 &114718381274603252

@@ -12,7 +12,7 @@ public class BossTrigger : MonoBehaviour {
         bM = GameObject.Find("BossSpawner").GetComponent<BossSpawner>();
         cM = GameObject.Find("CameraObject").GetComponent<CameraMovement>();
         bH = GameObject.Find("BossHealthUI");
-        //bH.SetActive(false);
+        bH.SetActive(false);
         bM.enabled = false;
 
     }
