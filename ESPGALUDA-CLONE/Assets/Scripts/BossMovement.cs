@@ -7,25 +7,43 @@ public class BossMovement : MonoBehaviour
     public Vector3 localPos;
     public Transform moveTowards;
     public float speed;
-    public bool onWaypoint = false;
+    public bool inWaypoint = true;
+    public bool movingToWaypoint = true;
     public float startTime;
+    public Vector3 target;
 
     void Start()
     {
+        localPos = transform.position - World.center.position;
         moveTowards = GameObject.Find("BossWaypoint").GetComponent<Transform>();
+        target = new Vector3(0, 0, 9);
     }
 
     void Update()
     {
         float move = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, moveTowards.position, move);
-        if(Vector3.Distance(transform.position, moveTowards.position) < 0.01f && onWaypoint == false)
+        if (movingToWaypoint)
         {
-            onWaypoint = true;
-            startTime = Time.time;
-            localPos = World.center.position - transform.position;
-                
-                // Vector3.right * Mathf.Sin(Time.time - startTime);
+            localPos = Vector3.MoveTowards(localPos, target, move);
+            if (Vector3.Distance(localPos, target) < 0.01f)
+            {
+                movingToWaypoint = false;
+                startTime = Time.time;
+            }
+        } else {
+            localPos = target + Vector3.right * Mathf.Sin((Time.time - startTime) * 0.8f) * 3;
         }
+        transform.position = World.center.position + localPos;
+
+        /*
+         * if (movingToWaypoint) {
+         *     move towards waypoint
+         *     if (inWaypoint) {
+         *         movingToWaypoint = false;
+         *     }
+         * } else {
+         *     liike sivuttain jne
+         * }
+         */
     }
 }
