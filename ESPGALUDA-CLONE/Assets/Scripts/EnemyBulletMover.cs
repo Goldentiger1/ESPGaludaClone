@@ -6,6 +6,7 @@ public class EnemyBulletMover : MonoBehaviour {
 
     public float speed;
     public float speednumber;
+    public float destroytime;
 
     public Vector3 localPos;
 
@@ -18,7 +19,7 @@ public class EnemyBulletMover : MonoBehaviour {
     void Start() {
         //playfieldCenter = GameObject.Find("CameraObject").transform;
         localPos = transform.position - World.center.position;
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, destroytime);
         spriter = GetComponentInChildren<SpriteRenderer>();
     }
 
