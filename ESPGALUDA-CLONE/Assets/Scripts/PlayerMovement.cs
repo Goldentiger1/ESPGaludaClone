@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour, IPlayer {
     // Players localposition variable
@@ -16,8 +17,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float ZMax;
     public float ZMin;
 
-    public float origHP;
-    public float Hitpoints;
+    //public float origHP;
+    //public float Hitpoints;
     public float Lives;
     public float Crystals;
     private SpriteRenderer PlaneRenderer;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float invincibleTimer;
     public float invincibilityTime;
     public float invispeed;
+    public float deathTimer;
 
     public string deathAudioEvent;
 
@@ -47,10 +49,13 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
 
     public void PlayerHit(float dmg) {
-        if (!Invincible())
-        {
+        // if (Invincible()) {
+        //   GetComponentInChildren<BoxCollider>().enabled = false;
+        //} else { GetComponentInChildren<BoxCollider>().enabled = true;}
+        if (!Invincible()) {
             invincibleTimer = invincibilityTime;
-            Hitpoints -= dmg;
+            GameManager.instance.LifeLost();
+            //Hitpoints -= dmg;
 
             //if (RendererTimer >= 0)
             //{
@@ -69,17 +74,22 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         //if (invincibleTimer < invincibleTickTime) {
         //  invincible = false;
         //}
-        GameManager.instance.UpdateLivesScoreText();
-            if (Hitpoints == 0) {
-                Hitpoints = origHP;
-                GameManager.instance.LifeLost();
-                if (Lives == 0) {
-                    Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
-                    GameManager.instance.Explosion(expl, transform);
-                    Destroy(gameObject);
-                }
+        //if (Hitpoints == 0) {
+        //Hitpoints = origHP;
+        //GameManager.instance.LifeLost();
+        if (Lives <= 0) {
+                Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
+                GameManager.instance.Explosion(expl, transform);
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                GameManager.instance.PlayerDead();
+                GetComponentInChildren<PlayerMovement>().enabled = false;
+            deathTimer += Time.unscaledDeltaTime * 5;
+                if (deathTimer >= 1.5f) {
+                SceneManager.LoadScene("GameOver");
+            }
             }
         }
+    //}
     //}
 
     public void OnTriggerEnter(Collider other) { {
@@ -94,7 +104,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
     {
-        origHP = Hitpoints;
+        //origHP = Hitpoints;
         Rb = GetComponent<Rigidbody>();
         
         localPos = transform.position - World.center.position;
