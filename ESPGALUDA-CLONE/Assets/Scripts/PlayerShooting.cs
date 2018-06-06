@@ -27,6 +27,9 @@ public class PlayerShooting : MonoBehaviour {
     //private LineRenderer laserRenderer;
 
     public string bulletAudioEvent;
+    public string laserAudioEvent;
+    public string laserStopAudioEvent;
+
 
     public PlayerMovement play;
 
@@ -96,13 +99,14 @@ public class PlayerShooting : MonoBehaviour {
             foreach (var laserRenderer in lasers) {
                 laserRenderer.enabled = false;
             }
+            Fabric.EventManager.Instance.PostEvent(laserStopAudioEvent);
             laserTimer = 0;
             nextFire = Time.unscaledTime + fireRate;
         }
 
         if (Input.GetButton("Fire1")) {
 
-            if (laserTimer >= 2) {
+            if (laserTimer >= 2) { 
                 laserTimer = 2;
                 //nextFire = Time.unscaledTime + 10;
                 int enemyLayerMask = LayerMask.GetMask("Enemy", "Flying Enemies", "Ground Enemies");
