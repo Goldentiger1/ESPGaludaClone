@@ -149,6 +149,25 @@ public class GameManager : MonoBehaviour {
                 Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             }
         }
+        if (Input.GetButtonDown("X360_Start"))
+        {
+            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            PauseCanvas.enabled = true;
+            Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+        }
+
+        if (PauseCanvas.enabled == true)
+        {
+            Time.timeScale = 0;
+           
+            if (Input.GetButtonDown("X360_A"))
+            {
+                PauseCanvas.enabled = !PauseCanvas.enabled;
+                Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
+            }
+        }
     }
 
     public void AudioStop () {
@@ -157,7 +176,6 @@ public class GameManager : MonoBehaviour {
 
     public void PauseOFF() {
         PauseCanvas.enabled = false;
-
 
     }
 
