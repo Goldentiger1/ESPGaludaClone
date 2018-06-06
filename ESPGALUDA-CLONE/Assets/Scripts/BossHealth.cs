@@ -8,6 +8,8 @@ public class BossHealth : EnemyBehaviour
     public int currentHealth;
     public Slider bossHealthSlider;
     public CameraMovement cameraMove;
+    public string stopAudioEvent;
+    public string bgmAudioEvent;
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class BossHealth : EnemyBehaviour
         bossHealthSlider.value = currentHealth;
         if(currentHealth <= 0)
         {
+            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             cameraMove.enabled = true;
         }
         
