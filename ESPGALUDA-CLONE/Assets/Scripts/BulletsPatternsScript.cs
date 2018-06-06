@@ -25,11 +25,10 @@ public class BulletsPatternsScript : MonoBehaviour
     public Transform bulletSpawn201;
     public Transform bulletSpawn202;
     public Transform bulletSpawn203;
-    public float speed;
     public GameObject bullet;
-    public float timer;
-    public float timeToShoot = 2;
     private float lastFire;
+    public float timer;
+    public float ticktime;
 
     void Start()
     {
@@ -45,22 +44,19 @@ public class BulletsPatternsScript : MonoBehaviour
         bulletSpawn201 = bossGun02.Find("Shotspawn1");
         bulletSpawn202 = bossGun02.Find("Shotspawn2");
         bulletSpawn203 = bossGun02.Find("Shotspawn3");
-        
+
     }
 
     void Update()
     {
-        float movement = speed * Time.deltaTime;
-        timer = speed * Time.deltaTime;
+        timer += Time.deltaTime;
         if (Vector3.Distance(bossPosition.position, playerPosition.position) < 18f)
         {
-            if(Patterns == BulletPatterns.Nothing && fired == true)
+
+            if (Patterns == BulletPatterns.Nothing && fired == true)
             {
-                Patterns = BulletPatterns.Regular;
-                fired = false;
-            }
-            if(Patterns == BulletPatterns.Regular && fired == false)
-            {  
+                while (timer > ticktime)
+                {
                     Instantiate(bullet, bulletSpawn100.position, bulletSpawn100.rotation);
                     Instantiate(bullet, bulletSpawn101.position, bulletSpawn101.rotation);
                     Instantiate(bullet, bulletSpawn102.position, bulletSpawn102.rotation);
@@ -69,7 +65,13 @@ public class BulletsPatternsScript : MonoBehaviour
                     Instantiate(bullet, bulletSpawn201.position, bulletSpawn201.rotation);
                     Instantiate(bullet, bulletSpawn202.position, bulletSpawn202.rotation);
                     Instantiate(bullet, bulletSpawn203.position, bulletSpawn203.rotation);
+                    timer = 0;
+                }
             }
         }
     }
 }
+                
+            
+        
+    
