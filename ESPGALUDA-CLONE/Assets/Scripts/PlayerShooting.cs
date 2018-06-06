@@ -52,6 +52,24 @@ public class PlayerShooting : MonoBehaviour {
             }
         }
 
+        if (Input.GetButtonDown("X360_X"))
+        {
+            if (GameManager.instance.gameState == GameState.Normal)
+            {
+                if (play.Crystals >= 25)
+                {
+                    GameManager.instance.gameState = GameState.Kakusei;
+                }
+                else
+                {
+                    GameManager.instance.gameState = GameState.KakuseiOver;
+                }
+            }
+            else
+            {
+                GameManager.instance.gameState = GameState.Normal;
+            }
+        }
         //if (Input.GetButtonDown("Fire2")) {
         //    if (play.Crystals >= 25) {
         //        GameManager.instance.gameState = (GameManager.instance.gameState == GameState.Normal) ? GameState.Kakusei : GameState.Normal;

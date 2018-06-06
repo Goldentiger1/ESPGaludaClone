@@ -7,6 +7,8 @@ public class BossSpawner : MonoBehaviour {
     public Transform spawnpoint;
     public GameObject boss;
     public bool spawned = false;
+    public string bossAudioEvent;
+    public string stopAudioEvent;
 
     void Start()
     {
@@ -19,6 +21,8 @@ public class BossSpawner : MonoBehaviour {
         {
             var clone = Instantiate(boss, spawnpoint.position, Quaternion.identity);
             spawned = true;
+            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            Fabric.EventManager.Instance.PostEvent(bossAudioEvent);
         }
     }
 
