@@ -19,8 +19,9 @@ public class CrystalManager : MonoBehaviour {
 
     void Update() {
         KakuseiModeIndicator();
-        GameManager.instance.UpdateLivesScoreText();
+        //GameManager.instance.UpdateLivesScoreText();
         if (GameManager.instance.gameState == GameState.Kakusei) {
+            GameManager.instance.UpdateLivesScoreText();
             player.Crystals -= Time.unscaledDeltaTime * depleteSpeed;
             if (player.Crystals <= 0) {
                 GameManager.instance.gameState = GameState.KakuseiOver;

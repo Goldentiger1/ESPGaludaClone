@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour, IPlayer {
     // Players localposition variable
@@ -16,8 +17,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float ZMax;
     public float ZMin;
 
-    public float origHP;
-    public float Hitpoints;
+    //public float origHP;
+    //public float Hitpoints;
     public float Lives;
     public float Crystals;
     private SpriteRenderer PlaneRenderer;
@@ -33,12 +34,15 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float turnSpeed;
 
     public float RendererTimer;
-    public float UnRendererTimer;
+    public float MaxRendererTimer;
+
     public float invincibleTimer;
     public float invincibilityTime;
     public float invispeed;
+    public float deathTimer;
 
     public string deathAudioEvent;
+    public string playerHitAudioEvent;
 
     bool Invincible() {
         return invincibleTimer > 0;
@@ -47,18 +51,20 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
 
     public void PlayerHit(float dmg) {
-        if (!Invincible())
-        {
+        GameManager.instance.Explosion(2, transform);
+        Fabric.EventManager.Instance.PostEvent(playerHitAudioEvent);
+        // if (Invincible()) {
+        //   GetComponentInChildren<BoxCollider>().enabled = false;
+        //} else { GetComponentInChildren<BoxCollider>().enabled = true;}
+        if (!Invincible()) {
             invincibleTimer = invincibilityTime;
-            Hitpoints -= dmg;
+            GameManager.instance.LifeLost();
+            //Hitpoints -= dmg;
 
-            //if (RendererTimer >= 0)
-            //{
-            //    RendererTimer -= Time.unscaledDeltaTime;
-            //    PlaneRenderer.enabled = false;
-
-            //}
+          
         }
+
+       
         //else if (UnRendererTimer > RendererTimer)
         //{
         //    PlaneRenderer.enabled = true;
@@ -69,18 +75,33 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         //if (invincibleTimer < invincibleTickTime) {
         //  invincible = false;
         //}
-        GameManager.instance.UpdateLivesScoreText();
-            if (Hitpoints == 0) {
-                Hitpoints = origHP;
-                GameManager.instance.LifeLost();
-                if (Lives == 0) {
-                    Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
-                    GameManager.instance.Explosion(expl, transform);
-                    Destroy(gameObject);
-                }
+        //if (Hitpoints == 0) {
+        //Hitpoints = origHP;
+        //GameManager.instance.LifeLost();
+        if (Lives <= 0) {
+                Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
+                GameManager.instance.Explosion(expl, transform);
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                GameManager.instance.PlayerDead();
+            GetComponentInChildren<PlayerShooting>().enabled = false;
+            //GetComponentInChildren<BoxCollider>().enabled = false;
+            //deathTimer += Time.unscaledDeltaTime * 5;
             }
-        }
+    }
+   
+
+    //public void Blinking(float BlinkingTimer)
+    //{
+    //    for (int o = 0; o < BlinkingTimer; o++)
+    //    {
+    //        PlaneRenderer.enabled = !PlaneRenderer.enabled;
+    //        //coroutine = WaitAndPrint(2.0f);
+    //        BlinkingTimer = 0.2f;
+    //        RendererTimer = BlinkingTimer;
+    //    }
     //}
+    //}
+
 
     public void OnTriggerEnter(Collider other) { {
             if (other.gameObject.layer == LayerMask.NameToLayer("Flying Enemies")) {
@@ -94,7 +115,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     // Perform it on game start. Create Player ship's Rigidbody. 
     void Start()
     {
-        origHP = Hitpoints;
+        //origHP = Hitpoints;
         Rb = GetComponent<Rigidbody>();
         
         localPos = transform.position - World.center.position;
@@ -104,14 +125,30 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         PlaneRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
- public void GainCrystal () {
+    public void GainCrystal () {
         Crystals += 1;
     }
 
 
     void Update() {
+        if (Lives <= 0) {
+            deathTimer += Time.unscaledDeltaTime / 2;
+            if (deathTimer >= 1.5f) {
+                GameManager.instance.AudioStop();
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+        if (Lives >= 1)
         if (invincibleTimer > 0) {
             invincibleTimer -= Time.unscaledDeltaTime;
+            PlaneRenderer.enabled = ((int)(invincibleTimer * 8) % 2 == 0);
+            GetComponentInChildren<BoxCollider>().enabled = false;
+        }
+        else {
+            if (Lives >= 1)
+            invincibleTimer = 0;
+            PlaneRenderer.enabled = true;
+            GetComponentInChildren<BoxCollider>().enabled = true;
         }
         Crystals = Mathf.Clamp(Crystals, 0, 500);
 

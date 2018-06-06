@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-    public enum GameState { Normal, Kakusei, KakuseiOver }
+public enum GameState { Normal, Kakusei, KakuseiOver }
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
@@ -31,27 +30,25 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
 
     public string bgmAudioEvent;
+    public string pauseAudioEvent;
+    public string stopAudioEvent;
 
     public PlayerMovement play;
 
 
     private const float GOLDEN_RATIO = 1.61803399f; // https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
-    public void CreateCrystals(int number, Transform enemy)
-    {
-        for (int i = 0; i < number; i++)
-        {
+    public void CreateCrystals(int number, Transform enemy) {
+        for (int i = 0; i < number; i++) {
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
-            Instantiate(crystal, enemy.position + offset, Quaternion.Euler(90,0,0));
+            Instantiate(crystal, enemy.position + offset, Quaternion.Euler(90, 0, 0));
         }
     }
 
-    public void CreateGold(int number, Transform enemy)
-    {
-        for (int i = 0; i < number; i++)
-        {
+    public void CreateGold(int number, Transform enemy) {
+        for (int i = 0; i < number; i++) {
             float radius = Mathf.Log(i + 1, 2); // distance from center
             float angle = ((i * GOLDEN_RATIO) % 1) * 2 * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -59,11 +56,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Explosion(int number, Transform enemy)
-    {
+    public void Explosion(int number, Transform enemy) {
 
-        for (int o = 0; o < number; o++)
-        {
+        for (int o = 0; o < number; o++) {
             float radius = Mathf.Log(o + 1, 2); // distance from center
             float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -72,10 +67,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Blood(int number, Transform enemy)
-    {
-        for (int o = 0; o < number; o++)
-        {
+    public void Blood(int number, Transform enemy) {
+        for (int o = 0; o < number; o++) {
             float radius = Mathf.Log(o + 1, 2); // distance from center
             float angle = ((o * GOLDEN_RATIO) % 1) * Random.Range(0.5f, 2.0f) * Mathf.PI; // direction of offset in radians
             Vector3 offset = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
@@ -88,44 +81,38 @@ public class GameManager : MonoBehaviour
         Gold += 1;
     }
 
-        public void EnemyKilled(EnemyBehaviour e)
-    {
+    public void EnemyKilled(EnemyBehaviour e) {
         score += e.score * Mathf.Max(Gold / 10, 1);
-        UpdateLivesScoreText();
+        scoreText.text = "Score: " + score;
     }
 
 
-    public void UpdateLivesScoreText()
-    {
+    public void UpdateLivesScoreText() {
         scoreText.text = "Score: " + score;
         statusText.text = "Lives: " + play.Lives;
         crystalText.text = "Crystals: " + (int)play.Crystals;
         goldText.text = "Gold: " + GameManager.instance.Gold;
     }
 
-    public void LifeLost()
-    {
+    public void LifeLost() {
         play.Lives--;
-        UpdateLivesScoreText();
-        if (play.Lives < 0)
-        {
-            scoreText.text = "You died!";
-            statusText.text = "Next time";
-            goldText.text = "learn to play,";
-            crystalText.text = "You idiot!!";
-
-        }
+        statusText.text = "Lives: " + play.Lives;
     }
 
-    public void LifeAdd()
-    {
+    public void PlayerDead() {
+        scoreText.text = "LIFE SUPPORT";
+        statusText.text = "";
+        goldText.text = "CRITICAL";
+        crystalText.text = "";
+    }
+
+    public void LifeAdd() {
         play.Lives++;
-        UpdateLivesScoreText();
+        statusText.text = "Lives: " + play.Lives;
     }
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         play = FindObjectOfType<PlayerMovement>();
         UpdateLivesScoreText();
         gameState = GameState.Normal;
@@ -134,56 +121,51 @@ public class GameManager : MonoBehaviour
         PauseCanvas = GameObject.Find("PauseCanvas").GetComponent<Canvas>();
     }
 
-    void Awake()
-    {
+    void Awake() {
         instance = this;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (gameState == GameState.Kakusei)
-        {
+    void Update() {
+        if (gameState == GameState.Kakusei) {
             Time.timeScale = 0.5f;
-        }
-        else Time.timeScale = 1.0f;
-
+        } else Time.timeScale = 1.0f;
         PauseON();
-
     }
 
-    public void PauseON()
-    {
-        if (Input.GetKeyDown("space"))
-        {
+    public void PauseON() {
+        if (Input.GetKeyDown("space")) {
+            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
             PauseCanvas.enabled = true;
-               
+            Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
         }
 
-        if (PauseCanvas.enabled == true)
-        {
+        if (PauseCanvas.enabled == true) {
             Time.timeScale = 0;
             if (Input.GetKeyDown(KeyCode.C)) {
                 PauseCanvas.enabled = !PauseCanvas.enabled;
+                Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             }
         }
+    }
+
+    public void AudioStop () {
+        Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+    }
+
+    public void PauseOFF() {
+        PauseCanvas.enabled = false;
+
 
     }
 
-    public void PauseOFF()
-    {
-                PauseCanvas.enabled = false;
-            
-        
-    }
-
-    public void ReStart()
-    {
+    public void ReStart() {
         SceneManager.LoadScene("Level01");
     }
 
-    public void ToMenu()
-    {
+    public void ToMenu() {
         SceneManager.LoadScene("MenuScene");
     }
 }
