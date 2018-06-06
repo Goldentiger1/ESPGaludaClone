@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
     public float deathTimer;
 
     public string deathAudioEvent;
+    public string playerHitAudioEvent;
 
     bool Invincible() {
         return invincibleTimer > 0;
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
 
     public void PlayerHit(float dmg) {
+        GameManager.instance.Explosion(2, transform);
+        Fabric.EventManager.Instance.PostEvent(playerHitAudioEvent);
         // if (Invincible()) {
         //   GetComponentInChildren<BoxCollider>().enabled = false;
         //} else { GetComponentInChildren<BoxCollider>().enabled = true;}
@@ -83,6 +86,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
                 GetComponentInChildren<PlayerMovement>().enabled = false;
             deathTimer += Time.unscaledDeltaTime * 5;
                 if (deathTimer >= 1.5f) {
+                GameManager.instance.AudioStop();
                 SceneManager.LoadScene("GameOver");
             }
             }

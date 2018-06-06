@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour {
     public GameState gameState;
 
     public string bgmAudioEvent;
+    public string pauseAudioEvent;
+    public string stopAudioEvent;
 
     public PlayerMovement play;
 
@@ -98,10 +100,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerDead() {
-        scoreText.text = "You died!";
-        statusText.text = "Next time";
-        goldText.text = "You idiot!!";
-        crystalText.text = "learn to play,";
+        scoreText.text = "LIFE SUPPORT";
+        statusText.text = "";
+        goldText.text = "CRITICAL";
+        crystalText.text = "";
     }
 
     public void LifeAdd() {
@@ -133,15 +135,24 @@ public class GameManager : MonoBehaviour {
 
     public void PauseON() {
         if (Input.GetKeyDown("space")) {
+            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
             PauseCanvas.enabled = true;
+            Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
         }
 
         if (PauseCanvas.enabled == true) {
             Time.timeScale = 0;
             if (Input.GetKeyDown(KeyCode.C)) {
                 PauseCanvas.enabled = !PauseCanvas.enabled;
+                Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+                Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             }
         }
+    }
+
+    public void AudioStop () {
+        Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
     }
 
     public void PauseOFF() {
