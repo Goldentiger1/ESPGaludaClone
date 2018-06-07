@@ -641,7 +641,7 @@ MonoBehaviour:
   expl: 20
   blood: 0
   bullets: []
-  hitpoints: 100
+  hitpoints: 200
   score: 0
   fireRate: 0
   kakuseiFireRate: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   bulletSpawn201: {fileID: 0}
   bulletSpawn202: {fileID: 0}
   bulletSpawn203: {fileID: 0}
-  bullet: {fileID: 1196339410733112, guid: 06eb8c5f5a34f0044bd7ad2d4fbd5ced, type: 2}
+  bullet: {fileID: 1364552421525018, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   timer: 0
   ticktime: 0.1
 --- !u!135 &135701182657444280

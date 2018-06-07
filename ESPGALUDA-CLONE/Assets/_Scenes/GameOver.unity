@@ -180,8 +180,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Oh My. Oopsie Woopsie. You seem to have made a fucky ducky. You're dead.
-    Press Space to restart the level, or Q to quit the game.
+  m_Text: Oh my, it seems that you have met your fate. Press A to restart the level,
+    or B to quit the game.
 --- !u!222 &170165799
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Oh My. Oopsie Woopsie. You seem to have made a fucky ducky. You're dead.
-    Press Space to restart the level, or Q to quit the game.
+  m_Text: Oh my, it seems that you have met your fate. Press A to restart the level,
+    or B to quit the game.
 --- !u!222 &288016624
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -715,8 +715,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Oh My. Oopsie Woopsie. You seem to have made a fucky ducky. You're dead.
-    Press Space to restart the level, or Q to quit the game.
+  m_Text: Oh my, it seems that you have met your fate. Press A to restart the level,
+    or B to quit the game.
 --- !u!222 &2102750968
 CanvasRenderer:
   m_ObjectHideFlags: 0

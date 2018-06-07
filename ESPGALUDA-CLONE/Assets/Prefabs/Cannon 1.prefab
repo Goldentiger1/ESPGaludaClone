@@ -178,7 +178,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030797664199076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6620352, y: 0, z: -33.52}
+  m_LocalPosition: {x: -0, y: 0, z: 122.5}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
   - {fileID: 4673092307672644}
@@ -281,7 +281,7 @@ MonoBehaviour:
   expl: 6
   blood: 0
   bullets: []
-  hitpoints: 10
+  hitpoints: 30
   score: 500
   fireRate: 2
   kakuseiFireRate: 2

@@ -14,7 +14,7 @@ public class BossHealth : EnemyBehaviour
     void Start()
     {
         bossHealthSlider = GameObject.Find("BossHealthSlider").GetComponent<Slider>();
-        bossHealthSlider.maxValue = 100f;
+        bossHealthSlider.maxValue = 200f;
         cameraMove = GameObject.Find("CameraObject").GetComponent<CameraMovement>();
     }
 
