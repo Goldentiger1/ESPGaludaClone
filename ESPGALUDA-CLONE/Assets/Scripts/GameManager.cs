@@ -174,6 +174,11 @@ public class GameManager : MonoBehaviour {
                 Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
                 play.normalSpeed = 10;
             }
+
+            if (Input.GetButtonDown("X360_B"))
+            {
+                Application.Quit();
+            }
         }
     }
 
