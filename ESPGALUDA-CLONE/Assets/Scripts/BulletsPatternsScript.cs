@@ -57,6 +57,15 @@ public class BulletsPatternsScript : MonoBehaviour
             {
                 while (timer > ticktime)
                 {
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn100.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn101.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn102.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn103.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn200.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn201.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn202.rotation));
+                    //GetComponent<EnemyBehaviour>().RegisterBullet(Instantiate(bullet, bulletSpawn100.position, bulletSpawn203.rotation));
+
                     Instantiate(bullet, bulletSpawn100.position, bulletSpawn100.rotation);
                     Instantiate(bullet, bulletSpawn101.position, bulletSpawn101.rotation);
                     Instantiate(bullet, bulletSpawn102.position, bulletSpawn102.rotation);
