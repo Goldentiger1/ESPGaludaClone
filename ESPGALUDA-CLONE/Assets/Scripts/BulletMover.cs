@@ -12,7 +12,7 @@ public class BulletMover : MonoBehaviour {
     void Start() {
         //playfieldCenter = GameObject.Find("CameraObject").transform;
         localPos = transform.position - World.center.position;
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, 0.6f);
     }
 
     void Update() {

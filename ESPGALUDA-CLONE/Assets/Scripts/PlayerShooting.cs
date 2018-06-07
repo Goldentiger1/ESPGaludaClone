@@ -116,7 +116,10 @@ public class PlayerShooting : MonoBehaviour {
                     if (Physics.Raycast(laserRenderer.transform.transform.position, Vector3.forward, out hit, maxLaserDistance, enemyLayerMask)) {
                         // todo: piirrä säde viholliseen asti
                         GameObject enemy = hit.collider.gameObject;
-                        enemy.GetComponent<EnemyBehaviour>().TakeDamage(4 * Time.unscaledDeltaTime);
+                        var eb = enemy.GetComponent<EnemyBehaviour>();
+                        if (eb != null) {
+                            eb.TakeDamage(4 * Time.unscaledDeltaTime);
+                        }
                         laserRenderer.SetPosition(1, Vector3.forward * (enemy.transform.position - transform.position).z);
                     } else {
                         // todo: piirrä riittävän pitkä säde
