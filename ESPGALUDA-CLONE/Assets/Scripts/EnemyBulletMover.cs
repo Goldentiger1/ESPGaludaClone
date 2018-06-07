@@ -10,17 +10,24 @@ public class EnemyBulletMover : MonoBehaviour {
 
     public Vector3 localPos;
 
-    public Sprite normal;
-    public Sprite kakusei;
-    public Sprite kakuseiover;
+    //public Sprite normal;
+    //public Sprite kakusei;
+    //public Sprite kakuseiover;
 
-    public SpriteRenderer spriter;
+    //public SpriteRenderer spriter;
+
+    Animator animator;
 
     void Start() {
         //playfieldCenter = GameObject.Find("CameraObject").transform;
         localPos = transform.position - World.center.position;
         Destroy(gameObject, destroytime);
-        spriter = GetComponentInChildren<SpriteRenderer>();
+        //spriter = GetComponentInChildren<SpriteRenderer>();
+        
+    }
+
+    void Awake() {
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update() {
@@ -32,11 +39,14 @@ public class EnemyBulletMover : MonoBehaviour {
         //    speed *= 1.2f;
         //}
         if (GameManager.instance.gameState == GameState.Kakusei) {
-            spriter.sprite = kakusei;
+            animator.Play("Ebullet2");
+            //spriter.sprite = kakusei;
         } else if (GameManager.instance.gameState == GameState.KakuseiOver) {
-            spriter.sprite = kakuseiover;
+            animator.Play("Ebullet3");
+            //spriter.sprite = kakuseiover;
         } else {
-            spriter.sprite = normal;
+            //spriter.sprite = normal;
+            animator.Play("Ebullet1");
         }
 
     }
