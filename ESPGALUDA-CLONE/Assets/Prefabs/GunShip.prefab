@@ -214,7 +214,7 @@ MonoBehaviour:
   spawnedAtDeath: {fileID: 0}
   destroyAudioEvent: 
   gunship: {fileID: 1795110798665340}
-  shot: {fileID: 1196339410733112, guid: 06eb8c5f5a34f0044bd7ad2d4fbd5ced, type: 2}
+  shot: {fileID: 1364552421525018, guid: 35142cf59b7ff7842a61b8fd50770ca1, type: 2}
   shotSpawn: {fileID: 1025433221132484}
   player: {fileID: 0}
   speed: 5

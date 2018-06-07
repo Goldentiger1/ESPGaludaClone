@@ -20,8 +20,11 @@ public class CameraFollow : MonoBehaviour {
 	void LateUpdate () {
         var newpos = transform.localPosition;
 
-        newpos.x = Mathf.Clamp(player.position.x, plane.bounds.min.x + camWidth * 0.5f, plane.bounds.max.x - camWidth * 0.5f);
+        //newpos.x = Mathf.Clamp(player.position.x, plane.bounds.min.x + camWidth * 0.5f, plane.bounds.max.x - camWidth * 0.5f);
+        float playerMax = plane.bounds.max.x;
+        float camMax = playerMax - (camWidth * 0.5f);
 
+        newpos.x = (player.position.x / playerMax) * camMax;
 
         transform.localPosition = newpos;
 	}
