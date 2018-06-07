@@ -18,6 +18,7 @@ public class TowerController : EnemyBehaviour {
 
 
 
+
     //public void TakeDamage(float dmg) {
     //    hitpoints -= dmg;
     //    if (hitpoints < 0) {
@@ -41,7 +42,6 @@ public class TowerController : EnemyBehaviour {
         float nextFire = lastFire + 1 / (GameManager.instance.gameState == GameState.Kakusei ? kakuseiFireRate : fireRate);
 
         if (Time.time > nextFire) {
-
             /*
              GameObject clone0 = Instantiate(shot);
             GameObject clone1 = Instantiate(shot);
