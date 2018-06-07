@@ -14,5 +14,14 @@ public class GameOverScreen : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q)) {
             Application.Quit();
         }
-	}
+
+        if (Input.GetButtonDown("X360_A"))
+        {
+            SceneManager.LoadScene("Level01");
+        }
+        if (Input.GetButtonDown("X360_B"))
+        {
+            Application.Quit();
+        }
+    }
 }
