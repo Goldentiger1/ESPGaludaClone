@@ -12,7 +12,7 @@ public class Pickupmanager : MonoBehaviour {
         if (other.name == "Player") {
             GameObject.FindObjectOfType<GameManager>().LifeAdd();
             Destroy(gameObject);
-            Fabric.EventManager.Instance.PostEvent(pickupAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(pickupAudioEvent);
         }
     }
 }

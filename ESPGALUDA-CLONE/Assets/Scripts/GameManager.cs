@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
         UpdateLivesScoreText();
         gameState = GameState.Normal;
         player = GameObject.FindGameObjectWithTag("Player");
-        Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
+        //Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
         PauseCanvas = GameObject.Find("PauseCanvas").GetComponent<Canvas>();
     }
 
@@ -135,25 +135,25 @@ public class GameManager : MonoBehaviour {
 
     public void PauseON() {
         if (Input.GetKeyDown("space")) {
-            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
             PauseCanvas.enabled = true;
-            Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
         }
 
         if (PauseCanvas.enabled == true) {
             Time.timeScale = 0;
             if (Input.GetKeyDown(KeyCode.C)) {
                 PauseCanvas.enabled = !PauseCanvas.enabled;
-                Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
-                Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
-                Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             }
         }
         if (Input.GetButtonDown("X360_Start"))
         {
-            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
             PauseCanvas.enabled = true;
-            Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
             play.normalSpeed = 0;
         }
 
@@ -169,9 +169,9 @@ public class GameManager : MonoBehaviour {
             if (Input.GetButtonDown("X360_A"))
             {
                 PauseCanvas.enabled = !PauseCanvas.enabled;
-                Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
-                Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
-                Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(pauseAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
                 play.normalSpeed = 10;
             }
 
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void AudioStop () {
-        Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+        //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
     }
 
     public void PauseOFF() {

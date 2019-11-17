@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
 
     public void PlayerHit(float dmg) {
         GameManager.instance.Explosion(2, transform);
-        Fabric.EventManager.Instance.PostEvent(playerHitAudioEvent);
+        //Fabric.EventManager.Instance.PostEvent(playerHitAudioEvent);
         // if (Invincible()) {
         //   GetComponentInChildren<BoxCollider>().enabled = false;
         //} else { GetComponentInChildren<BoxCollider>().enabled = true;}
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer {
         //Hitpoints = origHP;
         //GameManager.instance.LifeLost();
         if (Lives <= 0) {
-                Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(deathAudioEvent);
                 GameManager.instance.Explosion(expl, transform);
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 GameManager.instance.PlayerDead();

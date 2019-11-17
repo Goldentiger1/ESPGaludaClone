@@ -24,8 +24,8 @@ public class BossHealth : EnemyBehaviour
         bossHealthSlider.value = currentHealth;
         if(currentHealth <= 0)
         {
-            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
-            Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(bgmAudioEvent);
             cameraMove.enabled = true;
         }
         

@@ -99,7 +99,7 @@ public class PlayerShooting : MonoBehaviour {
             foreach (var laserRenderer in lasers) {
                 laserRenderer.enabled = false;
             }
-            Fabric.EventManager.Instance.PostEvent(laserStopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(laserStopAudioEvent);
             laserTimer = 0;
             nextFire = Time.unscaledTime + fireRate;
         }
@@ -139,7 +139,7 @@ public class PlayerShooting : MonoBehaviour {
                 clone1.transform.position = shotSpawn1.transform.position;
                 //clone.GetComponent<BulletMover>().playfieldCenter = playfieldCenter;
                 //clone.GetComponent<BulletMover>().localPos = GetComponent<PlayerMovement>().localPos;
-                Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
+                //Fabric.EventManager.Instance.PostEvent(bulletAudioEvent);
                 nextFire = Time.unscaledTime + fireRate;
                 //GetComponent<AudioSource>().Play();
                 laserTimer += Time.unscaledDeltaTime * laserTimerSpeed;

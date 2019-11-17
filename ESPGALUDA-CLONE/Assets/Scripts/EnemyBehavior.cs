@@ -55,7 +55,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
                 }
 
             }
-            Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(destroyAudioEvent);
             bool isPowerup = Random.value < powerupProbability;
             if (isPowerup) {
                 if (spawnedAtDeath != null) {

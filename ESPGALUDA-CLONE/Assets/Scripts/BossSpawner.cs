@@ -21,8 +21,8 @@ public class BossSpawner : MonoBehaviour {
         {
             var clone = Instantiate(boss, spawnpoint.position, Quaternion.identity);
             spawned = true;
-            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
-            Fabric.EventManager.Instance.PostEvent(bossAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(bossAudioEvent);
         }
     }
 

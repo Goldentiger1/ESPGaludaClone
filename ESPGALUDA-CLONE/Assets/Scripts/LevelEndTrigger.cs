@@ -10,7 +10,7 @@ public class LevelEndTrigger : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Camera")) {
             SceneManager.LoadScene("WinScreen");
-            Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(stopAudioEvent);
         }
     }
 }

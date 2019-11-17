@@ -17,11 +17,11 @@ public class AudioTrigger : MonoBehaviour {
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Q)) {
-            Fabric.EventManager.Instance.PostEvent(BGM1);
+            //Fabric.EventManager.Instance.PostEvent(BGM1);
         }
 
         if (Input.GetKeyDown(KeyCode.Z)) {
-            Fabric.EventManager.Instance.PostEvent(Pickup);
+            //Fabric.EventManager.Instance.PostEvent(Pickup);
         }
     }
 }

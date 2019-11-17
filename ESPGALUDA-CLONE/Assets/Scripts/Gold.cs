@@ -16,7 +16,7 @@ public class Gold : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.name == "Player") {
             Destroy(gameObject);
-            Fabric.EventManager.Instance.PostEvent(goldAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(goldAudioEvent);
             GameManager.instance.GainGold();
             GameManager.instance.UpdateLivesScoreText();
 

@@ -15,7 +15,7 @@ public class Crystal : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.name == "Player") {
             Destroy(gameObject);
-            Fabric.EventManager.Instance.PostEvent(crystalAudioEvent);
+            //Fabric.EventManager.Instance.PostEvent(crystalAudioEvent);
             player.GainCrystal();
             GameManager.instance.UpdateLivesScoreText();
 
